@@ -46,4 +46,5 @@ An example for a ToDo list feature could look as following:
 ## Commit Messages
 
 TODO: Agree on a standard
+
 Note: might be more useful for PR messages?
