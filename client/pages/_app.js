@@ -1,5 +1,6 @@
 /*
   This file allows us to add things like a header that will appear on every page.
+  'Component' below = the page currently loaded (as in /quizzes).
 */
 
 function MyApp({ Component, pageProps }) {

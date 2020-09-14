@@ -1,3 +1,6 @@
+/*
+  This component is used in `/pages/_app.js` as a wrapper so it will remain mounted even when the 'page' changes
+*/
 import Head from "next/head";
 import Link from "next/link";
 
