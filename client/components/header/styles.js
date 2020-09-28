@@ -116,8 +116,28 @@ export const MobileMenuWrapper = styled.div`
     width: calc(100% - 80px);
     max-width: 350px;
     height: 100%;
-    border-left: 1px solid #ccc;
     z-index: 600;
     transform: ${props => props.active ? 'translateX(0)' : 'translateX(100%)'};
     transition: all ease .3s;
+`;
+
+export const MobileMenuTitle = styled.div`
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #057A55;
+    color: #fff;
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
+`;
+
+export const MobileMenuLink = styled(NavbarLink)`
+    display: block;
+    color: #4a4a4a;
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
 `;
