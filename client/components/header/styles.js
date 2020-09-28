@@ -17,10 +17,9 @@ export const InnerWrapper = styled.div`
 `;
 
 // LOGO //
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled.a`
     display: flex;
     align-items: center;
-    cursor: pointer;
 `;
 
 // Placeholder until we got logo file
@@ -51,7 +50,6 @@ export const NavbarLink = styled.a`
     line-height: 24px;
     color: #fff;
     margin-right: 32px;
-    cursor: pointer;
 
     &:last-of-type {
         margin-right: 0;
