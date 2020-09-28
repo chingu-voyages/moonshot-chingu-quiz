@@ -28,13 +28,15 @@ export const Logo = styled.div`
     height: 58px;
     border-radius: 50%;
     background: #18E28C;
-    margin-right: 15px;
+    margin-right: 18px;
 `;
 
 export const LogoText = styled.div`
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     line-height: 32px;
     font-weight: bold;
+    letter-spacing: 0.2px;
     text-transform: uppercase;
     color: #18E28C;
 `;
