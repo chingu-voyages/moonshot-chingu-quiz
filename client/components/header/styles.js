@@ -16,6 +16,7 @@ export const InnerWrapper = styled.div`
     margin: 0 auto;
 `;
 
+// LOGO //
 export const LogoWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -37,4 +38,22 @@ export const LogoText = styled.div`
     font-weight: bold;
     text-transform: uppercase;
     color: #18E28C;
+`;
+
+// NAVBAR //
+export const Navbar = styled.nav`
+    display: flex;
+    align-items: center;
+`;
+
+export const NavbarLink = styled.a`
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    margin-right: 32px;
+    cursor: pointer;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
 `;
