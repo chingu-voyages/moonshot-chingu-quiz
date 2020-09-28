@@ -17,10 +17,9 @@ export const InnerWrapper = styled.div`
 `;
 
 // LOGO //
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled.a`
     display: flex;
     align-items: center;
-    cursor: pointer;
 `;
 
 // Placeholder until we got logo file
@@ -29,13 +28,15 @@ export const Logo = styled.div`
     height: 58px;
     border-radius: 50%;
     background: #18E28C;
-    margin-right: 15px;
+    margin-right: 18px;
 `;
 
 export const LogoText = styled.div`
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     line-height: 32px;
     font-weight: bold;
+    letter-spacing: 0.2px;
     text-transform: uppercase;
     color: #18E28C;
 `;
@@ -51,7 +52,6 @@ export const NavbarLink = styled.a`
     line-height: 24px;
     color: #fff;
     margin-right: 32px;
-    cursor: pointer;
 
     &:last-of-type {
         margin-right: 0;
