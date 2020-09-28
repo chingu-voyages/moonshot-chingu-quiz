@@ -19,6 +19,7 @@ export const InnerWrapper = styled.div`
 export const LogoWrapper = styled.div`
     display: flex;
     align-items: center;
+    cursor: pointer;
 `;
 
 // Placeholder until we got logo file

@@ -16,10 +16,12 @@ export default function Header({ children }) {
 
       <Wrapper>
         <InnerWrapper>
-          <LogoWrapper>
-            <Logo />
-            <LogoText>Chingu Quiz</LogoText>
-          </LogoWrapper>
+          <Link href="/">
+            <LogoWrapper>
+              <Logo />
+              <LogoText>Chingu Quiz</LogoText>
+            </LogoWrapper>
+          </Link>
           <nav>
             <Link href="/">
               <a>Home</a>
