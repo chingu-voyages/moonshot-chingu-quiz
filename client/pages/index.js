@@ -2,6 +2,7 @@
   This file is the landing page
 */
 
+import React from 'react';
 import Header from "../components/header/Header.js";
 
 export default function Home() {
