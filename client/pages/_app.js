@@ -4,6 +4,7 @@
 */
 
 import React from 'react';
+import "./reset.css";
 
 function MyApp({ Component, pageProps }) {
   const Header = Component.Header ? Component.Header : React.Fragment;

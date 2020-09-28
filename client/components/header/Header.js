@@ -5,6 +5,8 @@ import React from 'react';
 import Head from "next/head";
 import Link from "next/link";
 
+import { Wrapper, InnerWrapper, LogoWrapper, Logo, LogoText } from './styles';
+
 export default function Header({ children }) {
   return (
     <div>
@@ -12,17 +14,22 @@ export default function Header({ children }) {
         <title>Chingu Quiz App</title>
       </Head>
 
-      <header>
-        <h3>Chingu Quiz App</h3>
-        <nav>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/quizzes">
-            <a>Choose a quiz</a>
-          </Link>
-        </nav>
-      </header>
+      <Wrapper>
+        <InnerWrapper>
+          <LogoWrapper>
+            <Logo />
+            <LogoText>Chingu Quiz</LogoText>
+          </LogoWrapper>
+          <nav>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+            <Link href="/quizzes">
+              <a>Choose a quiz</a>
+            </Link>
+          </nav>
+        </InnerWrapper>
+      </Wrapper>
 
       <main>{children}</main>
     </div>
