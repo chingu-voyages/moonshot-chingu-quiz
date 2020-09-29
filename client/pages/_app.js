@@ -3,6 +3,8 @@
   'Component' below = the page currently loaded (as in /quizzes).
 */
 
+import React from 'react';
+
 function MyApp({ Component, pageProps }) {
   const Header = Component.Header ? Component.Header : React.Fragment;
 
