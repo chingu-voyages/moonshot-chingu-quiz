@@ -68,7 +68,7 @@ export default class Header extends React.Component {
           <InnerWrapper>
             <Link href="/">
               <LogoWrapper>
-                <Logo />
+                <Logo src="/logo.png" />
                 <LogoText>Chingu Quiz</LogoText>
               </LogoWrapper>
             </Link>

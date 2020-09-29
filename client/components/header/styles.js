@@ -22,12 +22,9 @@ export const LogoWrapper = styled.a`
     align-items: center;
 `;
 
-// Placeholder until we got logo file
-export const Logo = styled.div`
+export const Logo = styled.img`
     width: 58px;
     height: 58px;
-    border-radius: 50%;
-    background: #18E28C;
     margin-right: 18px;
 `;
 
