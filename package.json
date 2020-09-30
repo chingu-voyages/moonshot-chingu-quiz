@@ -18,11 +18,6 @@
   "scripts": {
     "start": "echo \"Need to setup concurrently and start & dev scripts\" && exit 1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
