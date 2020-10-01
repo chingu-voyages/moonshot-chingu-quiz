@@ -8,7 +8,6 @@ This repository contains a web application for practising programming and interv
 * [Instructions](#instructions)
 * [Code Dependencies](#code-dependencies)
 * [Contributing](#contributing)
-* [Contributors](#contributors)
 * [Code of Conduct](#code-of-conduct)
 
 ## Instructions
@@ -23,9 +22,6 @@ The app is built with the following code dependencies:
 
 ## Contributing
 This repository is open for contribution. For details on how to get started, check out our [Contributing Guide](ADD LINK).
-
-## Contributors
-TODO: Shall we add a section for contributors?
 
 ## Code of Conduct
 TODO: Shall we use one? Does anyone know a template we could use?
