@@ -5,6 +5,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { breakpointsRaw } from "../../frontend-config";
+import styled from "styled-components";
 
 import MobileMenu from "./MobileMenu";
 
@@ -17,6 +18,10 @@ import {
   Navbar,
   NavbarLink,
 } from "./styles";
+
+const Main = styled.main`
+  padding-top: 88px; // fixed header height
+`;
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -104,7 +109,7 @@ export default class Header extends React.Component {
           </InnerWrapper>
         </Wrapper>
 
-        <main>{children}</main>
+        <Main>{children}</Main>
       </div>
     );
   }

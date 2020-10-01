@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   height: 88px;
   width: 100%;
   background: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 export const InnerWrapper = styled.div`
