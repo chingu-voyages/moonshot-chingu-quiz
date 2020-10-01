@@ -39,8 +39,8 @@ export const Heading4 = styled.h4`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 25px;
-  line-height: 29px;
+  font-size: 24px;
+  line-height: 28px;
 `;
 
 // BODY TEXT //

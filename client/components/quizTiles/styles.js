@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TileSection = styled.section`
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   place-items: center;
   place-content: center;
   width: 100%;
@@ -17,10 +17,17 @@ export const TileContainer = styled.div`
   grid-template-rows: 1fr;
   place-items: center start;
   place-content: center;
-  width: 300px;
+  width: 100%;
+  max-width: 375px;
   height: 115px;
   padding: 0;
-  margin: 0 auto;
+  margin: 10px auto;
+  box-shadow: 3px 1px 10px #c4c4c4;
+  transition-duration: 400ms;
+
+  &:hover {
+    box-shadow: 5px 3px 18px #c4c4c4;
+  }
 `;
 
 export const TileImage = styled.img`
@@ -30,11 +37,12 @@ export const TileImage = styled.img`
 `;
 
 export const TileBody = styled.div`
+  place-self: start;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 30px 1fr;
   grid-gap: 0;
   width: 100%;
-  padding: 0;
-  margin: 0;
+  padding: 0 5px 0 0;
+  margin: 15px 0 0 0;
 `;
