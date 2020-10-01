@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 export const Wrapper = styled.div`
   height: 88px;
@@ -11,7 +12,7 @@ export const InnerWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 1440px;
-  max-width: calc(100% - 100px);
+  max-width: calc(100% - 70px);
   height: 100%;
   margin: 0 auto;
 `;
@@ -23,19 +24,29 @@ export const LogoWrapper = styled.a`
 `;
 
 export const Logo = styled.img`
-  width: 58px;
-  height: 58px;
-  margin-right: 18px;
+  width: 47px;
+  height: 47px;
+  margin-right: 20px;
+
+  @media (min-width: ${breakpoint("md")}) {
+    width: 58px;
+    height: 58px;
+    margin-right: 18px;
+  }
 `;
 
 export const LogoText = styled.div`
   font-family: "Roboto", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 32px;
   font-weight: bold;
   letter-spacing: 0.2px;
   text-transform: uppercase;
   color: #18e28c;
+
+  @media (min-width: ${breakpoint("md")}) {
+    font-size: 24px;
+  }
 `;
 
 // NAVBAR //
@@ -71,37 +82,37 @@ export const MobileMenuPageOverlay = styled.div`
 `;
 
 export const MobileMenuButtonWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #fff;
+  width: 30px;
+  height: 27px;
 `;
 
 export const MobileMenuButton = styled.div`
-  position: relative;
-  width: 22px;
-  height: 2px;
+  width: 100%;
+  height: 5px;
   background: #fff;
+  border-radius: 2px;
 
   &:before,
   &:after {
     content: "";
     width: inherit;
     height: inherit;
+    border-radius: 2px;
     background: inherit;
     position: absolute;
     left: 0;
   }
 
   &:before {
-    top: -6px;
+    top: 0;
   }
 
   &:after {
-    top: 6px;
+    bottom: 0;
   }
 `;
 
