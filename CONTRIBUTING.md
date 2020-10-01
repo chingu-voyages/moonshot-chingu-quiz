@@ -58,7 +58,7 @@ For consistency and easier readability, we would like to ask everyone to use the
 
 <body>
 
-Resolves: #ISSUE_NUMBER
+Resolves #ISSUE_NUMBER
 ```
 
 Note: It is important to add the #number for the issue the PR is resolving in order to close the issue accordingly once the PR gets merged.
