@@ -3,14 +3,18 @@
 */
 
 import React from 'react';
-import Header from "../components/header/Header.js";
+import Header from '../components/header/Header.js';
+import QuizTile from '../components/quizTiles/QuizTile.js';
+import { TileSection } from '../components/quizTiles/styles.js';
 
 export default function Quizzes() {
   return (
-    <>
-      <h1>Choose a Quiz</h1>
-      <h5>This is a second page where the quiz options can be laid out.</h5>
-    </>
+    <TileSection>
+      <QuizTile />
+      <QuizTile />
+      <QuizTile />
+      <QuizTile />
+    </TileSection>
   );
 }
 

@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-// TEXT ELEMENTS //
+// -- TEXT ELEMENTS -- //
 
 // HEADINGS //
-export const hugeText = styled.h2`
+export const HugeText = styled.h2`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -11,7 +11,7 @@ export const hugeText = styled.h2`
   line-height: 100%;
 `;
 
-export const heading1 = styled.h1`
+export const Heading1 = styled.h1`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -19,7 +19,7 @@ export const heading1 = styled.h1`
   line-height: 120%;
 `;
 
-export const heading2 = styled.h2`
+export const Heading2 = styled.h2`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -27,7 +27,7 @@ export const heading2 = styled.h2`
   line-height: 120%;
 `;
 
-export const heading3 = styled.h3`
+export const Heading3 = styled.h3`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -35,7 +35,7 @@ export const heading3 = styled.h3`
   line-height: 36px;
 `;
 
-export const heading4 = styled.h4`
+export const Heading4 = styled.h4`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -44,7 +44,7 @@ export const heading4 = styled.h4`
 `;
 
 // BODY TEXT //
-export const textBody = styled.p`
+export const TextBody = styled.p`
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
@@ -52,7 +52,7 @@ export const textBody = styled.p`
   line-height: 28px;
 `;
 
-export const textBodyBold = styled.p`
+export const TextBodyBold = styled.p`
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
@@ -60,7 +60,7 @@ export const textBodyBold = styled.p`
   line-height: 28px;
 `;
 
-export const textBodySmall = styled.p`
+export const TextBodySmall = styled.p`
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
@@ -68,7 +68,7 @@ export const textBodySmall = styled.p`
   line-height: 150%;
 `;
 
-export const textBodySmallBold = styled.p`
+export const TextBodySmallBold = styled.p`
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
@@ -76,7 +76,7 @@ export const textBodySmallBold = styled.p`
   line-height: 150%;
 `;
 
-export const textBodyMicro = styled.p`
+export const TextBodyMicro = styled.p`
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
@@ -84,7 +84,7 @@ export const textBodyMicro = styled.p`
   line-height: 150%;
 `;
 
-export const textBodyMicroBold = styled.p`
+export const TextBodyMicroBold = styled.p`
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;

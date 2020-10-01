@@ -1,19 +1,19 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const tileWrapper = styled.section`
+export const TileSection = styled.section`
   display: grid;
   grid-gap: 15px;
-  grid-tempate-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   place-items: center;
   place-content: center;
   width: 100%;
-  margin: 0 auto;
+  margin: 10px auto;
 `;
 
-export const tileContainer = styled.div`
+export const TileContainer = styled.div`
   display: grid;
   grid-gap: 0;
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 100px 1fr;
   grid-template-rows: 1fr;
   place-items: center start;
   place-content: center;
@@ -23,18 +23,18 @@ export const tileContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const tileImage = styled.img`
-  width: 130px;
-  padding: 0;
+export const TileImage = styled.img`
+  width: 100px;
+  padding: 20px;
   margin: 0;
 `;
 
-export const tileBody = styled.div`
+export const TileBody = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr;
   grid-gap: 0;
-  width: calc(100% - 130px);
+  width: 100%;
   padding: 0;
   margin: 0;
 `;
