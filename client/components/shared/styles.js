@@ -91,3 +91,11 @@ export const TextBodyMicroBold = styled.p`
   font-size: 14px;
   line-height: 150%;
 `;
+
+// -- STYLED TEXT -- //
+
+export const PageHeader = styled(Heading1)`
+  color: #18E28C;
+  padding: 0;
+  margin: 20px auto;
+`;

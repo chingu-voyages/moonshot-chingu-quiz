@@ -5,16 +5,22 @@
 import React from 'react';
 import Header from '../components/header/Header.js';
 import QuizTile from '../components/quizTiles/QuizTile.js';
-import { TileSection } from '../components/quizTiles/styles.js';
+import { QuizzesHeader, TileSection } from '../components/quizTiles/styles.js';
+import { PageHeader } from '../components/shared/styles.js';
 
 export default function Quizzes() {
   return (
-    <TileSection>
-      <QuizTile />
-      <QuizTile />
-      <QuizTile />
-      <QuizTile />
-    </TileSection>
+    <>
+      <QuizzesHeader>
+        <PageHeader>Quizzes</PageHeader>
+      </QuizzesHeader>
+      <TileSection>
+        <QuizTile />
+        <QuizTile />
+        <QuizTile />
+        <QuizTile />
+      </TileSection>
+    </>
   );
 }
 
