@@ -3,13 +3,32 @@
 */
 
 import React from 'react';
-import Header from "../components/header/Header.js";
+import Header from '../components/header/Header.js';
+import QuizTile from '../components/quizTiles/QuizTile.js';
+import { QuizzesHeader, TileSection } from '../components/quizTiles/styles.js';
+import { PageHeader } from '../components/shared/styles.js';
 
 export default function Quizzes() {
+
+  /* TODO:
+  const [quizArray, setQuizArray] = useState([]);
+
+  Use 'SWR' to fetch quizzes on demand - https://swr.vercel.app/
+
+  Store result in state and map over below to display
+  */
+
   return (
     <>
-      <h1>Choose a Quiz</h1>
-      <h5>This is a second page where the quiz options can be laid out.</h5>
+      <QuizzesHeader>
+        <PageHeader>Quizzes</PageHeader>
+      </QuizzesHeader>
+      <TileSection>
+        <QuizTile />
+        <QuizTile />
+        <QuizTile />
+        <QuizTile />
+      </TileSection>
     </>
   );
 }

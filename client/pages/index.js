@@ -3,7 +3,7 @@
 */
 
 import React from 'react';
-import Header from "../components/header/Header.js";
+import Header from '../components/header/Header.js';
 
 export default function Home() {
   return (
