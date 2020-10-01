@@ -4,7 +4,6 @@ We welcome all contributions!
 
 Please, feel free to start working on any issues we have created.
 For starters, we recommend to pick up issues labelled *good first issue*.
-If you want your pull request to be counted for Hacktober, don't forget to add the label *Hacktober* to your pull requests!
 
 In addition to everything written in here, there is a [Collaborator Guide](https://github.com/chingu-voyages/ChinguResourceList/blob/development/docs/COLLABORATOR_GUIDE.md) you can read into for additional information about collaborations.
 
