@@ -12,7 +12,13 @@ This repository contains a web application for practising programming and interv
 
 ## Instructions
 
-TODO: Instructions on how to use the app in a local development environment
+In order to get this application running on your local development environment, please follow the steps below:
+
+1. Fork the repository
+2. Clone your forked repository onto your local machine
+3. inside your CLI (Command Line Interface), move into your working directory
+4. run `npm i` inside the root *and* client folder to install all dependencies needed for this project
+5. inside the client folder, run `npm run dev` to start the development server
 
 ## Code Dependencies
 
