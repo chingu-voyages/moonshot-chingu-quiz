@@ -21,7 +21,7 @@ The app is built with the following code dependencies:
 1. [NextJS](https://github.com/vercel/next.js)
 
 ## Contributing
-This repository is open for contribution. For details on how to get started, check out our [Contributing Guide](ADD LINK).
+This repository is open for contribution. For details on how to get started, check out our [Contributing Guide](/CONTRIBUTING.md).
 
 ## Code of Conduct
-TODO: Shall we use one? Does anyone know a template we could use?
+Please check our [code of conduct](/CODE_OF_CONDUCT.md) before you start contributing.

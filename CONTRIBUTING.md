@@ -2,6 +2,12 @@
 
 We welcome all contributions!
 
+Please, feel free to start working on any issues we have created.
+For starters, we recommend to pick up issues labelled *good first issue*.
+If you want your pull request to be counted for Hacktober, don't forget to add the label *Hacktober* to your pull requests!
+
+In addition to everything written in here, there is a [Collaborator Guide](https://github.com/chingu-voyages/ChinguResourceList/blob/development/docs/COLLABORATOR_GUIDE.md) you can read into for additional information about collaborations.
+
 ## Table of Contents
 
 * [Process](#process)
@@ -43,8 +49,16 @@ An example for a ToDo list feature could look as following:
 --- feature/todo-list/display-data
 ```
 
-## Commit Messages
+## Commit Messages & Pull Requests
 
-TODO: Agree on a standard
+For consistency and easier readability, we would like to ask everyone to use the following template for your pull request messages:
 
-Note: might be more useful for PR messages?
+```
+<subject>
+
+<body>
+
+Resolves: #ISSUE_NUMBER
+```
+
+Note: It is important to add the #number for the issue the PR is resolving in order to close the issue accordingly once the PR gets merged.
