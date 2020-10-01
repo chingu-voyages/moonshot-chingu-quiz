@@ -29,20 +29,40 @@ export default class Header extends React.Component {
 
     this.state = {
       mobile: false,
+      headerShadow: false,
       mobileMenuActive: false,
     };
 
+    this.onScroll = this.onScroll.bind(this);
     this.checkPageSize = this.checkPageSize.bind(this);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
   }
 
   componentDidMount() {
     this.checkPageSize();
+    window.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.checkPageSize);
   }
 
   componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
     window.removeEventListener("resize", this.checkPageSize);
+  }
+
+  onScroll() {
+    const { mobile, headerShadow } = this.state;
+
+    const distanceFromTop = window.scrollY;
+
+    if (headerShadow && distanceFromTop === 0 && !mobile) {
+      this.setState({
+        headerShadow: false,
+      });
+    } else if (!headerShadow && distanceFromTop > 0) {
+      this.setState({
+        headerShadow: true,
+      });
+    }
   }
 
   checkPageSize() {
@@ -51,11 +71,13 @@ export default class Header extends React.Component {
     if (window.innerWidth >= breakpointsRaw("md") && mobile) {
       this.setState({
         mobile: false,
+        headerShadow: window.scrollY > 0,
         mobileMenuActive: false,
       });
     } else if (window.innerWidth < breakpointsRaw("md") && !mobile) {
       this.setState({
         mobile: true,
+        headerShadow: true,
         mobileMenuActive: false,
       });
     }
@@ -69,7 +91,7 @@ export default class Header extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { mobile, mobileMenuActive } = this.state;
+    const { mobile, headerShadow, mobileMenuActive } = this.state;
 
     return (
       <div>
@@ -77,7 +99,7 @@ export default class Header extends React.Component {
           <title>Chingu Quiz App</title>
         </Head>
 
-        <Wrapper>
+        <Wrapper withShadow={headerShadow}>
           <InnerWrapper>
             <Link href="/">
               <LogoWrapper>

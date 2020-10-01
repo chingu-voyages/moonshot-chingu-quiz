@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  transition: box-shadow ease 0.3s;
+  box-shadow: ${props =>
+    props.withShadow
+      ? "0px 6px 6px 3px rgba(0, 0, 0, 0.25)"
+      : "0px 6px 6px 3px rgba(0, 0, 0, 0)"};
 `;
 
 export const InnerWrapper = styled.div`
