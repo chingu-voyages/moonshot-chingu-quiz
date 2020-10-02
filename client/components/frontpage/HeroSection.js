@@ -17,11 +17,6 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const ContentWrapper = styled.div`
-  max-width: 730px;
-  margin: 0 auto;
-`;
-
 const Headline = styled.h1`
   font-size: 25px;
   line-height: 30px;
