@@ -3,15 +3,15 @@ const db = require("../../../db");
 module.exports = async (req, res) => {
   try {
     const {
-      quiz: { subject, description },
+      quiz: { subject, description, tags },
       questions,
     } = req.body;
 
     const {
       rows: [{ id: quizId }],
     } = await db.query(
-      "INSERT INTO quiz(subject, description) VALUES($1, $2) RETURNING *",
-      [subject, description]
+      "INSERT INTO quiz(subject, description, tags) VALUES($1, $2, $3) RETURNING *",
+      [subject, description, tags]
     );
 
     await Promise.all(
