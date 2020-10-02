@@ -1,20 +1,38 @@
 import React from "react";
 import styled from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
   background: #fff;
   padding: 30px 20px 50px;
+
+  @media (min-width: ${breakpoint("xl")}) {
+    padding: 55px 20px;
+  }
 `;
 
 const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (min-width: ${breakpoint("xl")}) {
+    flex-direction: row;
+  }
 `;
 
 const InfoBox = styled.div`
   text-align: center;
   margin-bottom: 20px;
+
+  @media (min-width: ${breakpoint("xl")}) {
+    margin-right: 30px;
+    max-width: 350px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 `;
 
 const Icon = styled.div`
@@ -33,7 +51,7 @@ const Headline = styled.h3`
 const Text = styled.p`
   font-size: 16px;
   line-height: 24px;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
 `;
 
