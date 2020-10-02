@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // -- TEXT ELEMENTS -- //
 
@@ -98,4 +98,32 @@ export const PageHeader = styled(Heading1)`
   color: #18E28C;
   padding: 0;
   margin: 20px auto;
+`;
+
+
+// -- Buttons -- //
+
+export const PrimaryButton = styled.button`
+  width: max-content;
+  padding: 8px 15px;
+  margin: 0;
+  background: transparent;
+  border: 1px solid #057A55;
+  border-radius: 5px;
+  color: #057A55;
+
+  ${props => props.activeLight && css`
+    background: #057A55;
+    color: #fff;
+  `}
+
+  ${props => props.activeDark && css`
+    background: #057A55;
+    color: #333;
+  `}
+
+`;
+
+export const PrimaryButtonSmall = styled(PrimaryButton)`
+  padding: 2px 12px
 `;

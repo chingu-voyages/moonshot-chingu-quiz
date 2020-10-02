@@ -24,7 +24,7 @@ export default function Quizzes() {
       <QuizzesHeader>
         <PageHeader>Quizzes</PageHeader>
       </QuizzesHeader>
-      <TopicSelection />
+      <TopicSelection subject="Programming" />
       <TileSection>
         <QuizTile />
         <QuizTile />

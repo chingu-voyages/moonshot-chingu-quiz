@@ -75,7 +75,7 @@ export const TopicSelectionContainer = styled.section`
   align-items: center;
   width: 95%;
   padding: 0;
-  margin: 10px auto;
+  margin: 20px auto 30px auto;
 `;
 
 export const TopicSelectionList = styled.ul`
@@ -84,16 +84,12 @@ export const TopicSelectionList = styled.ul`
   justify-content: start;
   align-items: center;
   width: 100%;
-  margin: 0;
+  margin: 5px auto;
   list-style: none;
 `;
 
 export const TopicSelectionItem = styled.li`
   width: max-content;
-  padding: 10px;
-  margin: 0 10px 0 0;
-  background: transparent;
-  border: 1px solid #057A55;
-  border-radius: 5px;
-  color: #057A55;
+  padding: 0;
+  margin-right: 15px;
 `;
