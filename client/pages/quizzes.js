@@ -2,8 +2,8 @@
   This page will load at the url "/quizzes"
 */
 
-import React from 'react';
-import Header from "../components/header/Header.js";
+import React from "react";
+import Header from "../components/header/Header";
 
 export default function Quizzes() {
   return (
@@ -14,5 +14,5 @@ export default function Quizzes() {
   );
 }
 
-//Tells NextJS this page should use the Header setup in '_app'
+// Tells NextJS this page should use the Header setup in '_app'
 Quizzes.Header = Header;
