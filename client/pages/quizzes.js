@@ -2,7 +2,7 @@
   This page will load at the url "/quizzes"
 */
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import QuizTile from '../components/quizSelection/QuizTile';
 import TopicSelection from '../components/quizSelection/TopicSelection';
@@ -10,6 +10,7 @@ import { QuizzesHeader, TileSection } from '../components/quizSelection/styles';
 import { PageHeader } from '../components/shared/styles';
 
 export default function Quizzes() {
+  const [chosenSubject, setChosenSubject] = useState("Programming")
 
   /* TODO:
   const [quizArray, setQuizArray] = useState([]);
@@ -24,7 +25,7 @@ export default function Quizzes() {
       <QuizzesHeader>
         <PageHeader>Quizzes</PageHeader>
       </QuizzesHeader>
-      <TopicSelection subject="Programming" />
+      <TopicSelection subject={chosenSubject} setChosenSubject={setChosenSubject} />
       <TileSection>
         <QuizTile />
         <QuizTile />

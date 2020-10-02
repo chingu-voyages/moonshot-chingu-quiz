@@ -111,6 +111,7 @@ export const PrimaryButton = styled.button`
   border: 1px solid #057A55;
   border-radius: 5px;
   color: #057A55;
+  cursor: pointer;
 
   ${props => props.activeLight && css`
     background: #057A55;

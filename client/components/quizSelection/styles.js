@@ -84,6 +84,7 @@ export const TopicSelectionList = styled.ul`
   justify-content: start;
   align-items: center;
   width: 100%;
+  min-height: 30px;
   margin: 5px auto;
   list-style: none;
 `;
