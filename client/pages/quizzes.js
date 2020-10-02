@@ -10,7 +10,8 @@ import { QuizzesHeader, TileSection } from '../components/quizSelection/styles';
 import { PageHeader } from '../components/shared/styles';
 
 export default function Quizzes() {
-  const [chosenSubject, setChosenSubject] = useState("Programming")
+  const [chosenSubject, setChosenSubject] = useState("Programming");
+  const [chosenTopics, setChosenTopics] = useState([]);
 
   /* TODO:
   const [quizArray, setQuizArray] = useState([]);
@@ -25,7 +26,7 @@ export default function Quizzes() {
       <QuizzesHeader>
         <PageHeader>Quizzes</PageHeader>
       </QuizzesHeader>
-      <TopicSelection subject={chosenSubject} setChosenSubject={setChosenSubject} />
+      <TopicSelection subject={chosenSubject} setChosenSubject={setChosenSubject} chosenTopics={chosenTopics} setChosenTopics={setChosenTopics} />
       <TileSection>
         <QuizTile />
         <QuizTile />
