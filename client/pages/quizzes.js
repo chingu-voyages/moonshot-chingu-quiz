@@ -12,6 +12,19 @@ import { PageHeader } from '../components/shared/styles';
 export default function Quizzes() {
   const [chosenSubject, setChosenSubject] = useState("Programming");
   const [chosenTopics, setChosenTopics] = useState([]);
+  // const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
+  //
+  // useEffect(() => {
+  //   setAllSubjectQuizzes([
+  //     {
+  //       "CSS Quiz": {
+  //         "subject": ["programming"],
+  //         "description": "A quiz covering general JavaScript knowledge.",
+  //         "tags": ["javascript"]
+  //       }
+  //     }
+  //   ])
+  // })
 
   /* TODO:
   const [quizArray, setQuizArray] = useState([]);
@@ -28,9 +41,6 @@ export default function Quizzes() {
       </QuizzesHeader>
       <TopicSelection subject={chosenSubject} setChosenSubject={setChosenSubject} chosenTopics={chosenTopics} setChosenTopics={setChosenTopics} />
       <TileSection>
-        <QuizTile />
-        <QuizTile />
-        <QuizTile />
         <QuizTile />
       </TileSection>
     </>

@@ -16,17 +16,17 @@ export default function TopicSelection({ subject, setChosenSubject, chosenTopics
     <TopicSelectionContainer>
       <TopicSelectionList>
         <TopicSelectionItem>
-          <PrimaryButton activeLight={subject === "Programming"} onClick={() => {setChosenSubject("Programming")}}>
+          <PrimaryButton activeLight={subject === "Programming"} onClick={() => {setChosenSubject("Programming"); setChosenTopics([])}}>
             <TextBodySmall>Programming</TextBodySmall>
           </PrimaryButton>
         </TopicSelectionItem>
         <TopicSelectionItem>
-          <PrimaryButton activeLight={subject === "UX"} onClick={() => {setChosenSubject("UX")}}>
+          <PrimaryButton activeLight={subject === "UX"} onClick={() => {setChosenSubject("UX"); setChosenTopics([])}}>
             <TextBodySmall>UX</TextBodySmall>
           </PrimaryButton>
         </TopicSelectionItem>
         <TopicSelectionItem>
-          <PrimaryButton activeLight={subject === "Interview"} onClick={() => {setChosenSubject("Interview")}}>
+          <PrimaryButton activeLight={subject === "Interview"} onClick={() => {setChosenSubject("Interview"); setChosenTopics([])}}>
             <TextBodySmall>Interview</TextBodySmall>
           </PrimaryButton>
         </TopicSelectionItem>

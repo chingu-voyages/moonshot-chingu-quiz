@@ -112,19 +112,23 @@ export const PrimaryButton = styled.button`
   border-radius: 5px;
   color: #057A55;
   cursor: pointer;
+  filter: contrast(30%);
+  transition-duration: 200ms;
 
   ${props => props.activeLight && css`
     background: #057A55;
     color: #fff;
+    filter: none;
   `}
 
   ${props => props.activeDark && css`
     background: #057A55;
     color: #333;
+    filter: none;
   `}
 
 `;
 
 export const PrimaryButtonSmall = styled(PrimaryButton)`
-  padding: 2px 12px
+  padding: 2px 12px;
 `;
