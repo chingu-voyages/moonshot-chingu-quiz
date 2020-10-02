@@ -37,6 +37,7 @@ export const TileContainer = styled.div`
   height: 115px;
   padding: 0;
   margin: 10px auto;
+  border-radius: 5px;
   box-shadow: 3px 1px 10px #c4c4c4;
   transition-duration: 350ms;
 
@@ -65,4 +66,34 @@ export const TileBody = styled.div`
   width: 100%;
   padding: 0 5px 0 0;
   margin: 15px 0 0 0;
+`;
+
+export const TopicSelectionContainer = styled.section`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  width: 95%;
+  padding: 0;
+  margin: 10px auto;
+`;
+
+export const TopicSelectionList = styled.ul`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+`;
+
+export const TopicSelectionItem = styled.li`
+  width: max-content;
+  padding: 10px;
+  margin: 0 10px 0 0;
+  background: transparent;
+  border: 1px solid #057A55;
+  border-radius: 5px;
+  color: #057A55;
 `;

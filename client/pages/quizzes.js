@@ -3,10 +3,11 @@
 */
 
 import React from 'react';
-import Header from '../components/header/Header.js';
-import QuizTile from '../components/quizTiles/QuizTile.js';
-import { QuizzesHeader, TileSection } from '../components/quizTiles/styles.js';
-import { PageHeader } from '../components/shared/styles.js';
+import Header from '../components/header/Header';
+import QuizTile from '../components/quizSelection/QuizTile';
+import TopicSelection from '../components/quizSelection/TopicSelection';
+import { QuizzesHeader, TileSection } from '../components/quizSelection/styles';
+import { PageHeader } from '../components/shared/styles';
 
 export default function Quizzes() {
 
@@ -23,6 +24,7 @@ export default function Quizzes() {
       <QuizzesHeader>
         <PageHeader>Quizzes</PageHeader>
       </QuizzesHeader>
+      <TopicSelection />
       <TileSection>
         <QuizTile />
         <QuizTile />
@@ -33,5 +35,5 @@ export default function Quizzes() {
   );
 }
 
-//Tells NextJS this page should use the Header setup in '_app'
+// Tells NextJS this page should use the Header setup in '_app'
 Quizzes.Header = Header;

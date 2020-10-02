@@ -1,8 +1,8 @@
 import React from 'react';
-import { TileContainer, TileImage, TileBody } from './styles.js';
-import { Heading4, TextBodySmall } from '../shared/styles.js';
+import { TileContainer, TileImage, TileBody } from './styles';
+import { Heading4, TextBodySmall } from '../shared/styles';
 
-export default function Home() {
+export default function QuizTile() {
   return (
     <TileContainer>
       <TileImage src='/CSS3_Logo_200.png' />
