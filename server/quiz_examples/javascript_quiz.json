@@ -1,7 +1,8 @@
 {
   "quiz": {
-    "subject": "javascript",
-    "description": "A quiz covering general JavaScript knowledge."
+    "subject": ["programming"],
+    "description": "A quiz covering general JavaScript knowledge.",
+    "tags": ["javascript"]
   },
   "questions": [
     {
