@@ -1,10 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
   background: #333;
   padding: 45px 25px 65px;
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 730px;
+  margin: 0 auto;
 `;
 
 const Headline = styled.h1`
@@ -15,6 +21,16 @@ const Headline = styled.h1`
   text-align: center;
   color: #18e28c;
   margin-bottom: 32px;
+
+  @media (min-width: ${breakpoint("md")}) {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  @media (min-width: ${breakpoint("lg")}) {
+    font-size: 53px;
+    line-height: 63px;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -23,6 +39,12 @@ const Subtitle = styled.p`
   text-align: center;
   color: #fff;
   padding: 0 40px;
+
+  @media (min-width: ${breakpoint("lg")}) {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 0;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -64,23 +86,25 @@ const Button = styled.button`
 const HeroSection = () => {
   return (
     <Wrapper>
-      <Headline>{`<Chingu meets Hacktober/>`}</Headline>
+      <ContentWrapper>
+        <Headline>{`<Chingu meets Hacktober/>`}</Headline>
 
-      <Subtitle>
-        Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no
-        suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-        molestiae te.
-      </Subtitle>
+        <Subtitle>
+          Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
+          no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
+          molestiae te.
+        </Subtitle>
 
-      <ButtonsWrapper>
-        <Link href="/contribute">
-          <Button light>Contribute</Button>
-        </Link>
+        <ButtonsWrapper>
+          <Link href="/contribute">
+            <Button light>Contribute</Button>
+          </Link>
 
-        <Link href="/about">
-          <Button dark>About Us</Button>
-        </Link>
-      </ButtonsWrapper>
+          <Link href="/about">
+            <Button dark>About Us</Button>
+          </Link>
+        </ButtonsWrapper>
+      </ContentWrapper>
     </Wrapper>
   );
 };
