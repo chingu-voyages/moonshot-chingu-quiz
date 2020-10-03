@@ -71,7 +71,8 @@ CREATE TABLE public.quiz (
     id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     subject character varying[] NOT NULL,
     description character varying(1000) NOT NULL,
-    tags character varying[] NOT NULL
+    tags character varying[] NOT NULL,
+    title character varying(100) NOT NULL
 );
 
 
@@ -147,8 +148,8 @@ a7af381d-4c72-4513-9747-c3245a7028a0	e4a9149f-726f-4a65-b385-458cc91ce7dd	Which 
 -- Data for Name: quiz; Type: TABLE DATA; Schema: public; Owner: silentk
 --
 
-COPY public.quiz (id, subject, description, tags) FROM stdin;
-e4a9149f-726f-4a65-b385-458cc91ce7dd	{programming}	A quiz covering general JavaScript knowledge.	{javascript}
+COPY public.quiz (id, subject, description, tags, title) FROM stdin;
+e4a9149f-726f-4a65-b385-458cc91ce7dd	{programming}	A quiz covering general JavaScript knowledge.	{javascript}	First Quiz
 \.
 
 
