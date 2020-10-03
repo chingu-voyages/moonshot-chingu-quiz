@@ -1,8 +1,8 @@
 const express = require("express");
-const quizRoute = require("./quiz");
+const quizRouter = require("./quiz");
 
 const router = express.Router();
 
-router.use("/quiz", quizRoute);
+router.use("/quiz", quizRouter);
 
 module.exports = router;
