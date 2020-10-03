@@ -26,17 +26,19 @@ export const TileSection = styled.section`
   }
 `;
 
-export const TileContainer = styled.div`
+export const TileContainer = styled.button`
   display: grid;
-  grid-gap: 0;
+  grid-gap: 2px;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 1fr;
-  place-items: center start;
+  place-items: center;
   place-content: center;
   width: 100%;
-  height: 115px;
+  height: 105px;
   padding: 0;
   margin: 10px auto;
+  background: transparent;
+  border: none;
   border-radius: 5px;
   box-shadow: 3px 1px 10px #c4c4c4;
   transition-duration: 350ms;
@@ -52,8 +54,8 @@ export const TileContainer = styled.div`
 `;
 
 export const TileImage = styled.img`
-  width: 100px;
-  padding: 20px;
+  width: 50px;
+  padding: 0;
   margin: 0;
 `;
 
@@ -65,7 +67,8 @@ export const TileBody = styled.div`
   grid-gap: 0;
   width: 100%;
   padding: 0 5px 0 0;
-  margin: 15px 0 0 0;
+  margin: 10px 0 0 0;
+  text-align: left;
 `;
 
 export const TopicSelectionContainer = styled.section`

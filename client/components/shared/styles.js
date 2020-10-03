@@ -112,19 +112,23 @@ export const PrimaryButton = styled.button`
   border-radius: 5px;
   color: #057A55;
   cursor: pointer;
-  filter: contrast(30%);
   transition-duration: 200ms;
 
-  ${props => props.activeLight && css`
+  ${props => props.mod === "fillLight" && css`
     background: #057A55;
     color: #fff;
     filter: none;
   `}
 
-  ${props => props.activeDark && css`
+  ${props => props.mod === "fillDark" && css`
     background: #057A55;
     color: #333;
     filter: none;
+  `}
+
+  ${props => props.mod === "ghost" && css`
+    filter: contrast(50%);
+    opacity: 0.7;
   `}
 
 `;

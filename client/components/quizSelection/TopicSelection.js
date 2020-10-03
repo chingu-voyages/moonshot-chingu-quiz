@@ -16,17 +16,17 @@ export default function TopicSelection({ subject, setChosenSubject, chosenTopics
     <TopicSelectionContainer>
       <TopicSelectionList>
         <TopicSelectionItem>
-          <PrimaryButton activeLight={subject === "Programming"} onClick={() => {setChosenSubject("Programming"); setChosenTopics([])}}>
+          <PrimaryButton mod={subject === "Programming" ? "fillLight" : "ghost"} onClick={() => {setChosenSubject("Programming"); setChosenTopics([])}}>
             <TextBodySmall>Programming</TextBodySmall>
           </PrimaryButton>
         </TopicSelectionItem>
         <TopicSelectionItem>
-          <PrimaryButton activeLight={subject === "UX"} onClick={() => {setChosenSubject("UX"); setChosenTopics([])}}>
+          <PrimaryButton mod={subject === "UX" ? "fillLight" : "ghost"} onClick={() => {setChosenSubject("UX"); setChosenTopics([])}}>
             <TextBodySmall>UX</TextBodySmall>
           </PrimaryButton>
         </TopicSelectionItem>
         <TopicSelectionItem>
-          <PrimaryButton activeLight={subject === "Interview"} onClick={() => {setChosenSubject("Interview"); setChosenTopics([])}}>
+          <PrimaryButton mod={subject === "Interview" ? "fillLight" : "ghost"} onClick={() => {setChosenSubject("Interview"); setChosenTopics([])}}>
             <TextBodySmall>Interview</TextBodySmall>
           </PrimaryButton>
         </TopicSelectionItem>
@@ -37,17 +37,17 @@ export default function TopicSelection({ subject, setChosenSubject, chosenTopics
           subject === "Programming" && (
             <>
               <TopicSelectionItem>
-                <PrimaryButtonSmall activeLight={chosenTopics.includes("HTML")} onClick={() => {toggleTopics("HTML")}}>
+                <PrimaryButtonSmall mod={chosenTopics.includes("html") ? "fillLight" : "ghost"} onClick={() => {toggleTopics("html")}}>
                   <TextBodySmall>HTML</TextBodySmall>
                 </PrimaryButtonSmall>
               </TopicSelectionItem>
               <TopicSelectionItem>
-                <PrimaryButtonSmall activeLight={chosenTopics.includes("CSS")} onClick={() => {toggleTopics("CSS")}}>
+                <PrimaryButtonSmall mod={chosenTopics.includes("css") ? "fillLight" : "ghost"} onClick={() => {toggleTopics("css")}}>
                   <TextBodySmall>CSS</TextBodySmall>
                 </PrimaryButtonSmall>
               </TopicSelectionItem>
               <TopicSelectionItem>
-                <PrimaryButtonSmall activeLight={chosenTopics.includes("JavaScript")} onClick={() => {toggleTopics("JavaScript")}}>
+                <PrimaryButtonSmall mod={chosenTopics.includes("javascript") ? "fillLight" : "ghost"} onClick={() => {toggleTopics("javascript")}}>
                   <TextBodySmall>JavaScript</TextBodySmall>
                 </PrimaryButtonSmall>
               </TopicSelectionItem>
