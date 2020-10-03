@@ -76,10 +76,10 @@ export default function Quizzes() {
   useEffect(() => {
     if (chosenTopics.length > 0) {
       setFilteredTopicsArray(allSubjectQuizzes.filter(quiz => subjectFilterCallback(quiz.tags)));
-    } else {
+    } else if (chosenSubject === "Programming") {
       setFilteredTopicsArray(allSubjectQuizzes);
-    };
-  }, [chosenTopics, allSubjectQuizzes]);
+    } else {setFilteredTopicsArray([])};
+  }, [chosenTopics, allSubjectQuizzes, chosenSubject]);
 
   return (
     <>

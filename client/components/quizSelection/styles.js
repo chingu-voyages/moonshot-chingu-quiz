@@ -15,7 +15,7 @@ export const TileSection = styled.section`
   display: grid;
   grid-gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
-  place-items: center;
+  place-items: start;
   place-content: center;
   width: 100%;
   margin: 10px auto;
@@ -36,7 +36,7 @@ export const TileContainer = styled.button`
   width: 100%;
   height: 105px;
   padding: 0;
-  margin: 10px auto;
+  margin: 10px 0;
   background: transparent;
   border: none;
   border-radius: 5px;
