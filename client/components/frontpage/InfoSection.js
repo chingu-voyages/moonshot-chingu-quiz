@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
-  background: #fff;
+  background: ${props => props.theme.colors.light};
   padding: 30px 20px 50px;
 
   @media (min-width: ${breakpoint("xl")}) {
@@ -38,7 +38,7 @@ const InfoBox = styled.div`
 const Icon = styled.div`
   width: 40px;
   height: 40px;
-  background: #ccc;
+  background: ${props => props.theme.colors.lightGrey};
   margin: 0 auto 25px;
 `;
 
