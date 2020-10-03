@@ -15,7 +15,7 @@ export const TileSection = styled.section`
   display: grid;
   grid-gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
-  place-items: center;
+  place-items: start;
   place-content: center;
   width: 100%;
   margin: 10px auto;
@@ -26,17 +26,20 @@ export const TileSection = styled.section`
   }
 `;
 
-export const TileContainer = styled.div`
+export const TileContainer = styled.button`
   display: grid;
-  grid-gap: 0;
+  grid-gap: 2px;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 1fr;
-  place-items: center start;
+  place-items: center;
   place-content: center;
   width: 100%;
-  height: 115px;
+  height: 105px;
   padding: 0;
-  margin: 10px auto;
+  margin: 10px 0;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
   box-shadow: 3px 1px 10px #c4c4c4;
   transition-duration: 350ms;
 
@@ -51,8 +54,8 @@ export const TileContainer = styled.div`
 `;
 
 export const TileImage = styled.img`
-  width: 100px;
-  padding: 20px;
+  width: 50px;
+  padding: 0;
   margin: 0;
 `;
 
@@ -64,5 +67,33 @@ export const TileBody = styled.div`
   grid-gap: 0;
   width: 100%;
   padding: 0 5px 0 0;
-  margin: 15px 0 0 0;
+  margin: 10px 0 0 0;
+  text-align: left;
+`;
+
+export const TopicSelectionContainer = styled.section`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  width: 95%;
+  padding: 0;
+  margin: 20px auto 30px auto;
+`;
+
+export const TopicSelectionList = styled.ul`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  min-height: 30px;
+  margin: 5px auto;
+  list-style: none;
+`;
+
+export const TopicSelectionItem = styled.li`
+  width: max-content;
+  padding: 0;
+  margin-right: 15px;
 `;
