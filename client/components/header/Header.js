@@ -4,8 +4,8 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { breakpointsRaw } from "../../frontend-config";
 import styled from "styled-components";
+import { breakpointsRaw } from "../../frontend-config";
 
 import MobileMenu from "./MobileMenu";
 
