@@ -2,7 +2,8 @@
   "quiz": {
     "subject": ["programming"],
     "description": "A quiz covering general JavaScript knowledge.",
-    "tags": ["javascript"]
+    "tags": ["javascript"],
+    "title": "First Quiz"
   },
   "questions": [
     {
