@@ -43,8 +43,6 @@ module.exports = async (req, res) => {
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
-
-  return null;
 };
