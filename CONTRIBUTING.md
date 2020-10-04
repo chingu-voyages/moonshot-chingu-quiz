@@ -2,7 +2,8 @@
 
 We welcome all contributions!
 
-Please, feel free to start working on any issues we have created.
+To get started, please feel free to start working on any issues we have created and that are *not* assigned to anyone yet. If you would like to pick up an issue, please leave a comment for the other contributors to see that this issue is already be worked on.
+
 For starters, we recommend to pick up issues labelled *good first issue*.
 
 In addition to everything written in here, there is a [Collaborator Guide](https://github.com/chingu-voyages/ChinguResourceList/blob/development/docs/COLLABORATOR_GUIDE.md) you can read into for additional information about collaborations.
@@ -14,11 +15,17 @@ In addition to everything written in here, there is a [Collaborator Guide](https
 * [Commit Messages](#commit-messages)
 
 ## Process
+### Initial Setup
+1. Fork the repository
+2. Clone your forked repository onto your local machine
+3. inside your CLI (Command Line Interface), move into your working directory
+4. run `npm i` inside the root, client *and* server folder to install all dependencies needed for this project
+5. inside the client folder, run `npm run dev` to start the development server
 
-1. Clone this repository
-2. Create a branch for your feature (see [below](#feature-branch-example) for an example)
-3. Add your code
-4. Create a Pull Request
+### How to Contribute
+1. Create a branch for your feature (see [below](#feature-branch-example) for an example)
+2. Add your code
+3. Create a Pull Request
 
 ## Git Branches
 
@@ -30,9 +37,9 @@ Below you can find an overview of the branches we are using.
 - documentation
 - feature
 -- feature/FEATURE-NAME
---- feature/FEATURE-NAME/FEATURE-PART
---- feature/FEATURE-NAME/FEATURE-PART
---- feature/FEATURE-NAME/FEATURE-PART
+--- feature/#<Issue Number>_<little feature title>
+--- feature/#<Issue Number>_<little feature title>
+--- feature/#<Issue Number>_<little feature title>
 - bugfix (fixing issues that are not urgent)
 - hotfix (fixing issues that need to be merged ASAP)
 ```
@@ -42,22 +49,20 @@ Below you can find an overview of the branches we are using.
 An example for a ToDo list feature could look as following:
 
 ```
--- feature/todo-list
---- feature/todo-list/create-list
---- feature/todo-list/save-data
---- feature/todo-list/display-data
+-- feature/#1_todo-list
 ```
 
 ## Commit Messages & Pull Requests
 
-For consistency and easier readability, we would like to ask everyone to use the following template for your pull request messages:
+For consistency and easier readability, we would like to ask everyone to use the templates for Pull Requests and Issues that we provide.
+They follow this pattern:
 
 ```
-<subject>
+<subject> (A title to summarise what this is about)
 
-<body>
+<body> (A detailed description of your PR, feature idea or issue)
 
 Resolves #ISSUE_NUMBER
 ```
 
-Note: It is important to add the #number for the issue the PR is resolving in order to close the issue accordingly once the PR gets merged.
+Note: It is important to add the #number for the issue the PR is resolving in order to close the issue accordingly once the PR gets merged. You can read more about this [here](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue)
