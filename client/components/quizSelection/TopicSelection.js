@@ -1,14 +1,14 @@
 import React from "react";
 import {
-  TopicSelectionContainer,
-  TopicSelectionList,
-  TopicSelectionItem,
-} from "./styles";
-import {
   PrimaryButton,
   PrimaryButtonSmall,
   TextBodySmall,
 } from "../shared/styles";
+import {
+  TopicSelectionContainer,
+  TopicSelectionList,
+  TopicSelectionItem,
+} from "./styles";
 
 export default function TopicSelection({
   subject,
@@ -24,6 +24,11 @@ export default function TopicSelection({
     }
   };
 
+  const handlePrimaryButtonClick = newSubject => {
+    setChosenSubject(newSubject);
+    setChosenTopics([]);
+  };
+
   return (
     <TopicSelectionContainer>
       <TopicSelectionList>
@@ -31,8 +36,7 @@ export default function TopicSelection({
           <PrimaryButton
             mod={subject === "Programming" ? "fillLight" : "ghost"}
             onClick={() => {
-              setChosenSubject("Programming");
-              setChosenTopics([]);
+              handlePrimaryButtonClick("Programming");
             }}
           >
             <TextBodySmall>Programming</TextBodySmall>
@@ -42,8 +46,7 @@ export default function TopicSelection({
           <PrimaryButton
             mod={subject === "UX" ? "fillLight" : "ghost"}
             onClick={() => {
-              setChosenSubject("UX");
-              setChosenTopics([]);
+              handlePrimaryButtonClick("UX");
             }}
           >
             <TextBodySmall>UX</TextBodySmall>
@@ -53,8 +56,7 @@ export default function TopicSelection({
           <PrimaryButton
             mod={subject === "Interview" ? "fillLight" : "ghost"}
             onClick={() => {
-              setChosenSubject("Interview");
-              setChosenTopics([]);
+              handlePrimaryButtonClick("Interview");
             }}
           >
             <TextBodySmall>Interview</TextBodySmall>
