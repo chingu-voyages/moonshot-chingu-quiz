@@ -1,10 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 // -- TEXT ELEMENTS -- //
 
 // HEADINGS //
 export const HugeText = styled.h2`
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 69px;
@@ -12,7 +11,6 @@ export const HugeText = styled.h2`
 `;
 
 export const Heading1 = styled.h1`
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 53px;
@@ -20,7 +18,6 @@ export const Heading1 = styled.h1`
 `;
 
 export const Heading2 = styled.h2`
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 39px;
@@ -28,7 +25,6 @@ export const Heading2 = styled.h2`
 `;
 
 export const Heading3 = styled.h3`
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 31px;
@@ -36,7 +32,6 @@ export const Heading3 = styled.h3`
 `;
 
 export const Heading4 = styled.h4`
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -45,7 +40,6 @@ export const Heading4 = styled.h4`
 
 // BODY TEXT //
 export const TextBody = styled.p`
-  font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -53,7 +47,6 @@ export const TextBody = styled.p`
 `;
 
 export const TextBodyBold = styled.p`
-  font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -61,7 +54,6 @@ export const TextBodyBold = styled.p`
 `;
 
 export const TextBodySmall = styled.p`
-  font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -69,7 +61,6 @@ export const TextBodySmall = styled.p`
 `;
 
 export const TextBodySmallBold = styled.p`
-  font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -77,7 +68,6 @@ export const TextBodySmallBold = styled.p`
 `;
 
 export const TextBodyMicro = styled.p`
-  font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -85,7 +75,6 @@ export const TextBodyMicro = styled.p`
 `;
 
 export const TextBodyMicroBold = styled.p`
-  font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -95,11 +84,10 @@ export const TextBodyMicroBold = styled.p`
 // -- STYLED TEXT -- //
 
 export const PageHeader = styled(Heading1)`
-  color: #18E28C;
+  color: ${props => props.theme.colors.midGreen};
   padding: 0;
   margin: 20px auto;
 `;
-
 
 // -- Buttons -- //
 
@@ -108,29 +96,34 @@ export const PrimaryButton = styled.button`
   padding: 8px 15px;
   margin: 0;
   background: transparent;
-  border: 1px solid #057A55;
+  border: 1px solid ${props => props.theme.colors.darkGreen};
   border-radius: 5px;
-  color: #057A55;
+  color: ${props => props.theme.colors.darkGreen};
   cursor: pointer;
   transition-duration: 200ms;
 
-  ${props => props.mod === "fillLight" && css`
-    background: #057A55;
-    color: #fff;
-    filter: none;
-  `}
+  ${props =>
+    props.mod === "fillLight" &&
+    css`
+      background: ${props.theme.colors.darkGreen};
+      color: ${props.theme.colors.light};
+      filter: none;
+    `}
 
-  ${props => props.mod === "fillDark" && css`
-    background: #057A55;
-    color: #333;
-    filter: none;
-  `}
+  ${props =>
+    props.mod === "fillDark" &&
+    css`
+      background: ${props.theme.colors.darkGreen};
+      color: ${props.theme.colors.grey};
+      filter: none;
+    `}
 
-  ${props => props.mod === "ghost" && css`
-    filter: contrast(50%);
-    opacity: 0.7;
-  `}
-
+  ${props =>
+    props.mod === "ghost" &&
+    css`
+      filter: contrast(50%);
+      opacity: 0.7;
+    `}
 `;
 
 export const PrimaryButtonSmall = styled(PrimaryButton)`
