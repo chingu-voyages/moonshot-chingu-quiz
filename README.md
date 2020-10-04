@@ -16,11 +16,21 @@ This repository contains a web application for practising programming and interv
 
 In order to get this application running on your local development environment, please follow the steps below:
 
+### First Setup
 1. Fork the repository
 2. Clone your forked repository onto your local machine
 3. inside your CLI (Command Line Interface), move into your working directory
-4. run `npm i` inside the root, client *and* server folder to install all dependencies needed for this project
-5. inside the client folder, run `npm run dev` to start the development server
+4. run `npm run dev-setup`inside the root folder - this will install everything and start the development servers
+
+### For returners
+Skip step 4 and refer to the following instructions depending on your system:
+
+macOS/Ubuntu:
+inside the root folder, run `npm run dev` to start the development servers
+
+Other Platforms:
+inside the root *and* client folder, run `npm run dev` to start the development servers
+
 
 ## Designs
 
