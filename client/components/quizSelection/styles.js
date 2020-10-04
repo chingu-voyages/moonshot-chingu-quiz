@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { breakpoint } from '../../frontend-config';
+import styled from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 export const QuizzesHeader = styled.section`
   display: flex;
@@ -20,7 +20,7 @@ export const TileSection = styled.section`
   width: 100%;
   margin: 10px auto;
 
-  @media only screen and (min-width:${breakpoint('xs')}) {
+  @media only screen and (min-width: ${breakpoint("xs")}) {
     width: 95%;
     margin: 25px auto;
   }
@@ -48,7 +48,7 @@ export const TileContainer = styled.button`
     cursor: pointer;
   }
 
-  @media only screen and (min-width:${breakpoint('xs')}) {
+  @media only screen and (min-width: ${breakpoint("xs")}) {
     width: 375px;
   }
 `;

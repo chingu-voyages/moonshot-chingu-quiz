@@ -3,7 +3,7 @@
   'Component' below = the page currently loaded (as in /quizzes).
 */
 
-import React from 'react';
+import React from "react";
 import "../styles/reset.css";
 import "../styles/globals.css";
 

@@ -2,12 +2,12 @@
   This page will load at the url "/quizzes"
 */
 
-import React, { useState, useEffect } from 'react';
-import Header from '../components/header/Header';
-import QuizTile from '../components/quizSelection/QuizTile';
-import TopicSelection from '../components/quizSelection/TopicSelection';
-import { QuizzesHeader, TileSection } from '../components/quizSelection/styles';
-import { PageHeader } from '../components/shared/styles';
+import React, { useState, useEffect } from "react";
+import Header from "../components/header/Header";
+import QuizTile from "../components/quizSelection/QuizTile";
+import TopicSelection from "../components/quizSelection/TopicSelection";
+import { QuizzesHeader, TileSection } from "../components/quizSelection/styles";
+import { PageHeader } from "../components/shared/styles";
 
 export default function Quizzes() {
   const [chosenSubject, setChosenSubject] = useState("Programming");
@@ -15,14 +15,14 @@ export default function Quizzes() {
   const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
   const [filteredTopicsArray, setFilteredTopicsArray] = useState([]);
 
-  const subjectFilterCallback = (quizTagArray) => {
+  const subjectFilterCallback = quizTagArray => {
     let totalMatches = 0;
-    for(let i = 0; i < quizTagArray.length; i+=1) {
+    for (let i = 0; i < quizTagArray.length; i += 1) {
       if (chosenTopics.indexOf(quizTagArray[i]) >= 0) {
         totalMatches += 1;
       }
     }
-    return totalMatches === quizTagArray.length
+    return totalMatches === quizTagArray.length;
   };
 
   useEffect(() => {
@@ -31,19 +31,19 @@ export default function Quizzes() {
         title: "Css Example",
         subject: ["programming"],
         description: "A quiz covering general CSS knowledge.",
-        tags: ["css"]
+        tags: ["css"],
       },
       {
         title: "JavaScript Example",
         subject: ["programming"],
         description: "A quiz covering general JavaScript knowledge.",
-        tags: ["javascript"]
+        tags: ["javascript"],
       },
       {
         title: "JavaScript/CSS combo",
         subject: ["programming"],
         description: "A quiz covering JavaScript and CSS knowledge.",
-        tags: ["javascript", "css"]
+        tags: ["javascript", "css"],
       },
     ]);
 
@@ -52,22 +52,21 @@ export default function Quizzes() {
         title: "Css Example",
         subject: ["programming"],
         description: "A quiz covering general CSS knowledge.",
-        tags: ["css"]
+        tags: ["css"],
       },
       {
         title: "JavaScript Example",
         subject: ["programming"],
         description: "A quiz covering general JavaScript knowledge.",
-        tags: ["javascript"]
+        tags: ["javascript"],
       },
       {
         title: "JavaScript/CSS combo",
         subject: ["programming"],
         description: "A quiz covering JavaScript and CSS knowledge.",
-        tags: ["javascript", "css"]
+        tags: ["javascript", "css"],
       },
     ]);
-
   }, []);
   /* TODO:
   Use 'SWR' to fetch quizzes on demand - https://swr.vercel.app/
@@ -75,10 +74,14 @@ export default function Quizzes() {
 
   useEffect(() => {
     if (chosenTopics.length > 0) {
-      setFilteredTopicsArray(allSubjectQuizzes.filter(quiz => subjectFilterCallback(quiz.tags)));
+      setFilteredTopicsArray(
+        allSubjectQuizzes.filter(quiz => subjectFilterCallback(quiz.tags))
+      );
     } else if (chosenSubject === "Programming") {
       setFilteredTopicsArray(allSubjectQuizzes);
-    } else {setFilteredTopicsArray([])};
+    } else {
+      setFilteredTopicsArray([]);
+    }
   }, [chosenTopics, allSubjectQuizzes, chosenSubject]);
 
   return (
@@ -86,13 +89,16 @@ export default function Quizzes() {
       <QuizzesHeader>
         <PageHeader>Quizzes</PageHeader>
       </QuizzesHeader>
-      <TopicSelection subject={chosenSubject} setChosenSubject={setChosenSubject} chosenTopics={chosenTopics} setChosenTopics={setChosenTopics} />
+      <TopicSelection
+        subject={chosenSubject}
+        setChosenSubject={setChosenSubject}
+        chosenTopics={chosenTopics}
+        setChosenTopics={setChosenTopics}
+      />
       <TileSection>
-        {
-          filteredTopicsArray.map(quiz => (
-            <QuizTile quizData={quiz} key={quiz.title} />
-          ))
-        }
+        {filteredTopicsArray.map(quiz => (
+          <QuizTile quizData={quiz} key={quiz.title} />
+        ))}
       </TileSection>
     </>
   );
