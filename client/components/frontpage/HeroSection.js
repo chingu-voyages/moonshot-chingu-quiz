@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
-  background: #333;
+  background: ${props => props.theme.colors.grey};
   padding: 45px 25px 65px;
 
   @media (min-width: ${breakpoint("lg")}) {
@@ -23,7 +23,7 @@ const Headline = styled.h1`
   font-weight: 700;
   letter-spacing: 0.5px;
   text-align: center;
-  color: #18e28c;
+  color: ${props => props.theme.colors.midGreen};
   margin-bottom: 32px;
 
   @media (min-width: ${breakpoint("md")}) {
@@ -41,7 +41,7 @@ const Subtitle = styled.p`
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-  color: #fff;
+  color: ${props => props.theme.colors.light};
   padding: 0 40px;
 
   @media (min-width: ${breakpoint("lg")}) {
@@ -75,15 +75,15 @@ const Button = styled.button`
   ${props =>
     props.light &&
     css`
-      background: #18e28c;
-      color: #333;
+      background: ${props.theme.colors.midGreen};
+      color: ${props.theme.colors.grey};
     `}
 
   ${props =>
     props.dark &&
     css`
-      background: #333;
-      color: #18e28c;
+      background: ${props.theme.colors.grey};
+      color: ${props.theme.colors.midGreen};
     `}
 `;
 

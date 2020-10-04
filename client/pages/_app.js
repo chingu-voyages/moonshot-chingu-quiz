@@ -4,16 +4,30 @@
 */
 
 import React from "react";
+import { ThemeProvider } from "styled-components";
 import "../styles/reset.css";
 import "../styles/globals.css";
+
+const theme = {
+  colors: {
+    light: "#fff",
+    dark: "#000",
+    grey: "#333",
+    lightGrey: "#ccc",
+    midGreen: "#18e28c",
+    darkGreen: "#057a55",
+  },
+};
 
 function MyApp({ Component, pageProps }) {
   const Header = Component.Header ? Component.Header : React.Fragment;
 
   return (
-    <Header>
-      <Component {...pageProps} />
-    </Header>
+    <ThemeProvider theme={theme}>
+      <Header>
+        <Component {...pageProps} />
+      </Header>
+    </ThemeProvider>
   );
 }
 
