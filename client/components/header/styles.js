@@ -4,7 +4,7 @@ import { breakpoint } from "../../frontend-config";
 export const Wrapper = styled.div`
   height: 88px;
   width: 100%;
-  background: #333;
+  background: ${props => props.theme.colors.grey};
   position: fixed;
   top: 0;
   left: 0;
@@ -50,7 +50,7 @@ export const LogoText = styled.div`
   font-weight: bold;
   letter-spacing: 0.2px;
   text-transform: uppercase;
-  color: #18e28c;
+  color: ${props => props.theme.colors.midGreen};
 
   @media (min-width: ${breakpoint("md")}) {
     font-size: 24px;
@@ -66,7 +66,7 @@ export const Navbar = styled.nav`
 export const NavbarLink = styled.a`
   font-size: 16px;
   line-height: 24px;
-  color: #fff;
+  color: ${props => props.theme.colors.light};
   margin-right: 32px;
 
   &:last-of-type {
@@ -82,7 +82,7 @@ export const MobileMenuPageOverlay = styled.div`
   height: 100%;
   width: 100%;
   z-index: 500;
-  background: #000;
+  background: ${props => props.theme.colors.dark};
 
   opacity: ${props => (props.active ? "0.2" : "0")};
   ${props => !props.active && `pointer-events: none`};
@@ -101,7 +101,7 @@ export const MobileMenuButtonWrapper = styled.div`
 export const MobileMenuButton = styled.div`
   width: 100%;
   height: 5px;
-  background: #fff;
+  background: ${props => props.theme.colors.light};
   border-radius: 2px;
 
   &:before,
@@ -128,7 +128,7 @@ export const MobileMenuWrapper = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  background: #fff;
+  background: ${props => props.theme.colors.light};
   width: calc(100% - 80px);
   max-width: 350px;
   height: 100%;
@@ -142,15 +142,15 @@ export const MobileMenuTitle = styled.div`
   line-height: 22px;
   text-align: center;
   text-transform: uppercase;
-  background: #057a55;
-  color: #fff;
+  background: ${props => props.theme.colors.darkGreen};
+  color: ${props => props.theme.colors.light};
   padding: 12px 0;
   border-bottom: 1px solid #ccc;
 `;
 
 export const MobileMenuLink = styled(NavbarLink)`
   display: block;
-  color: #4a4a4a;
+  color: ${props => props.theme.colors.grey};
   text-align: center;
   font-size: 18px;
   margin: 0;
