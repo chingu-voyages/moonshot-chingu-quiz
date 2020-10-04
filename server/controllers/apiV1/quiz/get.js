@@ -1,10 +1,16 @@
-const db = require("../../../db");
+const { select: selectQuiz } = require("../../../db/queries/quiz");
+const {
+  selectByQuizId: selectQuestionByQuizId,
+} = require("../../../db/queries/question");
+const {
+  selectByQuestionId: selectAnswerByQuestionId,
+} = require("../../../db/queries/answer");
 
 module.exports = async (req, res) => {
   try {
     const constructedResponse = [];
 
-    const { rows: quizResults } = await db.query("SELECT * FROM quiz");
+    const quizResults = await selectQuiz();
 
     await Promise.all(
       quizResults.map(async (quizResult, i) => {
@@ -12,9 +18,7 @@ module.exports = async (req, res) => {
         constructedResponse[i].questions = [];
 
         const { id: quizId } = quizResult;
-        const {
-          rows: questionResults,
-        } = await db.query("SELECT * FROM question WHERE quiz = $1", [quizId]);
+        const questionResults = await selectQuestionByQuizId(quizId);
 
         await Promise.all(
           questionResults.map(
@@ -35,11 +39,7 @@ module.exports = async (req, res) => {
                 answers: [],
               });
 
-              const {
-                rows: answerResults,
-              } = await db.query("SELECT * FROM answer WHERE question = $1", [
-                questionId,
-              ]);
+              const answerResults = await selectAnswerByQuestionId(questionId);
 
               answerResults.forEach(({ id: answerId, prompt: answerPrompt }) =>
                 constructedResponse[i].questions[j].answers.push({
