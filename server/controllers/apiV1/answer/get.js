@@ -1,5 +1,5 @@
-const { selectAnswer } = require("../../../db/queries/answer");
-const { selectQuestion } = require("../../../db/queries/question");
+const { select: selectAnswer } = require("../../../db/queries/answer");
+const { select: selectQuestion } = require("../../../db/queries/question");
 
 module.exports = async (req, res) => {
   try {

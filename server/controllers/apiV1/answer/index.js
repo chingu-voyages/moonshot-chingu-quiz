@@ -1,5 +1,5 @@
-const getAnswer = require("./get");
+const get = require("./get");
 
 module.exports = {
-  getAnswer,
+  get,
 };

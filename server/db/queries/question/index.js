@@ -1,5 +1,5 @@
-const selectQuestion = require("./select");
+const select = require("./select");
 
 module.exports = {
-  selectQuestion,
+  select,
 };

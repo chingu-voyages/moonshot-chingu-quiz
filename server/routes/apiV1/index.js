@@ -1,10 +1,10 @@
 const express = require("express");
-const quizRouter = require("./quiz");
-const answerRouter = require("./answer");
+const quiz = require("./quiz");
+const answer = require("./answer");
 
 const router = express.Router();
 
-router.use("/quiz", quizRouter);
-router.use("/answer", answerRouter);
+router.use("/quiz", quiz);
+router.use("/answer", answer);
 
 module.exports = router;
