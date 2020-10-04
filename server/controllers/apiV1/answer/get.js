@@ -1,4 +1,5 @@
-const db = require("../../../db");
+const { selectAnswer } = require("../../../db/queries/answer");
+const { selectQuestion } = require("../../../db/queries/question");
 
 module.exports = async (req, res) => {
   try {
@@ -16,19 +17,11 @@ module.exports = async (req, res) => {
 
     await Promise.all(
       answerIds.map(async answerId => {
-        const {
-          rows: [{ question: questionId, is_correct: isCorrect }],
-        } = await db.query(
-          "SELECT question, is_correct FROM answer WHERE id = $1",
-          [answerId]
-        );
+        const [
+          { question: questionId, is_correct: isCorrect },
+        ] = await selectAnswer(answerId);
 
-        const {
-          rows: [{ explanation, resources }],
-        } = await db.query(
-          "SELECT explanation, resources FROM question WHERE id = $1",
-          [questionId]
-        );
+        const [{ explanation, resources }] = await selectQuestion(questionId);
 
         constructedResponse.push({
           id: answerId,

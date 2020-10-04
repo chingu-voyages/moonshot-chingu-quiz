@@ -1,8 +1,8 @@
 const express = require("express");
-const getHandler = require("./get");
+const { getAnswer } = require("../../controllers/apiV1/answer");
 
 const router = express.Router();
 
-router.get("/", getHandler);
+router.get("/", getAnswer);
 
 module.exports = router;
