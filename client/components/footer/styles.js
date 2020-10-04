@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  width: 1440px;
+  width: ${breakpoint("maxWidth")};
   max-width: calc(100% - 70px);
   margin: 0 auto;
   color: #fff;
