@@ -1,4 +1,6 @@
-const db = require("../../../db");
+const { insert: insertQuiz } = require("../../../db/queries/quiz");
+const { insert: insertQuestion } = require("../../../db/queries/question");
+const { insert: insertAnswer } = require("../../../db/queries/answer");
 
 module.exports = async (req, res) => {
   try {
@@ -38,34 +40,35 @@ module.exports = async (req, res) => {
     ) {
       return res.status(400).json({
         message:
-          "Payload is malformed. Please consult the javascript_quiz.json file in the /server/quiz_examples directory",
+          "Payload is malformed. Please consult /server/quiz_examples/javascript_quiz.json",
       });
     }
 
-    const {
-      rows: [{ id: quizId }],
-    } = await db.query(
-      "INSERT INTO quiz(subject, description, tags, title) VALUES($1, $2, $3, $4) RETURNING *",
-      [subject, description, tags, title]
-    );
+    const [{ id: quizId }] = await insertQuiz({
+      subject,
+      description,
+      tags,
+      title,
+    });
 
     await Promise.all(
       questions.map(async question => {
         const { question: questionPrompt, answers } = question;
-        const {
-          rows: [{ id: questionId }],
-        } = await db.query(
-          "INSERT INTO question(quiz, prompt) VALUES ($1, $2) RETURNING *",
-          [quizId, questionPrompt]
-        );
+
+        const [{ id: questionId }] = await insertQuestion({
+          quiz: quizId,
+          prompt: questionPrompt,
+        });
 
         await Promise.all(
           answers.map(async answer => {
             const { answer: answerPrompt, isCorrect } = answer;
-            await db.query(
-              "INSERT INTO answer(question, prompt, is_correct) VALUES($1, $2, $3)",
-              [questionId, answerPrompt, isCorrect]
-            );
+
+            await insertAnswer({
+              question: questionId,
+              prompt: answerPrompt,
+              isCorrect,
+            });
           })
         );
       })

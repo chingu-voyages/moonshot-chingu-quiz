@@ -1,5 +1,7 @@
-const { select: selectAnswer } = require("../../../db/queries/answer");
-const { select: selectQuestion } = require("../../../db/queries/question");
+const { selectById: selectAnswerById } = require("../../../db/queries/answer");
+const {
+  selectById: selectQuestionById,
+} = require("../../../db/queries/question");
 
 module.exports = async (req, res) => {
   try {
@@ -19,9 +21,11 @@ module.exports = async (req, res) => {
       answerIds.map(async answerId => {
         const [
           { question: questionId, is_correct: isCorrect },
-        ] = await selectAnswer(answerId);
+        ] = await selectAnswerById(answerId);
 
-        const [{ explanation, resources }] = await selectQuestion(questionId);
+        const [{ explanation, resources }] = await selectQuestionById(
+          questionId
+        );
 
         constructedResponse.push({
           id: answerId,

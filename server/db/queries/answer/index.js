@@ -1,5 +1,8 @@
-const select = require("./select");
+const { selectById, selectByQuestionId } = require("./select");
+const { insert } = require("./insert");
 
 module.exports = {
-  select,
+  selectById,
+  selectByQuestionId,
+  insert,
 };
