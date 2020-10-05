@@ -29,7 +29,8 @@
     "start": "concurrently \"npm:client-start\" \"npm:server-start\"",
     "client-start": "cd client && npm start",
     "server-start": "cd server && npm start",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "postinstall": "concurrently \"npm:client-setup\" \"npm:server-setup\""
   },
   "husky": {
     "hooks": {
