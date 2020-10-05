@@ -19,7 +19,7 @@ export default function Quizzes() {
   const [chosenSubject, setChosenSubject] = useState("Random");
   const [chosenTopics, setChosenTopics] = useState([]);
   const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
-  const [filteredTopicsArray, setFilteredTopicsArray] = useState([]);
+  const [filteredQuizzes, setFilteredQuizzes] = useState([]);
 
   const subjectFilterCallback = quizTagArray => {
     let totalMatches = 0;
@@ -80,7 +80,7 @@ export default function Quizzes() {
       },
     ]);
 
-    setFilteredTopicsArray([
+    setFilteredQuizzes([
       {
         title: "React Example",
         subject: ["programming"],
@@ -110,14 +110,23 @@ export default function Quizzes() {
   }, []);
 
   useEffect(() => {
-    if (chosenTopics.length > 0) {
-      setFilteredTopicsArray(
-        allSubjectQuizzes.filter(quiz => subjectFilterCallback(quiz.tags))
+    if (chosenSubject === "Random") {
+      setFilteredQuizzes(
+        allSubjectQuizzes
+        // .filter(quiz => subjectFilterCallback(quiz.tags))
       );
-    } else if (chosenSubject === "Programming") {
-      setFilteredTopicsArray(allSubjectQuizzes);
-    } else {
-      setFilteredTopicsArray([]);
+    } else if (chosenSubject !== "Random" && chosenTopics.length === 0) {
+      setFilteredQuizzes(
+        allSubjectQuizzes.filter(quiz =>
+          quiz.subject.includes(chosenSubject.toLowerCase())
+        )
+      );
+    } else if (chosenSubject !== "Random" && chosenTopics.length > 0) {
+      setFilteredQuizzes(
+        allSubjectQuizzes
+          .filter(quiz => quiz.subject.includes(chosenSubject.toLowerCase()))
+          .filter(quiz => subjectFilterCallback(quiz.tags))
+      );
     }
   }, [chosenTopics, allSubjectQuizzes, chosenSubject]);
 
@@ -134,7 +143,7 @@ export default function Quizzes() {
         setChosenTopics={setChosenTopics}
       />
       <TileSection>
-        {filteredTopicsArray.map(quiz => (
+        {filteredQuizzes.map(quiz => (
           <QuizTile quizData={quiz} key={quiz.title} />
         ))}
       </TileSection>

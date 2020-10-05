@@ -36,16 +36,17 @@ export default function TopicSelection({
       </TopicSelectionList>
 
       <TopicSelectionList>
-        {subjectsAndTopics
-          .filter(subj => subj.title === chosenSubject)[0]
-          .tags.map(topic => (
-            <TopicSelectionChoice
-              key={topic}
-              currentlySelected={chosenTopics}
-              thisSelection={topic}
-              handleSetThisSelection={toggleTopics}
-            />
-          ))}
+        {chosenSubject !== "Random" &&
+          subjectsAndTopics
+            .filter(subj => subj.title === chosenSubject)[0]
+            .tags.map(topic => (
+              <TopicSelectionChoice
+                key={topic}
+                currentlySelected={chosenTopics}
+                thisSelection={topic}
+                handleSetThisSelection={toggleTopics}
+              />
+            ))}
       </TopicSelectionList>
     </TopicSelectionContainer>
   );
