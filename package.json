@@ -19,13 +19,17 @@
     "ttab": "^0.7.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm:client-startup\" \"ttab npm run server-startup\"",
+    "dev": "concurrently \"npm:client-dev\" \"ttab npm run server-dev\"",
     "dev-setup": "npm run root-setup && npm run client-setup && npm run server-setup && npm run dev",
-    "client-startup": "cd client && npm run dev",
-    "server-startup": "cd server && npm run dev",
+    "client-dev": "cd client && npm run dev",
+    "server-dev": "cd server && npm run dev",
     "root-setup": "npm ci",
     "client-setup": "cd client && npm ci",
-    "server-setup": "cd server && npm ci"
+    "server-setup": "cd server && npm ci",
+    "start": "concurrently \"npm:client-start\" \"npm:server-start\"",
+    "client-start": "cd client && npm start",
+    "server-start": "cd server && npm start",
+    "build": "cd client && npm run build"
   },
   "husky": {
     "hooks": {
