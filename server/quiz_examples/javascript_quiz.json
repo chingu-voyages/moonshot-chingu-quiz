@@ -1,0 +1,220 @@
+{
+  "quiz": {
+    "subject": ["programming"],
+    "description": "A quiz covering general JavaScript knowledge.",
+    "tags": ["javascript"],
+    "title": "First Quiz"
+  },
+  "questions": [
+    {
+      "question": "Which term in JavaScript can be used to describe a declared variable that has not yet been given a value?",
+      "answers": [
+        {
+          "answer": "null",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "undefined",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "typeError",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "NaN",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of the following snippets does not result in a return value of 8?",
+      "answers": [
+        {
+          "answer": "8**1",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "Math.pow(16, .75)",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "2 * 2 * 'two'",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "2**+'3'",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of the following is true about typeof operator in JavaScript?",
+      "answers": [
+        {
+          "answer": "The typeof is a unary operator that is placed before its single operand, which can be of any type.",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "Its value is a string indicating the data type of the operand.",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "Both of the above.",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "None of the above.",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which built-in method reverses the order of the elements of an array?",
+      "answers": [
+        {
+          "answer": "changeOrder(order)",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "reverse()",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "sort(order)",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "none of the above",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of the following functions of String object returns a number indicating the Unicode value of the character at the given index?",
+      "answers": [
+        {
+          "answer": "charAt()",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "charCodeAt()",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "concat()",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "indexOf()",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of the following functions of String object returns the index within the calling String object of the last occurrence of the specified value?",
+      "answers": [
+        {
+          "answer": "search()",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "lastIndexOf()",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "substr()",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "indexOf()",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of the following function of Array object joins all elements of an array into a string?",
+      "answers": [
+        {
+          "answer": "concat()",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "join()",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "pop()",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "map()",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of the following is not a reserved word in JavaScript?",
+      "answers": [
+        {
+          "answer": "interface",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "throws",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "program",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "short",
+          "isCorrect": "true"
+        }
+      ]
+    },
+    {
+      "question": "Which JavaScript variable declaration is used when the assigned value is likely to change?",
+      "answers": [
+        {
+          "answer": "let",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "define",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "variable",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "const",
+          "isCorrect": "false"
+        }
+      ]
+    },
+    {
+      "question": "Which of these statements is NOT true of browser-side JavaScript?",
+      "answers": [
+        {
+          "answer": "JavaScript can be used for functional programming.",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "JavaScript can be used for file reading and writing on client machines.",
+          "isCorrect": "true"
+        },
+        {
+          "answer": "JavaScript does not require frameworks or libraries to be used.",
+          "isCorrect": "false"
+        },
+        {
+          "answer": "Though not class-based, JavaScript is an Object-Oriented Programming Language.",
+          "isCorrect": "false"
+        }
+      ]
+    }
+  ]
+}
