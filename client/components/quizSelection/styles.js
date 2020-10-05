@@ -9,7 +9,7 @@ export const QuizzesHeader = styled.section`
   align-items: center;
   width: 100%;
   margin: 0;
-  background: #333;
+  background: ${props => props.theme.colors.grey};
 `;
 
 export const TileSection = styled.section`
@@ -38,11 +38,11 @@ export const TileContainer = styled.div`
   background: transparent;
   border-left: 10px solid ${props => props.theme.colors.darkGreen};
   border-radius: 5px;
-  box-shadow: 1px 1px 10px #c4c4c4;
+  box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
   transition-duration: 350ms;
 
   &:hover {
-    box-shadow: 10px 3px 18px #c4c4c4;
+    box-shadow: 10px 3px 18px ${props => props.theme.colors.lightGrey};
     cursor: pointer;
   }
 
