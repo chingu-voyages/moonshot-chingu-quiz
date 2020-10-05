@@ -10,7 +10,13 @@ import { QuizzesHeader, TileSection } from "../components/quizSelection/styles";
 import { PageHeader } from "../components/shared/styles";
 
 export default function Quizzes() {
-  const [chosenSubject, setChosenSubject] = useState("Programming");
+  /* TODO:
+  Use 'SWR' to fetch quizzes - https://swr.vercel.app/
+  Make initial fetch return all quizzes and randomize;
+  */
+
+  const [subjectsAndTopics, setSubjectsAndTopics] = useState([]);
+  const [chosenSubject, setChosenSubject] = useState("Random");
   const [chosenTopics, setChosenTopics] = useState([]);
   const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
   const [filteredTopicsArray, setFilteredTopicsArray] = useState([]);
@@ -22,55 +28,86 @@ export default function Quizzes() {
         totalMatches += 1;
       }
     }
+    // Only includes quiz if all quiz tags are matched to topic selection in the UI
     return totalMatches === quizTagArray.length;
   };
 
+  // Dummy data until back end hooked in
   useEffect(() => {
+    setSubjectsAndTopics([
+      {
+        key: "programming",
+        title: "Programming",
+        tags: ["html", "css", "javascript", "react"],
+      },
+      {
+        key: "ux",
+        title: "UX",
+        tags: ["color", "buttons", "imagery"],
+      },
+      {
+        key: "interview",
+        title: "Interview",
+        tags: ["Team Dynamics", "workflow"],
+      },
+    ]);
+
     setAllSubjectQuizzes([
       {
-        title: "Css Example",
+        title: "React Example",
         subject: ["programming"],
-        description: "A quiz covering general CSS knowledge.",
-        tags: ["css"],
+        description: "A quiz covering general React knowledge.",
+        tags: ["react"],
       },
       {
-        title: "JavaScript Example",
+        title: "React and Javascript Example",
         subject: ["programming"],
-        description: "A quiz covering general JavaScript knowledge.",
-        tags: ["javascript"],
+        description:
+          "A quiz covering general JavaScript knowledge as well as some React.",
+        tags: ["javascript", "react"],
       },
       {
-        title: "JavaScript/CSS combo",
-        subject: ["programming"],
-        description: "A quiz covering JavaScript and CSS knowledge.",
-        tags: ["javascript", "css"],
+        title: "Importance of colors in UX",
+        subject: ["ux"],
+        description: "Review the impace color can have on User Experience.",
+        tags: ["color"],
+      },
+      {
+        title: "Workflow in the tech business",
+        subject: ["interview"],
+        description: "Cover best practices in team workflow environments.",
+        tags: ["workflow"],
       },
     ]);
 
     setFilteredTopicsArray([
       {
-        title: "Css Example",
+        title: "React Example",
         subject: ["programming"],
-        description: "A quiz covering general CSS knowledge.",
-        tags: ["css"],
+        description: "A quiz covering general React knowledge.",
+        tags: ["react"],
       },
       {
-        title: "JavaScript Example",
+        title: "React and Javascript Example",
         subject: ["programming"],
-        description: "A quiz covering general JavaScript knowledge.",
-        tags: ["javascript"],
+        description:
+          "A quiz covering general JavaScript knowledge as well as some React.",
+        tags: ["javascript", "react"],
       },
       {
-        title: "JavaScript/CSS combo",
-        subject: ["programming"],
-        description: "A quiz covering JavaScript and CSS knowledge.",
-        tags: ["javascript", "css"],
+        title: "Importance of colors in UX",
+        subject: ["ux"],
+        description: "Review the impace color can have on User Experience.",
+        tags: ["color"],
+      },
+      {
+        title: "Workflow in the tech business",
+        subject: ["interview"],
+        description: "Cover best practices in team workflow environments.",
+        tags: ["workflow"],
       },
     ]);
   }, []);
-  /* TODO:
-  Use 'SWR' to fetch quizzes on demand - https://swr.vercel.app/
-  */
 
   useEffect(() => {
     if (chosenTopics.length > 0) {
@@ -90,7 +127,8 @@ export default function Quizzes() {
         <PageHeader>Quizzes</PageHeader>
       </QuizzesHeader>
       <TopicSelection
-        subject={chosenSubject}
+        subjectsAndTopics={subjectsAndTopics}
+        chosenSubject={chosenSubject}
         setChosenSubject={setChosenSubject}
         chosenTopics={chosenTopics}
         setChosenTopics={setChosenTopics}

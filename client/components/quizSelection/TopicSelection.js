@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  PrimaryButton,
-  PrimaryButtonSmall,
-  TextBodySmall,
-} from "../shared/styles";
-import {
-  TopicSelectionContainer,
-  TopicSelectionList,
-  TopicSelectionItem,
-} from "./styles";
+import TopicSelectionChoice from "./TopicSelectionChoice";
+import { TopicSelectionContainer, TopicSelectionList } from "./styles";
 
 export default function TopicSelection({
-  subject,
+  subjectsAndTopics,
+  chosenSubject,
   setChosenSubject,
   chosenTopics,
   setChosenTopics,
@@ -32,75 +25,27 @@ export default function TopicSelection({
   return (
     <TopicSelectionContainer>
       <TopicSelectionList>
-        <TopicSelectionItem>
-          <PrimaryButton
-            mod={subject === "Programming" ? "fillLight" : "ghost"}
-            onClick={() => {
-              handlePrimaryButtonClick("Programming");
-            }}
-          >
-            <TextBodySmall>Programming</TextBodySmall>
-          </PrimaryButton>
-        </TopicSelectionItem>
-        <TopicSelectionItem>
-          <PrimaryButton
-            mod={subject === "UX" ? "fillLight" : "ghost"}
-            onClick={() => {
-              handlePrimaryButtonClick("UX");
-            }}
-          >
-            <TextBodySmall>UX</TextBodySmall>
-          </PrimaryButton>
-        </TopicSelectionItem>
-        <TopicSelectionItem>
-          <PrimaryButton
-            mod={subject === "Interview" ? "fillLight" : "ghost"}
-            onClick={() => {
-              handlePrimaryButtonClick("Interview");
-            }}
-          >
-            <TextBodySmall>Interview</TextBodySmall>
-          </PrimaryButton>
-        </TopicSelectionItem>
+        {subjectsAndTopics.map(subject => (
+          <TopicSelectionChoice
+            key={subject.key}
+            currentlySelected={chosenSubject}
+            thisSelection={subject.title}
+            handleSetThisSelection={handlePrimaryButtonClick}
+          />
+        ))}
       </TopicSelectionList>
 
       <TopicSelectionList>
-        {subject === "Programming" && (
-          <>
-            <TopicSelectionItem>
-              <PrimaryButtonSmall
-                mod={chosenTopics.includes("html") ? "fillLight" : "ghost"}
-                onClick={() => {
-                  toggleTopics("html");
-                }}
-              >
-                <TextBodySmall>HTML</TextBodySmall>
-              </PrimaryButtonSmall>
-            </TopicSelectionItem>
-            <TopicSelectionItem>
-              <PrimaryButtonSmall
-                mod={chosenTopics.includes("css") ? "fillLight" : "ghost"}
-                onClick={() => {
-                  toggleTopics("css");
-                }}
-              >
-                <TextBodySmall>CSS</TextBodySmall>
-              </PrimaryButtonSmall>
-            </TopicSelectionItem>
-            <TopicSelectionItem>
-              <PrimaryButtonSmall
-                mod={
-                  chosenTopics.includes("javascript") ? "fillLight" : "ghost"
-                }
-                onClick={() => {
-                  toggleTopics("javascript");
-                }}
-              >
-                <TextBodySmall>JavaScript</TextBodySmall>
-              </PrimaryButtonSmall>
-            </TopicSelectionItem>
-          </>
-        )}
+        {subjectsAndTopics
+          .filter(subj => subj.title === chosenSubject)[0]
+          .tags.map(topic => (
+            <TopicSelectionChoice
+              key={topic}
+              currentlySelected={chosenTopics}
+              thisSelection={topic}
+              handleSetThisSelection={toggleTopics}
+            />
+          ))}
       </TopicSelectionList>
     </TopicSelectionContainer>
   );
