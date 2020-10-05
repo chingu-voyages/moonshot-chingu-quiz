@@ -26,11 +26,11 @@
     "root-setup": "npm ci",
     "client-setup": "cd client && npm ci",
     "server-setup": "cd server && npm ci",
-    "start": "concurrently \"npm:client-start\" \"npm:server-start\"",
+    "start": "npm run client-start",
     "client-start": "cd client && npm start",
     "server-start": "cd server && npm start",
     "build": "cd client && npm run build",
-    "postinstall": "concurrently \"npm:client-setup\" \"npm:server-setup\""
+    "postinstall": "npm run client-setup"
   },
   "husky": {
     "hooks": {
