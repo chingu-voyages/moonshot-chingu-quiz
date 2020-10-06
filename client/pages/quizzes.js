@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import useSWR from "swr";
+import apiRoutes from "../api-routes";
 import DisplayMessage from "../components/shared/DisplayMessage";
 import Header from "../components/header/Header";
 import QuizTile from "../components/quizSelection/QuizTile";
@@ -14,7 +15,7 @@ import { PageHeader } from "../components/shared/styles";
 export default function Quizzes() {
   // Use SWR hook to fetch quizzes
   const fetcher = url => fetch(url).then(res => res.json());
-  const { data, error } = useSWR("http://localhost:5000/api/v1/quiz", fetcher);
+  const { data, error } = useSWR(apiRoutes.getAllQuizzes, fetcher);
 
   const [subjectsAndTopics, setSubjectsAndTopics] = useState([]);
   const [chosenSubject, setChosenSubject] = useState("Random");
@@ -48,7 +49,7 @@ export default function Quizzes() {
       {
         key: "interview",
         title: "Interview",
-        tags: ["Team Dynamics", "workflow"],
+        tags: ["team dynamics", "workflow"],
       },
     ]);
   }, []);

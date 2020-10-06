@@ -146,5 +146,6 @@ export const MessageContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  width: max-content;
+  max-width: 100%;
+  padding: 10px;
 `;
