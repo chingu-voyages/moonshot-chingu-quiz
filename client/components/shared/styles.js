@@ -129,3 +129,22 @@ export const PrimaryButton = styled.button`
 export const PrimaryButtonSmall = styled(PrimaryButton)`
   padding: 2px 12px;
 `;
+
+// -- Loading and Error -- //
+export const FullWidthContainer = styled.section`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.grey};
+`;
+
+export const MessageContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+`;

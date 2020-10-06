@@ -3,6 +3,8 @@
 */
 
 import React, { useState, useEffect } from "react";
+import useSWR from "swr";
+import DisplayMessage from "../components/shared/DisplayMessage";
 import Header from "../components/header/Header";
 import QuizTile from "../components/quizSelection/QuizTile";
 import TopicSelection from "../components/quizSelection/TopicSelection";
@@ -10,10 +12,9 @@ import { QuizzesHeader, TileSection } from "../components/quizSelection/styles";
 import { PageHeader } from "../components/shared/styles";
 
 export default function Quizzes() {
-  /* TODO:
-  Use 'SWR' to fetch quizzes - https://swr.vercel.app/
-  Make initial fetch return all quizzes and randomize;
-  */
+  // Use SWR hook to fetch quizzes
+  const fetcher = url => fetch(url).then(res => res.json());
+  const { data, error } = useSWR("http://localhost:5000/api/v1/quiz", fetcher);
 
   const [subjectsAndTopics, setSubjectsAndTopics] = useState([]);
   const [chosenSubject, setChosenSubject] = useState("Random");
@@ -32,7 +33,6 @@ export default function Quizzes() {
     return totalMatches === quizTagArray.length;
   };
 
-  // Dummy data until back end hooked in
   useEffect(() => {
     setSubjectsAndTopics([
       {
@@ -51,70 +51,17 @@ export default function Quizzes() {
         tags: ["Team Dynamics", "workflow"],
       },
     ]);
-
-    setAllSubjectQuizzes([
-      {
-        title: "React Example",
-        subject: ["programming"],
-        description: "A quiz covering general React knowledge.",
-        tags: ["react"],
-      },
-      {
-        title: "React and Javascript Example",
-        subject: ["programming"],
-        description:
-          "A quiz covering general JavaScript knowledge as well as some React.",
-        tags: ["javascript", "react"],
-      },
-      {
-        title: "Importance of colors in UX",
-        subject: ["ux"],
-        description: "Review the impace color can have on User Experience.",
-        tags: ["color"],
-      },
-      {
-        title: "Workflow in the tech business",
-        subject: ["interview"],
-        description: "Cover best practices in team workflow environments.",
-        tags: ["workflow"],
-      },
-    ]);
-
-    setFilteredQuizzes([
-      {
-        title: "React Example",
-        subject: ["programming"],
-        description: "A quiz covering general React knowledge.",
-        tags: ["react"],
-      },
-      {
-        title: "React and Javascript Example",
-        subject: ["programming"],
-        description:
-          "A quiz covering general JavaScript knowledge as well as some React.",
-        tags: ["javascript", "react"],
-      },
-      {
-        title: "Importance of colors in UX",
-        subject: ["ux"],
-        description: "Review the impace color can have on User Experience.",
-        tags: ["color"],
-      },
-      {
-        title: "Workflow in the tech business",
-        subject: ["interview"],
-        description: "Cover best practices in team workflow environments.",
-        tags: ["workflow"],
-      },
-    ]);
   }, []);
 
   useEffect(() => {
+    if (data) {
+      setAllSubjectQuizzes(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
     if (chosenSubject === "Random") {
-      setFilteredQuizzes(
-        allSubjectQuizzes
-        // .filter(quiz => subjectFilterCallback(quiz.tags))
-      );
+      setFilteredQuizzes(allSubjectQuizzes);
     } else if (chosenSubject !== "Random" && chosenTopics.length === 0) {
       setFilteredQuizzes(
         allSubjectQuizzes.filter(quiz =>
@@ -142,11 +89,15 @@ export default function Quizzes() {
         chosenTopics={chosenTopics}
         setChosenTopics={setChosenTopics}
       />
-      <TileSection>
-        {filteredQuizzes.map(quiz => (
-          <QuizTile quizData={quiz} key={quiz.title} />
-        ))}
-      </TileSection>
+      {!!error && <DisplayMessage message="Error loading quizzes" />}
+      {!error && !data && <DisplayMessage message="... Loading Quizzes" />}
+      {!!data && (
+        <TileSection>
+          {filteredQuizzes.map(quiz => (
+            <QuizTile quizData={quiz} key={quiz.id} />
+          ))}
+        </TileSection>
+      )}
     </>
   );
 }
