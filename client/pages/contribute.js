@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "../components/header/Header";
 import Hero from "../components/contributepage/HeroSection";
+import Info from "../components/contributepage/InfoSection";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Info />
     </>
   );
 }
