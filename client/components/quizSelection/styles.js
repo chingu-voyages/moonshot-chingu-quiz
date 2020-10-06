@@ -13,8 +13,9 @@ export const QuizzesHeader = styled.section`
 `;
 
 export const TileSection = styled.section`
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  grid-gap: 50px 30px;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
@@ -22,6 +23,7 @@ export const TileSection = styled.section`
 
   @media only screen and (min-width: ${breakpoint("xs")}) {
     width: 95%;
+    max-width: ${breakpoint("maxWidth")};
     margin: 25px auto;
   }
 `;
@@ -34,7 +36,7 @@ export const TileContainer = styled.div`
   width: 100%;
   height: 130px;
   padding: 8px 12px;
-  margin: 20px;
+  margin: auto;
   background: transparent;
   border-left: 10px solid ${props => props.theme.colors.darkGreen};
   border-radius: 5px;

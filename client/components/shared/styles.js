@@ -124,10 +124,12 @@ export const PrimaryButton = styled.button`
       filter: contrast(50%);
       opacity: 0.7;
     `}
-`;
 
-export const PrimaryButtonSmall = styled(PrimaryButton)`
-  padding: 2px 12px;
+    ${props =>
+    props.size === "small" &&
+    css`
+      padding: 2px 12px;
+    `}
 `;
 
 // -- Loading and Error -- //

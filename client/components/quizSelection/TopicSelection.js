@@ -42,6 +42,7 @@ export default function TopicSelection({
             .tags.map(topic => (
               <TopicSelectionChoice
                 key={topic}
+                buttonSize="small"
                 currentlySelected={chosenTopics}
                 thisSelection={topic}
                 handleSetThisSelection={toggleTopics}

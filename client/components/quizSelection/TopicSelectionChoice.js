@@ -3,6 +3,7 @@ import { PrimaryButton, TextBodySmall } from "../shared/styles";
 import { TopicSelectionItem } from "./styles";
 
 export default function TopicSelectionChoice({
+  buttonSize,
   currentlySelected,
   thisSelection,
   handleSetThisSelection,
@@ -14,8 +15,9 @@ export default function TopicSelectionChoice({
           currentlySelected === thisSelection ||
           currentlySelected.includes(thisSelection)
             ? "fillLight"
-            : "ghost"
+            : (!buttonSize || buttonSize === "default") && "ghost"
         }
+        size={!buttonSize ? "default" : buttonSize}
         onClick={() => {
           handleSetThisSelection(thisSelection);
         }}
