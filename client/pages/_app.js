@@ -7,6 +7,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import "../styles/reset.css";
 import "../styles/globals.css";
+import Footer from "../components/footer/Footer";
 
 const theme = {
   colors: {
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }) {
       <Header>
         <Component {...pageProps} />
       </Header>
+      <Footer />
     </ThemeProvider>
   );
 }
