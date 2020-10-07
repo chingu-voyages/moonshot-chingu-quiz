@@ -2,9 +2,9 @@ import React from "react";
 import { Heading4, TextBodySmall, TextBodyMicro } from "../shared/styles";
 import { TileContainer, TileTagContainer, QuizTileTag } from "./styles";
 
-export default function QuizTile({ quizData }) {
+export default function QuizTile({ quizData, animationDelay }) {
   return (
-    <TileContainer>
+    <TileContainer animationDelay={animationDelay}>
       <div>
         <Heading4>{quizData.title}</Heading4>
         <TextBodySmall>{quizData.description}</TextBodySmall>

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 // -- TEXT ELEMENTS -- //
 
@@ -150,4 +150,17 @@ export const MessageContainer = styled.div`
   align-items: center;
   max-width: 100%;
   padding: 10px;
+`;
+
+// -- Animations -- //
+export const riseUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 `;

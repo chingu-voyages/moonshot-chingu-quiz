@@ -94,8 +94,12 @@ export default function Quizzes() {
       {!error && !data && <DisplayMessage message="... Loading Quizzes" />}
       {!!data && (
         <TileSection>
-          {filteredQuizzes.map(quiz => (
-            <QuizTile quizData={quiz} key={quiz.id} />
+          {filteredQuizzes.map((quiz, i) => (
+            <QuizTile
+              quizData={quiz}
+              key={quiz.id}
+              animationDelay={`${100 + i * 50}ms`}
+            />
           ))}
         </TileSection>
       )}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
-import { PrimaryButton } from "../shared/styles";
+import { PrimaryButton, riseUp } from "../shared/styles";
 
 export const QuizzesHeader = styled.section`
   display: flex;
@@ -29,6 +29,7 @@ export const TileSection = styled.section`
 `;
 
 export const TileContainer = styled.div`
+  opacity: 0;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -42,6 +43,9 @@ export const TileContainer = styled.div`
   border-radius: 5px;
   box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
   transition-duration: 350ms;
+  animation: ${riseUp} 400ms ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: ${props => props.animationDelay};
 
   &:hover {
     box-shadow: 10px 3px 18px ${props => props.theme.colors.lightGrey};
