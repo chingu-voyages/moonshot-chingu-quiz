@@ -13,7 +13,7 @@ import { QuizzesHeader, TileSection } from "../components/quizSelection/styles";
 import { PageHeader } from "../components/shared/styles";
 
 export default function Quizzes() {
-  // Use SWR hook to fetch quizzes
+  // Use SWR hook to fetch quizzes (NextJS suggested way of fetching client side)
   const fetcher = url => fetch(url).then(res => res.json());
   const { data, error } = useSWR(apiRoutes.getAllQuizzes, fetcher);
 
@@ -34,6 +34,7 @@ export default function Quizzes() {
     return totalMatches === quizTagArray.length;
   };
 
+  // Manually set the options for Subject and Topics until able to do so programmatically
   useEffect(() => {
     setSubjectsAndTopics([
       {
@@ -54,12 +55,14 @@ export default function Quizzes() {
     ]);
   }, []);
 
+  // Set data returned from SWR in state
   useEffect(() => {
     if (data) {
       setAllSubjectQuizzes(data);
     }
   }, [data]);
 
+  // Handle filtering of quizzes
   useEffect(() => {
     if (chosenSubject === "Random") {
       setFilteredQuizzes(allSubjectQuizzes);
