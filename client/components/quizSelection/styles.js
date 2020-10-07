@@ -15,13 +15,15 @@ export const QuizzesHeader = styled.section`
 export const TileSection = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
-  grid-gap: 50px 30px;
+  grid-gap: 20px;
   justify-content: space-evenly;
+  justify-items: start;
   align-items: center;
   width: 100%;
   margin: 10px auto;
 
-  @media only screen and (min-width: ${breakpoint("xs")}) {
+  @media (min-width: ${breakpoint("md")}) {
+    grid-gap: 50px 30px;
     width: 95%;
     max-width: ${breakpoint("maxWidth")};
     margin: 25px auto;
@@ -34,10 +36,10 @@ export const TileContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: start;
-  width: 100%;
+  width: 90%;
   height: 130px;
   padding: 8px 12px;
-  margin: auto;
+  margin: 10px auto;
   background: transparent;
   border-left: 10px solid ${props => props.theme.colors.darkGreen};
   border-radius: 5px;
@@ -52,8 +54,9 @@ export const TileContainer = styled.div`
     cursor: pointer;
   }
 
-  @media only screen and (min-width: ${breakpoint("xs")}) {
+  @media (min-width: ${breakpoint("md")}) {
     width: 375px;
+    margin: 0;
   }
 `;
 
@@ -66,10 +69,11 @@ export const TopicSelectionContainer = styled.section`
   display: flex;
   flex-flow: column nowrap;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   width: 95%;
+  max-width: ${breakpoint("maxWidth")};
   padding: 0;
-  margin: 20px auto 30px auto;
+  margin: 25px auto;
 `;
 
 export const TopicSelectionList = styled.ul`
@@ -77,10 +81,11 @@ export const TopicSelectionList = styled.ul`
   flex-flow: row nowrap;
   justify-content: start;
   align-items: center;
-  width: 100%;
+  max-width: 100%;
   min-height: 30px;
-  margin: 5px auto;
+  margin: 5px 0;
   list-style: none;
+  overflow-x: scroll;
 `;
 
 export const TopicSelectionItem = styled.li`

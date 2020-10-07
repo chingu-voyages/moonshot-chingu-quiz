@@ -18,7 +18,7 @@ export default function Quizzes() {
   const { data, error } = useSWR(apiRoutes.getAllQuizzes, fetcher);
 
   const [subjectsAndTopics, setSubjectsAndTopics] = useState([]);
-  const [chosenSubject, setChosenSubject] = useState("Random");
+  const [chosenSubject, setChosenSubject] = useState("All");
   const [chosenTopics, setChosenTopics] = useState([]);
   const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
   const [filteredQuizzes, setFilteredQuizzes] = useState([]);
@@ -37,6 +37,11 @@ export default function Quizzes() {
   // Manually set the options for Subject and Topics until able to do so programmatically
   useEffect(() => {
     setSubjectsAndTopics([
+      {
+        key: "all",
+        title: "All",
+        tags: [],
+      },
       {
         key: "programming",
         title: "Programming",
@@ -64,15 +69,15 @@ export default function Quizzes() {
 
   // Handle filtering of quizzes
   useEffect(() => {
-    if (chosenSubject === "Random") {
+    if (chosenSubject === "All") {
       setFilteredQuizzes(allSubjectQuizzes);
-    } else if (chosenSubject !== "Random" && chosenTopics.length === 0) {
+    } else if (chosenSubject !== "All" && chosenTopics.length === 0) {
       setFilteredQuizzes(
         allSubjectQuizzes.filter(quiz =>
           quiz.subject.includes(chosenSubject.toLowerCase())
         )
       );
-    } else if (chosenSubject !== "Random" && chosenTopics.length > 0) {
+    } else if (chosenSubject !== "All" && chosenTopics.length > 0) {
       setFilteredQuizzes(
         allSubjectQuizzes
           .filter(quiz => quiz.subject.includes(chosenSubject.toLowerCase()))

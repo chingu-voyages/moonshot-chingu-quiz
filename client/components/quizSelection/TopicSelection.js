@@ -36,7 +36,7 @@ export default function TopicSelection({
       </TopicSelectionList>
 
       <TopicSelectionList>
-        {chosenSubject !== "Random" &&
+        {chosenSubject !== "All" &&
           subjectsAndTopics
             .filter(subj => subj.title === chosenSubject)[0]
             .tags.map(topic => (
