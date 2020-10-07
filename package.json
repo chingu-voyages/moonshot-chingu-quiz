@@ -30,7 +30,10 @@
     "client-start": "cd client && npm start",
     "server-start": "cd server && npm start",
     "build": "cd client && npm run build",
-    "postinstall": "npm run client-setup"
+    "postinstall": "npm run client-setup",
+    "db-setup": "npm run db-build && npm run db-run",
+    "db-build": "docker build -t quiz_db .",
+    "db-run": "docker run --rm -dp 5432:5432 --name quiz_db quiz_db"
   },
   "husky": {
     "hooks": {
