@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
     props.withShadow
       ? "0px 6px 6px 3px rgba(0, 0, 0, 0.25)"
       : "0px 6px 6px 3px rgba(0, 0, 0, 0)"};
+  z-index: 10;
 `;
 
 export const InnerWrapper = styled.div`
