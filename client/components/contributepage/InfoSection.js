@@ -19,24 +19,24 @@ const BigList = styled.ol`
 
 const BigItem = styled.li`
   padding: 16px 0;
-  margin-left: 31px;
-  font-size: 31px;
-  font-weight: bold;
-  list-style-type: decimal;
+  list-style-type: none;
+  list-style-position: inside;
 `;
 
 const ItemTitle = styled.h3`
+  display: inline-block;
+  font-size: 31px;
   font-weight: bold;
-  margin: 16px;
+  margin: 16px 0;
 `;
 
 const ItemContent = styled.div`
   font-size: 18px;
-  margin: 18px;
+  margin: 18px 32px;
   font-weight: normal;
   ol li {
-    margin-left: 18px;
     list-style-type: decimal;
+    list-style-position: inside;
   }
 `;
 
@@ -78,10 +78,19 @@ const InfoSection = () => {
           </ItemContent>
         </BigItem>
         <BigItem>
-          <ItemTitle>Get yourself setup</ItemTitle>
+          <ItemTitle>Get setup</ItemTitle>
           <ItemContent>
             <ol>
-              <li>Fork the repository</li>
+              <li>
+                Fork the{" "}
+                <a
+                  href="https://github.com/chingu-voyages/moonshot-chingu-quiz"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                >
+                  repository
+                </a>
+              </li>
               <li>Clone your forked repository onto your local machine</li>
               <li>
                 inside your CLI (Command Line Interface), move into your working
