@@ -19,8 +19,8 @@
     "ttab": "^0.7.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm:client-dev\" \"ttab npm run server-dev\"",
-    "dev-setup": "npm run root-setup && npm run client-setup && npm run server-setup && npm run dev",
+    "dev": "concurrently \"npm:db-setup\" \"ttab npm run client-dev\" \"ttab npm run server-dev\"",
+    "dev-setup": "npm run root-setup && npm run client-setup && npm run server-setup && npm run dev && npm run db-setup",
     "client-dev": "cd client && npm run dev",
     "server-dev": "cd server && npm run dev",
     "root-setup": "npm ci",
