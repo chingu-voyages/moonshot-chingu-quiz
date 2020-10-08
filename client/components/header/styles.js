@@ -82,10 +82,7 @@ export const MobileMenuPageOverlay = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 700;
-  background: ${props => props.theme.colors.dark};
-
-  opacity: ${props => (props.active ? "0.2" : "0")};
+  z-index: 500;
   ${props => !props.active && `pointer-events: none`};
   transition: all ease 0.3s;
 `;
