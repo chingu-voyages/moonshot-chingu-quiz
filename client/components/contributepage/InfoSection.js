@@ -51,21 +51,42 @@ const CodeBlock = styled.code`
   margin: 16px 0;
 `;
 
+const issuesLink = (
+  <a
+    href="https://github.com/chingu-voyages/moonshot-chingu-quiz/issues"
+    rel="noreferrer noopener"
+    target="_blank"
+  >
+    issue
+  </a>
+);
+
+const repoLink = (
+  <a
+    href="https://github.com/chingu-voyages/moonshot-chingu-quiz"
+    rel="noreferrer noopener"
+    target="_blank"
+  >
+    repository
+  </a>
+);
+
+const linkingAPRToIssueLink = (
+  <a
+    href="https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue"
+    rel="noreferrer noopener"
+    target="_blank"
+  >
+    here
+  </a>
+);
+
 const InfoSection = () => {
   return (
     <Article>
       <BigList>
         <BigItem>
-          <ItemTitle>
-            Choose an{" "}
-            <a
-              href="https://github.com/chingu-voyages/moonshot-chingu-quiz/issues"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              issue
-            </a>
-          </ItemTitle>
+          <ItemTitle>Choose an {issuesLink}</ItemTitle>
           <ItemContent>
             <p>
               To get started, please feel free to start working on any issues we
@@ -83,16 +104,7 @@ const InfoSection = () => {
           <ItemTitle>Get setup</ItemTitle>
           <ItemContent>
             <ol>
-              <li>
-                Fork the{" "}
-                <a
-                  href="https://github.com/chingu-voyages/moonshot-chingu-quiz"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  repository
-                </a>
-              </li>
+              <li>Fork the {repoLink}</li>
               <li>Clone your forked repository onto your local machine</li>
               <li>
                 inside your CLI (Command Line Interface), move into your working
@@ -146,14 +158,7 @@ Resolves #ISSUE_NUMBER`}</CodeBlock>
             <p>
               Note: It is important to add the #number for the issue the PR is
               resolving in order to close the issue accordingly once the PR gets
-              merged. You can read more about this{" "}
-              <a
-                href="https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue"
-                rel="noreferrer noopener"
-                target="_blank"
-              >
-                here
-              </a>
+              merged. You can read more about this {linkingAPRToIssueLink}
             </p>
           </ItemContent>
         </BigItem>
