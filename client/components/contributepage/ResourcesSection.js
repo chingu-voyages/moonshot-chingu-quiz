@@ -23,12 +23,25 @@ const ContentWrapper = styled.div`
 `;
 
 const ButtonsWrapper = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 48px;
   margin: 32px 0;
+
+  button {
+    width: 100%;
+  }
+
+  @media (min-width: ${breakpoint("md")}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: ${breakpoint("lg")}) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
 `;
 
 const Button = styled.button`
