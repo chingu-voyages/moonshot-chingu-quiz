@@ -81,6 +81,24 @@ const linkingAPRToIssueLink = (
   </a>
 );
 
+const branchOverview = `- master (protected)
+- dev (protected)
+- documentation
+- feature
+-- feature/FEATURE-NAME
+--- feature/#<Issue Number>_<little feature title> 
+--- feature/#<Issue Number>_<little feature title>
+--- feature/#<Issue Number>_<little feature title>
+- bugfix (fixing issues that are not urgent)
+- hotfix (fixing issues that need to be merged ASAP)
+`;
+
+const pRExamplePattern = `<subject> (A title to summarise what this is about)
+
+<body> (A detailed description of your PR, feature idea or issue)
+
+Resolves #ISSUE_NUMBER`;
+
 const InfoSection = () => {
   return (
     <Article>
@@ -125,16 +143,7 @@ const InfoSection = () => {
           <ItemTitle>Create a branch for your feature</ItemTitle>
           <ItemContent>
             <p>Below you can find an overview of the branches we are using.</p>
-            <CodeBlock>{`- master (protected)
-- dev (protected)
-- documentation
-- feature
--- feature/FEATURE-NAME
---- feature/#<Issue Number>_<little feature title> 
---- feature/#<Issue Number>_<little feature title>
---- feature/#<Issue Number>_<little feature title>
-- bugfix (fixing issues that are not urgent)
-- hotfix (fixing issues that need to be merged ASAP)`}</CodeBlock>
+            <CodeBlock>{branchOverview}</CodeBlock>
             <p>An example for a ToDo list feature could look as following:</p>
             <CodeBlock>-- feature/#1_todo-list</CodeBlock>
           </ItemContent>
@@ -150,11 +159,7 @@ const InfoSection = () => {
               everyone to use the templates for Pull Requests and Issues that we
               provide. They follow this pattern:
             </p>
-            <CodeBlock>{`<subject> (A title to summarise what this is about)
-
-<body> (A detailed description of your PR, feature idea or issue)
-
-Resolves #ISSUE_NUMBER`}</CodeBlock>
+            <CodeBlock>{pRExamplePattern}</CodeBlock>
             <p>
               Note: It is important to add the #number for the issue the PR is
               resolving in order to close the issue accordingly once the PR gets
