@@ -4,10 +4,10 @@ import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
   background: ${props => props.theme.colors.grey};
-  padding: 45px 25px 65px;
+  padding: 30px 0 10px 0;
 
   @media (min-width: ${breakpoint("lg")}) {
-    padding: 115px 25px 190px;
+    padding: 40px 0;
   }
 `;
 
