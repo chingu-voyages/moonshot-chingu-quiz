@@ -7,7 +7,7 @@ const Article = styled.article`
   line-height: 24px;
 
   a {
-    color: blue;
+    color: ${props => props.theme.colors.link};
   }
 `;
 
