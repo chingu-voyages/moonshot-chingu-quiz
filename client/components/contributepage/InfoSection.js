@@ -5,6 +5,7 @@ const Article = styled.article`
   display: grid;
   place-items: center center;
   line-height: 24px;
+
   a {
     color: blue;
   }
@@ -34,6 +35,7 @@ const ItemContent = styled.div`
   font-size: 18px;
   margin: 18px 32px;
   font-weight: normal;
+
   ol li {
     list-style-type: decimal;
     list-style-position: inside;
