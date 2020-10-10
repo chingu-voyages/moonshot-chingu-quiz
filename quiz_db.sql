@@ -91,13 +91,13 @@ ADD CONSTRAINT answer_fk FOREIGN KEY (question) REFERENCES question(id);
 ALTER TABLE ONLY question
 ADD CONSTRAINT question_fk FOREIGN KEY (quiz) REFERENCES quiz(id);
 --
--- Name: public; Type: ACL; Schema: -; Owner: postgres
+-- Name: public; Type: ACL; Schema: -; Owner: docker
 --
 REVOKE ALL ON SCHEMA public
 FROM PUBLIC;
 REVOKE ALL ON SCHEMA public
-FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
+FROM docker;
+GRANT ALL ON SCHEMA public TO docker;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
