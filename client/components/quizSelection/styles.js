@@ -85,13 +85,20 @@ export const TopicSelectionList = styled.ul`
   min-height: 30px;
   margin: 5px 0;
   list-style: none;
-  overflow-x: scroll;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide Scrollbar on Firefox */
+
+  /* Hide scrollbar on Chrome, Safari, Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const TopicSelectionItem = styled.li`
   width: max-content;
   padding: 0;
   margin-right: 15px;
+  }
 `;
 
 export const QuizTileTag = styled(PrimaryButton)`
