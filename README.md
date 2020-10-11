@@ -45,8 +45,9 @@ If you're a designer and would like to contribute, feel free to reach out to us!
 The app is built with the following code dependencies:
 
 1. [NextJS](https://github.com/vercel/next.js)
-2. [Express](https://github.com/expressjs/express)
-3. [PostgreSQL](https://github.com/postgres/postgres)
+2. [Styled Components](https://github.com/styled-components/styled-components)
+3. [Express](https://github.com/expressjs/express)
+4. [PostgreSQL](https://github.com/postgres/postgres)
 
 ## Contributing
 
