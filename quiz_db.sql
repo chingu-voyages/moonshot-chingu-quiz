@@ -180,6 +180,22 @@ ALTER TABLE ONLY public.quiz
 
 
 --
+-- Name: subject subject_pk; Type: CONSTRAINT; Schema: public; Owner: docker
+--
+
+ALTER TABLE ONLY public.subject
+    ADD CONSTRAINT subject_pk PRIMARY KEY (id);
+
+
+--
+-- Name: tags tags_pk; Type: CONSTRAINT; Schema: public; Owner: docker
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT tags_pk PRIMARY KEY (id);
+
+
+--
 -- Name: answer answer_fk_question; Type: FK CONSTRAINT; Schema: public; Owner: docker
 --
 
