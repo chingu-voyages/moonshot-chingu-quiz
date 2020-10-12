@@ -83,9 +83,6 @@ export const MobileMenuPageOverlay = styled.div`
   height: 100%;
   width: 100%;
   z-index: 500;
-  background: ${props => props.theme.colors.dark};
-
-  opacity: ${props => (props.active ? "0.2" : "0")};
   ${props => !props.active && `pointer-events: none`};
   transition: all ease 0.3s;
 `;
@@ -127,34 +124,23 @@ export const MobileMenuButton = styled.div`
 
 export const MobileMenuWrapper = styled.div`
   position: fixed;
-  top: 0;
+  top: 88px;
   right: 0;
-  background: ${props => props.theme.colors.light};
+  padding: 18px 0;
+  background: ${props => props.theme.colors.grey};
   width: calc(100% - 80px);
   max-width: 350px;
   height: 100%;
   z-index: 600;
   transform: ${props => (props.active ? "translateX(0)" : "translateX(100%)")};
   transition: all ease 0.3s;
-`;
-
-export const MobileMenuTitle = styled.div`
-  font-size: 20px;
-  line-height: 22px;
-  text-align: center;
-  text-transform: uppercase;
-  background: ${props => props.theme.colors.darkGreen};
-  color: ${props => props.theme.colors.light};
-  padding: 12px 0;
-  border-bottom: 1px solid #ccc;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
 `;
 
 export const MobileMenuLink = styled(NavbarLink)`
   display: block;
-  color: ${props => props.theme.colors.grey};
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   margin: 0;
-  padding: 12px 0;
-  border-bottom: 1px solid #ccc;
+  padding: 18px 0 18px 44px;
 `;

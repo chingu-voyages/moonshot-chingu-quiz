@@ -7,7 +7,6 @@ import {
   MobileMenuButtonWrapper,
   MobileMenuButton,
   MobileMenuWrapper,
-  MobileMenuTitle,
   MobileMenuLink,
 } from "./styles";
 
@@ -20,7 +19,6 @@ const MobileMenu = ({ active, toggleMobileMenu }) => {
       </MobileMenuButtonWrapper>
 
       <MobileMenuWrapper active={active}>
-        <MobileMenuTitle>Menu</MobileMenuTitle>
         <Link href="/">
           <MobileMenuLink onClick={toggleMobileMenu}>Home</MobileMenuLink>
         </Link>
