@@ -23,7 +23,9 @@
     "dev-setup": "npm run root-setup && npm run client-setup && npm run dev",
     "client-dev": "cd client && npm run dev",
     "root-setup": "npm ci",
-    "client-setup": "cd client && npm ci"
+    "client-setup": "cd client && npm ci",
+    "reset-db": "docker container rm moonshot-chingu-quiz_db_1 && docker volume rm moonshot-chingu-quiz_quizdata",
+    "update-schema": "docker exec moonshot-chingu-quiz_db_1 pg_dump -U docker docker > quiz_db.sql"
   },
   "husky": {
     "hooks": {
