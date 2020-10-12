@@ -1,12 +1,9 @@
 const express = require("express");
-const {
-  get: getQuiz,
-  post: postQuiz,
-} = require("../../controllers/apiV1/quiz");
+const { get, post } = require("../../controllers/apiV1/quiz");
 
 const router = express.Router();
 
-router.get("/", getQuiz);
-router.post("/", postQuiz);
+router.get("/", get);
+router.post("/", post);
 
 module.exports = router;
