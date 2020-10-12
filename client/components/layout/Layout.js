@@ -5,6 +5,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
+import Footer from "./Footer";
 import { breakpointsRaw } from "../../frontend-config";
 
 import MobileMenu from "./MobileMenu";
@@ -23,7 +24,7 @@ const Main = styled.main`
   padding-top: 88px; // fixed header height
 `;
 
-export default class Header extends React.Component {
+export default class Layout extends React.Component {
   constructor(props) {
     super(props);
 
@@ -132,6 +133,7 @@ export default class Header extends React.Component {
         </Wrapper>
 
         <Main>{children}</Main>
+        <Footer />
       </div>
     );
   }
