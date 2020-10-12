@@ -1,80 +1,72 @@
 const { insert: insertQuiz } = require("../../../db/queries/quiz");
-const { insert: insertQuestion } = require("../../../db/queries/question");
-const { insert: insertAnswer } = require("../../../db/queries/answer");
+const {
+  selectById: selectSubjectById,
+} = require("../../../db/queries/subject");
+const { selectById: selectTagById } = require("../../../db/queries/tags");
 
 module.exports = async (req, res) => {
   try {
-    const {
-      quiz: { subject, description, tags, title },
-      questions,
-    } = req.body;
+    const { subject, description, tags, title } = req.body;
 
-    // Skip accessing the database if the payload is not structured correctly
-    if (
-      !Array.isArray(subject) ||
-      subject.length === 0 ||
-      !description ||
-      !Array.isArray(tags) ||
-      tags.legnth === 0 ||
-      !title ||
-      !Array.isArray(questions) ||
-      questions.length !== 10 ||
-      questions.filter(q => {
-        const { question, answers } = q;
-        if (
-          !question ||
-          !Array.isArray(answers) ||
-          answers.length !== 4 ||
-          answers.filter(a => {
-            const { answer, isCorrect } = a;
-            if (!answer || (isCorrect !== "true" && isCorrect !== "false")) {
-              return false;
-            }
-            return true;
-          }).length !== 4
-        ) {
-          return false;
-        }
-        return true;
-      }).length !== 10
-    ) {
+    // return 400 status if payload shape is not valid
+    if (!Array.isArray(subject) || subject.length < 1) {
       return res.status(400).json({
-        message:
-          "Payload is malformed. Please consult /server/quiz_examples/javascript_quiz.json",
+        message: "subject property required to be array of ids",
+      });
+    }
+    if (typeof description !== "string" || !description) {
+      return res.status(400).json({
+        message: "description property required",
+      });
+    }
+    if (!Array.isArray(tags) || tags.length < 1) {
+      return res.status(400).json({
+        message: "tags property required to be array of ids",
+      });
+    }
+    if (typeof title !== "string" || !title) {
+      return res.status(400).json({
+        message: "title property required",
       });
     }
 
-    const [{ id: quizId }] = await insertQuiz({
+    // return 400 status if subject or tag is not a valid id
+    const verifySubject = await Promise.all(
+      subject.map(async id => {
+        const [result] = await selectSubjectById({ id });
+        return result;
+      })
+    );
+
+    if (verifySubject.includes(undefined)) {
+      return res.status(400).json({
+        message: `${
+          subject[verifySubject.indexOf(undefined)]
+        } is not a valid subject id.`,
+      });
+    }
+
+    const verifyTag = await Promise.all(
+      tags.map(async id => {
+        const [result] = await selectTagById({ id });
+        return result;
+      })
+    );
+
+    if (verifyTag.includes(undefined)) {
+      return res.status(400).json({
+        message: `${tags[verifyTag.indexOf(undefined)]} is not a valid tag id.`,
+      });
+    }
+
+    const quiz = await insertQuiz({
       subject,
       description,
       tags,
       title,
     });
 
-    await Promise.all(
-      questions.map(async question => {
-        const { question: questionPrompt, answers } = question;
-
-        const [{ id: questionId }] = await insertQuestion({
-          quiz: quizId,
-          prompt: questionPrompt,
-        });
-
-        await Promise.all(
-          answers.map(async answer => {
-            const { answer: answerPrompt, isCorrect } = answer;
-
-            await insertAnswer({
-              question: questionId,
-              prompt: answerPrompt,
-              isCorrect,
-            });
-          })
-        );
-      })
-    );
-
-    return res.json({ message: "Quiz uploaded successfully" });
+    return res.json(quiz);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);
