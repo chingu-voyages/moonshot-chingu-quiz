@@ -21,9 +21,7 @@ import {
 
 const Main = styled.main`
   padding-top: 88px; // fixed header height
-  min-height: calc(
-    100vh - 66px
-  ); // Main fills height - footer to push fotter to bottom
+  min-height: calc(100vh - 66px); // Push footer to bottom when needed
 `;
 
 export default class Header extends React.Component {
