@@ -4,7 +4,9 @@ module.exports = async (req, res) => {
   try {
     const { title } = req.body;
     if (!title) {
-      return res.status(400).json({ message: "title property is required" });
+      return res
+        .status(400)
+        .json({ message: "title property is required as non-empty string" });
     }
     const tag = await insert({ title });
     return res.json(tag);

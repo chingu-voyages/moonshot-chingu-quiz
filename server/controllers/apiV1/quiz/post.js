@@ -11,22 +11,22 @@ module.exports = async (req, res) => {
     // return 400 status if payload shape is not valid
     if (!Array.isArray(subject) || subject.length < 1) {
       return res.status(400).json({
-        message: "subject property required to be array of ids",
+        message: "subject property required as array of ids",
       });
     }
     if (typeof description !== "string" || !description) {
       return res.status(400).json({
-        message: "description property required",
+        message: "description property required as non-empty string",
       });
     }
     if (!Array.isArray(tag) || tag.length < 1) {
       return res.status(400).json({
-        message: "tags property required to be array of ids",
+        message: "tags property required as array of ids",
       });
     }
     if (typeof title !== "string" || !title) {
       return res.status(400).json({
-        message: "title property required",
+        message: "title property required as non-empty string",
       });
     }
 
@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
       return res.status(400).json({
         message: `${
           subject[verifySubject.indexOf(undefined)]
-        } is not a valid subject id.`,
+        } is not a valid subject id`,
       });
     }
 
@@ -55,7 +55,7 @@ module.exports = async (req, res) => {
 
     if (verifyTag.includes(undefined)) {
       return res.status(400).json({
-        message: `${tag[verifyTag.indexOf(undefined)]} is not a valid tag id.`,
+        message: `${tag[verifyTag.indexOf(undefined)]} is not a valid tag id`,
       });
     }
 
