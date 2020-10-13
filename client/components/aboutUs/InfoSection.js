@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import { breakpoint } from "../../frontend-config";
 
 import {
   SubInfo,
@@ -12,8 +10,7 @@ import {
   HeadingGroup,
 } from "./styles";
 
-import { ABOUT_DATA } from "./Resources";
-import { HEADER_DATA } from "./Resources";
+import { ABOUT_DATA, HEADER_DATA } from "./Resources";
 
 const InfoSection = () => {
   return (
@@ -39,7 +36,7 @@ const InfoSection = () => {
                 <GreenBar />
                 <Headline>{data.title}</Headline>
               </HeadingGroup>
-              {<Text>{data.text}</Text>}
+              <Text>{data.text}</Text>
             </InfoBox>
           </SubInfo>
         ) : (
@@ -50,7 +47,7 @@ const InfoSection = () => {
                 <GreenBar />
                 <Headline light>{data.title}</Headline>
               </HeadingGroup>
-              {<Text light>{data.text}</Text>}
+              <Text light>{data.text}</Text>
             </InfoBox>
           </SubInfo>
         );

@@ -28,6 +28,9 @@ const SVGSub = styled.div`
   align-items: center;
   gap: 10px;
   margin-top: 66.1px;
+  span svg {
+    width: 42px;
+  }
   @media (max-width: ${breakpoint("xl")}) {
     display: none;
   }
@@ -89,19 +92,21 @@ export const LinkSVG = () => {
 
 export const ArrowSVG = () => {
   return (
-    <svg
-      width="42"
-      height="42"
-      viewBox="0 0 42 42"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="20.9199" cy="20.9199" r="20.9199" fill="#333333" />
-      <path
-        d="M19.3549 11.4886L20.4451 10.3588C20.9067 9.88041 21.6531 9.88041 22.1098 10.3588L31.6562 20.2469C32.1178 20.7253 32.1178 21.4988 31.6562 21.9721L22.1098 31.8653C21.6482 32.3437 20.9018 32.3437 20.4451 31.8653L19.3549 30.7356C18.8884 30.2521 18.8982 29.4633 19.3745 28.99L25.292 23.1477H11.1786C10.5254 23.1477 10 22.6032 10 21.9263V20.2978C10 19.621 10.5254 19.0764 11.1786 19.0764H25.292L19.3745 13.2341C18.8933 12.7608 18.8835 11.972 19.3549 11.4886Z"
-        fill="white"
-      />
-    </svg>
+    <span>
+      <svg
+        width="42"
+        height="42"
+        viewBox="0 0 42 42"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="20.9199" cy="20.9199" r="20.9199" fill="#333333" />
+        <path
+          d="M19.3549 11.4886L20.4451 10.3588C20.9067 9.88041 21.6531 9.88041 22.1098 10.3588L31.6562 20.2469C32.1178 20.7253 32.1178 21.4988 31.6562 21.9721L22.1098 31.8653C21.6482 32.3437 20.9018 32.3437 20.4451 31.8653L19.3549 30.7356C18.8884 30.2521 18.8982 29.4633 19.3745 28.99L25.292 23.1477H11.1786C10.5254 23.1477 10 22.6032 10 21.9263V20.2978C10 19.621 10.5254 19.0764 11.1786 19.0764H25.292L19.3745 13.2341C18.8933 12.7608 18.8835 11.972 19.3549 11.4886Z"
+          fill="white"
+        />
+      </svg>
+    </span>
   );
 };
 export const ShareSVG = () => {
@@ -167,7 +172,7 @@ const repoGitLink = (
     rel="noreferrer noopener"
     target="_blank"
   >
-    https://github.com/chingu-voyages/moonshot-chingu-quiz
+    README
   </a>
 );
 
@@ -302,8 +307,7 @@ export const ABOUT_DATA = [
         <br />
         <p>- The Back-End is a Postgres DB hosted on an Express server.</p>
         <br />
-        <p>- Full details can be found in our (README)</p>
-        {repoGitLink}
+        <p>- Full details can be found in our {repoGitLink}</p>
       </>
     ),
   },

@@ -6,6 +6,7 @@ import { Heading2, TextBody } from "../shared/styles";
 export const Wrapper = styled.div`
   background: ${props => props.theme.colors.light};
   padding: 30px 30px 50px;
+  width: 100%;
   @media (min-width: ${breakpoint("lg")}) {
     padding: 55px 30px;
   }
@@ -26,7 +27,7 @@ export const SubInfo = styled.div`
 
   svg {
     margin-bottom: 45px;
-    width: 40%;
+    /* width: 40%; */
   }
 
   @media (min-width: ${breakpoint("xl")}) {
@@ -40,7 +41,7 @@ export const SubInfo = styled.div`
   ${props =>
     props.grey &&
     css`
-      background: ${props => props.theme.colors.grey};
+      background: ${props.theme.colors.grey};
       flex-direction: column-reverse;
       svg {
         order: 2;
@@ -81,7 +82,7 @@ export const Headline = styled(Heading2)`
   ${props =>
     props.light &&
     css`
-      color: ${props => props.theme.colors.light};
+      color: ${props.theme.colors.light};
     `}
   @media (max-width: ${breakpoint("md")}) {
     font-size: 24px;
@@ -98,7 +99,7 @@ export const Text = styled(TextBody)`
   ${props =>
     props.light &&
     css`
-      color: ${props => props.theme.colors.light};
+      color: ${props.theme.colors.light};
     `}
 `;
 
