@@ -17,6 +17,7 @@ const theme = {
     lightGrey: "#ccc",
     midGreen: "#18e28c",
     darkGreen: "#057a55",
+    link: "blue",
   },
 };
 
