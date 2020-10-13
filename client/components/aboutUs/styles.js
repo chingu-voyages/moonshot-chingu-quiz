@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   background: ${props => props.theme.colors.light};
   padding: 30px 30px 50px;
   width: 100%;
+
   @media (min-width: ${breakpoint("lg")}) {
     padding: 55px 30px;
   }
@@ -27,12 +28,12 @@ export const SubInfo = styled.div`
 
   svg {
     margin-bottom: 45px;
-    /* width: 40%; */
   }
 
   @media (min-width: ${breakpoint("xl")}) {
     flex-direction: row;
     gap: 60px;
+
     svg {
       margin-bottom: 0px;
     }
@@ -43,10 +44,12 @@ export const SubInfo = styled.div`
     css`
       background: ${props.theme.colors.grey};
       flex-direction: column-reverse;
+
       svg {
         order: 2;
         margin-bottom: 45px;
       }
+
       @media (min-width: ${breakpoint("xl")}) {
         svg {
           margin-bottom: 0px;
@@ -56,15 +59,16 @@ export const SubInfo = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 231px;
-  height: 233px;
+  width: 230px;
+  height: 230px;
   align-self: center;
-  margin-bottom: 64px;
+  margin-bottom: 54px;
 
-  @media (min-width: ${breakpoint("lg")}) {
+  @media (min-width: ${breakpoint("xl")}) {
     width: 285px;
     height: 285px;
     margin-right: 40px;
+    margin-bottom: 0px;
   }
 `;
 
@@ -79,11 +83,13 @@ export const Headline = styled(Heading2)`
   width: 623px;
   position: relative;
   display: inline-block;
+
   ${props =>
     props.light &&
     css`
       color: ${props.theme.colors.light};
     `}
+
   @media (max-width: ${breakpoint("md")}) {
     font-size: 24px;
     line-height: 28px;
@@ -96,6 +102,7 @@ export const Text = styled(TextBody)`
   max-width: 620px;
   padding: 0 8px;
   text-align: left;
+
   ${props =>
     props.light &&
     css`
@@ -113,11 +120,12 @@ export const HeadingGroup = styled.div`
   display: flex;
 `;
 
-export const GreenBar = styled.div`
+export const MidGreenBar = styled.div`
   background-color: #18e28c;
   width: 14px;
   height: 41px;
   position: relative;
   display: inline-block;
   margin-right: 15px;
+  margin-top: 2px;
 `;

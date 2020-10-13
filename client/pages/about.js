@@ -11,5 +11,5 @@ export default function Home() {
     </>
   );
 }
-// Tells NextJS this page should use thea About setup in '_app'
+// Tells NextJS this page should use the About setup in '_app'
 Home.Header = Header;

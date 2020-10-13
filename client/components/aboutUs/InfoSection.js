@@ -6,7 +6,7 @@ import {
   InfoBox,
   Headline,
   Text,
-  GreenBar,
+  MidGreenBar,
   HeadingGroup,
 } from "./styles";
 
@@ -19,7 +19,7 @@ const InfoSection = () => {
         <Logo src="/Home.png" />
         <InfoBox>
           <HeadingGroup>
-            <GreenBar />
+            <MidGreenBar />
             <Headline>{HEADER_DATA.title}</Headline>
           </HeadingGroup>
           <Text>{HEADER_DATA.text}</Text>
@@ -28,26 +28,16 @@ const InfoSection = () => {
 
       {/* looping data from Resources.js */}
       {ABOUT_DATA.map(data => {
-        return data.id % 2 === 0 ? (
-          <SubInfo key={data.id}>
+        const darkSection = data.id % 2 !== 0;
+        return (
+          <SubInfo key={data.id} grey={darkSection}>
             {data.svg}
             <InfoBox>
               <HeadingGroup>
-                <GreenBar />
-                <Headline>{data.title}</Headline>
+                <MidGreenBar />
+                <Headline light={darkSection}>{data.title}</Headline>
               </HeadingGroup>
-              <Text>{data.text}</Text>
-            </InfoBox>
-          </SubInfo>
-        ) : (
-          <SubInfo key={data.id} grey>
-            {data.svg}
-            <InfoBox>
-              <HeadingGroup>
-                <GreenBar />
-                <Headline light>{data.title}</Headline>
-              </HeadingGroup>
-              <Text light>{data.text}</Text>
+              <Text light={darkSection}>{data.text}</Text>
             </InfoBox>
           </SubInfo>
         );
