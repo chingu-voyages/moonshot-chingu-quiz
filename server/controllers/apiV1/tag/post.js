@@ -1,4 +1,4 @@
-const { insert } = require("../../../db/queries/tags");
+const { insert } = require("../../../db/queries/tag");
 
 module.exports = async (req, res) => {
   try {

@@ -2,11 +2,11 @@ const { insert: insertQuiz } = require("../../../db/queries/quiz");
 const {
   selectById: selectSubjectById,
 } = require("../../../db/queries/subject");
-const { selectById: selectTagById } = require("../../../db/queries/tags");
+const { selectById: selectTagById } = require("../../../db/queries/tag");
 
 module.exports = async (req, res) => {
   try {
-    const { subject, description, tags, title } = req.body;
+    const { subject, description, tag, title } = req.body;
 
     // return 400 status if payload shape is not valid
     if (!Array.isArray(subject) || subject.length < 1) {
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
         message: "description property required",
       });
     }
-    if (!Array.isArray(tags) || tags.length < 1) {
+    if (!Array.isArray(tag) || tag.length < 1) {
       return res.status(400).json({
         message: "tags property required to be array of ids",
       });
@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
     }
 
     const verifyTag = await Promise.all(
-      tags.map(async id => {
+      tag.map(async id => {
         const [result] = await selectTagById({ id });
         return result;
       })
@@ -55,14 +55,14 @@ module.exports = async (req, res) => {
 
     if (verifyTag.includes(undefined)) {
       return res.status(400).json({
-        message: `${tags[verifyTag.indexOf(undefined)]} is not a valid tag id.`,
+        message: `${tag[verifyTag.indexOf(undefined)]} is not a valid tag id.`,
       });
     }
 
     const quiz = await insertQuiz({
       subject,
       description,
-      tags,
+      tag,
       title,
     });
 

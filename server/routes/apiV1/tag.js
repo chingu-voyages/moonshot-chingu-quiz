@@ -1,5 +1,5 @@
 const express = require("express");
-const { get, getById, post } = require("../../controllers/apiV1/tags");
+const { get, getById, post } = require("../../controllers/apiV1/tag");
 
 const router = express.Router();
 

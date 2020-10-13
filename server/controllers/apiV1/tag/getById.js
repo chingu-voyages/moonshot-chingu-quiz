@@ -1,4 +1,4 @@
-const { selectById } = require("../../../db/queries/tags");
+const { selectById } = require("../../../db/queries/tag");
 
 module.exports = async (req, res) => {
   try {
