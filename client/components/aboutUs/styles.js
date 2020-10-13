@@ -121,7 +121,7 @@ export const HeadingGroup = styled.div`
 `;
 
 export const MidGreenBar = styled.div`
-  background-color: #18e28c;
+  background-color: ${props => props.theme.colors.midGreen};
   width: 14px;
   height: 41px;
   position: relative;
