@@ -70,10 +70,14 @@ export const TopicSelectionContainer = styled.section`
   flex-flow: column nowrap;
   justify-content: start;
   align-items: start;
-  width: 95%;
+  width: 100%;
   max-width: ${breakpoint("maxWidth")};
   padding: 0;
   margin: 25px auto;
+
+  @media (min-width: ${breakpoint("md")}) {
+    width: 95%;
+  }
 `;
 
 export const TopicSelectionList = styled.ul`
@@ -85,13 +89,34 @@ export const TopicSelectionList = styled.ul`
   min-height: 30px;
   margin: 5px 0;
   list-style: none;
-  overflow-x: scroll;
+  overflow-x: auto;
+
+  @media (max-width: ${breakpoint("md")}) {
+    padding-left: 15px;
+    scrollbar-width: none; /* Hide horizontal scrollbar on mobile for Firefox */
+
+    &::-webkit-scrollbar {
+      display: none; /* Hide horizontal scrollbar on mobile for Chrome, Safari, Opera */
+    }
+  }
 `;
 
 export const TopicSelectionItem = styled.li`
+  position: relative;
   width: max-content;
   padding: 0;
   margin-right: 15px;
+  }
+
+  &:last-child:after {
+    position: absolute;
+    right: -15px;
+    bottom: 5px;
+    content: "";
+    display: block;
+    width: 15px;
+    height: 1px;
+  }
 `;
 
 export const QuizTileTag = styled(PrimaryButton)`
