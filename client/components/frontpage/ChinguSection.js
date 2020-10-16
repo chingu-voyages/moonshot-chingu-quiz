@@ -109,7 +109,6 @@ const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* overflow: hidden; */
   gap: 20px;
 `;
 
@@ -163,7 +162,7 @@ const ButtonsWrapper = styled.div`
 
 const Button = styled.button`
   background: transparent;
-  border: 1px solid #18e28c;
+  border: 1px solid ${props => props.theme.colors.midGreen};
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -207,11 +206,11 @@ const ChinguSection = () => {
           </TextBody>
 
           <ButtonsWrapper>
-            <Link href="/contribute">
+            <Link href="">
               <Button light>Primary action</Button>
             </Link>
 
-            <Link href="/about">
+            <Link href="">
               <Button dark>Secondary action</Button>
             </Link>
           </ButtonsWrapper>
