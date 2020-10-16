@@ -1,5 +1,10 @@
 const express = require("express");
-const { get, getById, post } = require("../../controllers/apiV1/quiz");
+const {
+  get,
+  getById,
+  post,
+  getRandomQuizzes,
+} = require("../../controllers/apiV1/quiz");
 const {
   getByQuizId: getQuestionByQuizId,
   post: postQuestion,
@@ -12,6 +17,7 @@ const {
 const router = express.Router();
 
 router.get("/", get);
+router.get("/random/:num", getRandomQuizzes);
 router.get("/:id", getById);
 router.get("/:id/question", getQuestionByQuizId);
 router.get("/:id/question/:questionId/answer", getAnswerByQuestionId);
