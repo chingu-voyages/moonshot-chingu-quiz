@@ -95,11 +95,11 @@ const SVG = () => {
 
 const Wrapper = styled.div`
   background: ${props => props.theme.colors.grey};
-  padding: 45px 25px 65px;
+  padding: 30px 30px 50px;
   width: 100%;
 
   @media (min-width: ${breakpoint("lg")}) {
-    padding: 115px 25px 190px;
+    padding: 55px 30px;
   }
 `;
 
@@ -107,9 +107,10 @@ const ContentWrapper = styled.div`
   max-width: 730px;
   margin: 0 auto;
   display: flex;
-  gap: 20px;
   align-items: center;
   justify-content: center;
+  /* overflow: hidden; */
+  gap: 20px;
 `;
 
 const ContentSection = styled.div`
@@ -123,7 +124,6 @@ const ContentSection = styled.div`
   }
 
   @media (max-width: ${breakpoint("xl")}) {
-    min-width: 540px;
     h2,
     p {
       text-align: center;
@@ -138,6 +138,7 @@ const ContentSection = styled.div`
 const ImageSection = styled.div`
   position: relative;
   display: none;
+
   @media (min-width: ${breakpoint("xl")}) {
     min-width: 540px;
     display: block;
@@ -154,6 +155,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 56px;
+
   @media (max-width: ${breakpoint("xl")}) {
     justify-content: center;
   }
