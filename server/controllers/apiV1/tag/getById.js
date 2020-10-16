@@ -1,10 +1,10 @@
-const { select } = require("../../../db/queries/quiz");
+const { selectById } = require("../../../db/queries/tag");
 
 module.exports = async (req, res) => {
   try {
-    const quizzes = await select();
-
-    res.json(quizzes);
+    const { id } = req.params;
+    const tag = await selectById({ id });
+    res.json(tag);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);
