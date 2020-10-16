@@ -5,6 +5,7 @@ import { breakpoint } from "../../frontend-config";
 const Wrapper = styled.div`
   background: ${props => props.theme.colors.light};
   padding: 30px 20px 50px;
+  width: 100%;
 
   @media (min-width: ${breakpoint("xl")}) {
     padding: 55px 20px;

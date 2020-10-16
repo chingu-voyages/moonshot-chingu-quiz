@@ -6,6 +6,7 @@ import { breakpoint } from "../../frontend-config";
 const Wrapper = styled.div`
   background: ${props => props.theme.colors.grey};
   padding: 45px 25px 65px;
+  width: 100%;
 
   @media (min-width: ${breakpoint("lg")}) {
     padding: 115px 25px 190px;
