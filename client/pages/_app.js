@@ -5,9 +5,9 @@
 
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import Layout from "../components/layout/Layout";
 import "../styles/reset.css";
 import "../styles/globals.css";
-import Footer from "../components/footer/Footer";
 
 const theme = {
   colors: {
@@ -22,14 +22,11 @@ const theme = {
 };
 
 function MyApp({ Component, pageProps }) {
-  const Header = Component.Header ? Component.Header : React.Fragment;
-
   return (
     <ThemeProvider theme={theme}>
-      <Header>
+      <Layout>
         <Component {...pageProps} />
-      </Header>
-      <Footer />
+      </Layout>
     </ThemeProvider>
   );
 }
