@@ -18,6 +18,7 @@ import {
   LogoText,
   Navbar,
   NavbarLink,
+  NavbarButton,
 } from "./styles";
 
 const Main = styled.main`
@@ -92,7 +93,7 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, toggleTheme, themeLogo } = this.props;
     const { mobile, headerShadow, mobileMenuActive } = this.state;
 
     return (
@@ -128,6 +129,12 @@ export default class Layout extends React.Component {
                 <Link href="/about">
                   <NavbarLink>About Us</NavbarLink>
                 </Link>
+
+                <NavbarButton
+                  src={themeLogo}
+                  alt="my image"
+                  onClick={toggleTheme}
+                />
               </Navbar>
             )}
           </InnerWrapper>

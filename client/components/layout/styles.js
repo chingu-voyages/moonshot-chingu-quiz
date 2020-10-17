@@ -75,6 +75,22 @@ export const NavbarLink = styled.a`
   }
 `;
 
+export const NavbarButton = styled.img`
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  margin-left: 32px;
+  background-color: ${props => props.theme.colors.dark};
+  border-radius: 16px;
+  padding: 5px;
+  opacity: 0.9;
+
+  &:hover {
+    transition: all ease 0.3s;
+    opacity: 0.7;
+  }
+`;
+
 // MOBILE MENU //
 export const MobileMenuPageOverlay = styled.div`
   position: fixed;
