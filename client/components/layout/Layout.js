@@ -18,7 +18,8 @@ import {
   LogoText,
   Navbar,
   NavbarLink,
-  NavbarButton,
+  NavbarToggleSwitch,
+  ToggleSwitchSlider,
 } from "./styles";
 
 const Main = styled.main`
@@ -93,7 +94,7 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const { children, toggleTheme, themeLogo } = this.props;
+    const { children, toggleTheme, isDarkTheme } = this.props;
     const { mobile, headerShadow, mobileMenuActive } = this.state;
 
     return (
@@ -115,6 +116,8 @@ export default class Layout extends React.Component {
               <MobileMenu
                 active={mobileMenuActive}
                 toggleMobileMenu={this.toggleMobileMenu}
+                toggleTheme={toggleTheme}
+                isDarkTheme={isDarkTheme}
               />
             ) : (
               <Navbar>
@@ -130,11 +133,9 @@ export default class Layout extends React.Component {
                   <NavbarLink>About Us</NavbarLink>
                 </Link>
 
-                <NavbarButton
-                  src={themeLogo}
-                  alt="my image"
-                  onClick={toggleTheme}
-                />
+                <NavbarToggleSwitch onClick={toggleTheme}>
+                  <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
+                </NavbarToggleSwitch>
               </Navbar>
             )}
           </InnerWrapper>

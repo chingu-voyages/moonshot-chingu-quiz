@@ -18,31 +18,38 @@ const darkTheme = {
     midGreen: "#18e28c",
     darkGreen: "#057a55",
     link: "blue",
+    backgroundPrimary: "#333",
+    backgroundMenu: "#333",
+    textPrimary: "#fff",
+    textMenu: "#fff",
+    greenPrimary: "#18e28c",
   },
 };
 
 const lightTheme = {
   colors: {
-    light: "#000",
-    dark: "#fff",
-    grey: "#ccc",
-    lightGrey: "#333",
-    midGreen: "#057a55",
-    darkGreen: "#18e28c",
+    light: "#fff",
+    dark: "#000",
+    grey: "#333",
+    lightGrey: "#ccc",
+    midGreen: "#18e28c",
+    darkGreen: "#057a55",
     link: "blue",
+    backgroundPrimary: "#EBEFF3",
+    backgroundMenu: "#fff",
+    textPrimary: "#333",
+    textMenu: "#057a55",
+    greenPrimary: "#057a55",
   },
 };
 
 function MyApp({ Component, pageProps }) {
-  const [theme, setTheme] = useState("light");
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <Layout
-        toggleTheme={toggleTheme}
-        themeLogo={theme === "light" ? "./moon.png" : "./sun.png"}
-      >
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      <Layout toggleTheme={toggleTheme} isDarkTheme={isDarkTheme}>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
