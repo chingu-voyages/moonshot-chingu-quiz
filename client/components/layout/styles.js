@@ -93,6 +93,7 @@ export const ToggleSwitchSlider = styled.span`
   bottom: 0;
   background: ${props => props.theme.colors.backgroundPrimary};
   border-radius: 26px;
+  ${props => props.isDarkTheme && "filter: contrast(1.3)"};
 
   &:before {
     position: absolute;
