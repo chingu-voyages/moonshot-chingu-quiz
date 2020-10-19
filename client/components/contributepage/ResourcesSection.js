@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
-  background: ${props => props.theme.colors.grey};
+  background: ${props => props.theme.colors.backgroundPrimary};
   padding: 45px 25px 65px;
 
   @media (min-width: ${breakpoint("lg")}) {
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   font-size: 39px;
   font-weight: bold;
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.textPrimary};
 `;
 
 const ContentWrapper = styled.div`
@@ -46,7 +46,7 @@ const ButtonsWrapper = styled.div`
 
 const Button = styled.button`
   background: transparent;
-  border: 1px solid #18e28c;
+  border: 1px solid ${props => props.theme.colors.greenPrimary};
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -61,20 +61,20 @@ const Button = styled.button`
   ${props =>
     props.light &&
     css`
-      background: ${props.theme.colors.midGreen};
-      color: ${props.theme.colors.grey};
+      background: ${props.theme.colors.greenPrimary};
+      color: ${props.theme.colors.backgroundPrimary};
     `}
 
   ${props =>
     props.dark &&
     css`
-      background: ${props.theme.colors.grey};
-      color: ${props.theme.colors.midGreen};
+      background: ${props.theme.colors.backgroundPrimary};
+      color: ${props.theme.colors.greenPrimary};
     `}
 `;
 
 const Info = styled.p`
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.textPrimary};
 `;
 
 const HeroSection = () => {

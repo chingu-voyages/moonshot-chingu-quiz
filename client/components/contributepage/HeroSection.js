@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
-  background: ${props => props.theme.colors.grey};
+  background: ${props => props.theme.colors.backgroundPrimary};
   padding: 30px 0 10px 0;
 
   @media (min-width: ${breakpoint("lg")}) {
@@ -22,7 +22,7 @@ const Headline = styled.h1`
   font-weight: 700;
   letter-spacing: 0.5px;
   text-align: center;
-  color: ${props => props.theme.colors.midGreen};
+  color: ${props => props.theme.colors.greenPrimary};
   margin-bottom: 32px;
 
   @media (min-width: ${breakpoint("md")}) {

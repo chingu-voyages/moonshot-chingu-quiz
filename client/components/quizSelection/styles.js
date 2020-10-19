@@ -9,7 +9,7 @@ export const QuizzesHeader = styled.section`
   align-items: center;
   width: 100%;
   margin: 0;
-  background: ${props => props.theme.colors.grey};
+  background: ${props => props.theme.colors.backgroundPrimary};
 `;
 
 export const TileSection = styled.section`
