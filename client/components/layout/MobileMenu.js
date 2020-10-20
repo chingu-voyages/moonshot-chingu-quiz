@@ -8,9 +8,11 @@ import {
   MobileMenuButton,
   MobileMenuWrapper,
   MobileMenuLink,
+  MobileToggleSwitch,
+  ToggleSwitchSlider,
 } from "./styles";
 
-const MobileMenu = ({ active, toggleMobileMenu }) => {
+const MobileMenu = ({ active, toggleMobileMenu, toggleTheme, isDarkTheme }) => {
   return (
     <>
       <MobileMenuPageOverlay active={active} onClick={toggleMobileMenu} />
@@ -34,6 +36,10 @@ const MobileMenu = ({ active, toggleMobileMenu }) => {
         <Link href="/about">
           <MobileMenuLink onClick={toggleMobileMenu}>About Us</MobileMenuLink>
         </Link>
+
+        <MobileToggleSwitch onClick={toggleTheme}>
+          <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
+        </MobileToggleSwitch>
       </MobileMenuWrapper>
     </>
   );

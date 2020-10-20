@@ -84,7 +84,7 @@ export const TextBodyMicroBold = styled.p`
 // -- STYLED TEXT -- //
 
 export const PageHeader = styled(Heading1)`
-  color: ${props => props.theme.colors.midGreen};
+  color: ${props => props.theme.colors.greenPrimary};
   padding: 0;
   margin: 20px auto;
 `;
