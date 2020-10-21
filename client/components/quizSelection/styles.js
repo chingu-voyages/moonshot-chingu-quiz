@@ -2,16 +2,6 @@ import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 import { PrimaryButton, riseUp } from "../shared/styles";
 
-export const QuizzesHeader = styled.section`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  background: ${props => props.theme.colors.backgroundPrimary};
-`;
-
 export const TileSection = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
