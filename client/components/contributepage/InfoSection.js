@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 const Article = styled.article`
   display: grid;
@@ -15,7 +16,12 @@ const BigList = styled.ol`
   max-width: 1000px;
   background: ${props => props.theme.colors.light};
   color: ${props => props.theme.colors.grey};
+  padding: 0 10px;
   margin: 0 0 64px 0;
+
+  @media (min-width: ${breakpoint("md")}) {
+    padding: 0;
+  }
 `;
 
 const BigItem = styled.li`
@@ -105,8 +111,8 @@ const InfoSection = () => {
       <BigList>
         <BigItem>
           <ItemTitle>
-            Choose an
-            {issuesLink}
+            {/* eslint-disable-next-line */}
+            Choose an {issuesLink}
           </ItemTitle>
           <ItemContent>
             <p>
@@ -126,8 +132,8 @@ const InfoSection = () => {
           <ItemContent>
             <ol>
               <li>
-                Fork the
-                {repoLink}
+                {/* eslint-disable-next-line */}
+                Fork the {repoLink}
               </li>
               <li>Clone your forked repository onto your local machine</li>
               <li>
@@ -169,8 +175,8 @@ const InfoSection = () => {
             <p>
               Note: It is important to add the #number for the issue the PR is
               resolving in order to close the issue accordingly once the PR gets
-              merged. You can read more about this
-              {linkingAPRToIssueLink}
+              {/* eslint-disable-next-line */}
+              merged. You can read more about this {linkingAPRToIssueLink}
             </p>
           </ItemContent>
         </BigItem>
