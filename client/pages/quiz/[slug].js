@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 // import apiRoutes from '../../api-routes';// <-- uncomment when DB is ready
 import { dummyData } from "../dummy-quiz-data";
-// import DisplayMessage from '../../components/shared/DisplayMessage';
+// import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
   QuizHeader,
   AnswersTileSection,
@@ -24,8 +24,8 @@ import { ContentWrapper } from "../../components/footer/styles";
 export default function Quiz() {
   const router = useRouter();
 
-  // const fetcher = url => fetch(url).then(res => res.json());
-  // const {data, error} = useSWR(apiRoutes.getAllQuizzes, fetcher);
+  // const fetcher = url => fetch(url).then(res => res.json());// <-- uncomment when DB is ready
+  // const {data, error} = useSWR(apiRoutes.getAllQuizzes, fetcher);// <-- uncomment when DB is ready
   const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
   const [chosenQuiz, setChosenQuiz] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -76,32 +76,42 @@ export default function Quiz() {
     }
   }, [currentQuestion]);
 
-  const toggleSelectedAnswer = i => {
-    let node = i.target;
+  const toggleSelectedAnswer = answer => {
+    // Temporarily save the clicked node
+    let node = answer.target;
+
+    // Find the main answer container
     while (node.classList.toString().indexOf("Container") < 0) {
       node = node.parentNode;
     }
+
     const clickedAnswerMark = node.firstChild.innerText;
     let clickedAnswer = null;
-    currentQuestionAnswers.forEach((answer, index) => {
+    // Find the clicked answer object by its mark
+    currentQuestionAnswers.forEach((_answer, index) => {
       const mark = String.fromCharCode("A".charCodeAt(0) + index);
-      if (mark === clickedAnswerMark) clickedAnswer = answer;
+      if (mark === clickedAnswerMark) clickedAnswer = _answer;
     });
 
-    const selectedAnswersTmp = JSON.parse(JSON.stringify(selectedAnswers));
-    if (!selectedAnswersTmp[currentQuestionIndex])
+    // Clone state object
+    const selectedAnswersTmp = { ...selectedAnswers };
+
+    // Get selected answer array
+    const selectedAnswersArray = selectedAnswersTmp[currentQuestionIndex];
+
+    // Set / remove answer
+    if (!selectedAnswersArray) {
       selectedAnswersTmp[currentQuestionIndex] = [clickedAnswer.id];
-    else if (
-      selectedAnswersTmp[currentQuestionIndex].find(
-        id => id === clickedAnswer.id
-      )
-    )
+    } else if (selectedAnswersArray.find(id => id === clickedAnswer.id)) {
       selectedAnswersTmp[currentQuestionIndex].splice(
-        selectedAnswersTmp[currentQuestionIndex].indexOf(clickedAnswer.id),
+        selectedAnswersArray.indexOf(clickedAnswer.id),
         1
       );
-    else selectedAnswersTmp[currentQuestionIndex].push(clickedAnswer.id);
+    } else {
+      selectedAnswersArray.push(clickedAnswer.id);
+    }
 
+    // Save state
     setSelectedAnswers(selectedAnswersTmp);
   };
 

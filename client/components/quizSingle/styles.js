@@ -26,7 +26,7 @@ export const QuestionHeaderContainer = styled.section`
   animation-delay: ${props => props.animationDelay};
 
   @media (min-width: ${breakpoint("md")}) {
-    max-width: 62%;
+    max-width: 850px;
     margin: 40px auto;
   }
 `;
@@ -104,7 +104,6 @@ export const AnswerTileContainerLink = styled.a`
 `;
 
 export const AnswerTileContainerStyled = styled.div`
-  opacity: 0;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
