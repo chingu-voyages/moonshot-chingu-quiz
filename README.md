@@ -22,7 +22,7 @@ In order to get this application running on your local development environment p
 1. Fork the repository
 2. Clone your forked repository onto your local machine
 3. Inside your CLI (Command Line Interface), move into your working directory
-4. Run `npm run dev-setup` inside the root folder - this will install project-wide dependencies and start the docker development containers.
+4. Run `npm run dev-setup` inside the root folder - this will install project-wide development dependencies and start the docker development containers.
 
 ### For returners
 
