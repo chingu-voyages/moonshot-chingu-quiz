@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "^5.3.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
@@ -15,8 +14,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",
-    "prettier": "^2.1.1",
-    "ttab": "^0.7.0"
+    "prettier": "^2.1.1"
   },
   "scripts": {
     "dev": "docker-compose up",
