@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  api:
+    image: node:14
+    restart: always
+    user: node
+    working_dir: /home/node/app
+    volumes:
+      - ./server:/home/node/app
+    ports:
+      - "5000:5000"
+    command: bash -c "npm i && npm run dev"
+    environment:
+      PGUSER: docker
+      PGHOST: db
+      PGDATABASE: docker
+      PGPASSWORD: docker
+      PGPORT: 5432
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: docker
+    volumes:
+      - "quizdata:/var/lib/postgresql/data"
+      - "./quiz_db.sql:/docker-entrypoint-initdb.d/quiz_db.sql"
+    ports:
+      - "5432:5432"
+
+volumes:
+  quizdata:
