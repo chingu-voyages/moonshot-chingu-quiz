@@ -4,7 +4,7 @@ import { breakpoint } from "../../frontend-config";
 import { Heading2, TextBody } from "../shared/styles";
 
 export const Wrapper = styled.div`
-  background: ${props => props.theme.colors.light};
+  background: ${props => props.theme.colors.textPrimary};
   padding: 30px 30px 50px;
   width: 100%;
 
@@ -42,7 +42,7 @@ export const SubInfo = styled.div`
   ${props =>
     props.grey &&
     css`
-      background: ${props.theme.colors.grey};
+      background: ${props.theme.colors.backgroundPrimary};
       flex-direction: column-reverse;
 
       svg {
@@ -87,7 +87,7 @@ export const Headline = styled(Heading2)`
   ${props =>
     props.light &&
     css`
-      color: ${props.theme.colors.light};
+      color: ${props.theme.colors.textPrimary};
     `}
 
   @media (max-width: ${breakpoint("md")}) {
@@ -106,7 +106,7 @@ export const Text = styled(TextBody)`
   ${props =>
     props.light &&
     css`
-      color: ${props.theme.colors.light};
+      color: ${props.theme.colors.textPrimary};
     `}
 `;
 
@@ -121,7 +121,7 @@ export const HeadingGroup = styled.div`
 `;
 
 export const MidGreenBar = styled.div`
-  background-color: ${props => props.theme.colors.midGreen};
+  background-color: ${props => props.theme.colors.greenPrimary};
   width: 14px;
   height: 41px;
   position: relative;
