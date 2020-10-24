@@ -5,6 +5,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
+import Footer from "./Footer";
 import { breakpointsRaw } from "../../frontend-config";
 
 import MobileMenu from "./MobileMenu";
@@ -17,13 +18,16 @@ import {
   LogoText,
   Navbar,
   NavbarLink,
+  NavbarToggleSwitch,
+  ToggleSwitchSlider,
 } from "./styles";
 
 const Main = styled.main`
   padding-top: 88px; // fixed header height
+  min-height: calc(100vh - 66px); // Push footer to bottom when needed
 `;
 
-export default class Header extends React.Component {
+export default class Layout extends React.Component {
   constructor(props) {
     super(props);
 
@@ -90,7 +94,7 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, toggleTheme, isDarkTheme } = this.props;
     const { mobile, headerShadow, mobileMenuActive } = this.state;
 
     return (
@@ -112,6 +116,8 @@ export default class Header extends React.Component {
               <MobileMenu
                 active={mobileMenuActive}
                 toggleMobileMenu={this.toggleMobileMenu}
+                toggleTheme={toggleTheme}
+                isDarkTheme={isDarkTheme}
               />
             ) : (
               <Navbar>
@@ -126,12 +132,17 @@ export default class Header extends React.Component {
                 <Link href="/about">
                   <NavbarLink>About Us</NavbarLink>
                 </Link>
+
+                <NavbarToggleSwitch onClick={toggleTheme}>
+                  <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
+                </NavbarToggleSwitch>
               </Navbar>
             )}
           </InnerWrapper>
         </Wrapper>
 
         <Main>{children}</Main>
+        <Footer />
       </div>
     );
   }

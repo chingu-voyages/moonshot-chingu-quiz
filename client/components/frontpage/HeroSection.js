@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 const Wrapper = styled.div`
-  background: ${props => props.theme.colors.grey};
+  background: ${props => props.theme.colors.backgroundPrimary};
   padding: 45px 25px 65px;
 
   @media (min-width: ${breakpoint("lg")}) {
@@ -23,7 +23,7 @@ const Headline = styled.h1`
   font-weight: 700;
   letter-spacing: 0.5px;
   text-align: center;
-  color: ${props => props.theme.colors.midGreen};
+  color: ${props => props.theme.colors.greenPrimary};
   margin-bottom: 32px;
 
   @media (min-width: ${breakpoint("md")}) {
@@ -41,7 +41,7 @@ const Subtitle = styled.p`
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.textPrimary};
   padding: 0 40px;
 
   @media (min-width: ${breakpoint("lg")}) {
@@ -60,7 +60,7 @@ const ButtonsWrapper = styled.div`
 
 const Button = styled.button`
   background: transparent;
-  border: 1px solid #18e28c;
+  border: 1px solid ${props => props.theme.colors.greenPrimary};
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -75,15 +75,15 @@ const Button = styled.button`
   ${props =>
     props.light &&
     css`
-      background: ${props.theme.colors.midGreen};
-      color: ${props.theme.colors.grey};
+      background: ${props.theme.colors.greenPrimary};
+      color: ${props.theme.colors.backgroundPrimary};
     `}
 
   ${props =>
     props.dark &&
     css`
-      background: ${props.theme.colors.grey};
-      color: ${props.theme.colors.midGreen};
+      background: ${props.theme.colors.backgroundPrimary};
+      color: ${props.theme.colors.greenPrimary};
     `}
 `;
 
