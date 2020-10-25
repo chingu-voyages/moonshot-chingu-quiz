@@ -3,10 +3,10 @@
 */
 
 import React, { useState, useEffect } from "react";
-// import useSWR from 'swr';//  <-- uncomment when DB is ready
-// import apiRoutes from '../api-routes';//  <-- uncomment when DB is ready
+// import useSWR from "swr"; <-- uncomment when DB is ready
+// import apiRoutes from "../api-routes"; <-- uncomment when DB is ready
 import { dummyData } from "./dummy-quiz-data";
-// import DisplayMessage from '../components/shared/DisplayMessage';//  <-- uncomment when DB is ready
+// import DisplayMessage from "../components/shared/DisplayMessage"; <-- uncomment when DB is ready
 import Header from "../components/header/Header";
 import QuizTile from "../components/quizSelection/QuizTile";
 import TopicSelection from "../components/quizSelection/TopicSelection";
