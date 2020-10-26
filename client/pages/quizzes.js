@@ -9,8 +9,8 @@ import { dummyData } from "./dummy-quiz-data";
 // import DisplayMessage from "../components/shared/DisplayMessage"; <-- uncomment when DB is ready
 import QuizTile from "../components/quizSelection/QuizTile";
 import TopicSelection from "../components/quizSelection/TopicSelection";
-import { QuizzesHeader, TileSection } from "../components/quizSelection/styles";
-import { PageHeader } from "../components/shared/styles";
+import { TileSection } from "../components/quizSelection/styles";
+import PageHeader from "../components/shared/PageHeader";
 
 export default function Quizzes() {
   // ** Using dummy data until DB is ready, leave commented out until then
@@ -97,9 +97,7 @@ export default function Quizzes() {
 
   return (
     <>
-      <QuizzesHeader>
-        <PageHeader>Quizzes</PageHeader>
-      </QuizzesHeader>
+      <PageHeader>Quizzes</PageHeader>
       <TopicSelection
         subjectsAndTopics={subjectsAndTopics}
         chosenSubject={chosenSubject}

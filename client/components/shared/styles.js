@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 // -- TEXT ELEMENTS -- //
 
@@ -13,8 +14,12 @@ export const HugeText = styled.h2`
 export const Heading1 = styled.h1`
   font-style: normal;
   font-weight: bold;
-  font-size: 53px;
-  line-height: 120%;
+  font-size: 35px;
+
+  @media (min-width: ${breakpoint("md")}) {
+    font-size: 53px;
+    line-height: 120%;
+  }
 `;
 
 export const Heading2 = styled.h2`
@@ -79,14 +84,6 @@ export const TextBodyMicroBold = styled.p`
   font-weight: bold;
   font-size: 14px;
   line-height: 150%;
-`;
-
-// -- STYLED TEXT -- //
-
-export const PageHeader = styled(Heading1)`
-  color: ${props => props.theme.colors.greenPrimary};
-  padding: 0;
-  margin: 20px auto;
 `;
 
 // -- Buttons -- //

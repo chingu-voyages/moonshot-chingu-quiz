@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { breakpoint } from "../../frontend-config";
 
 const Article = styled.article`
   display: grid;
@@ -15,7 +16,12 @@ const BigList = styled.ol`
   max-width: 1000px;
   background: ${props => props.theme.colors.light};
   color: ${props => props.theme.colors.grey};
-  margin: 64px 0;
+  padding: 0 10px;
+  margin: 0 0 64px 0;
+
+  @media (min-width: ${breakpoint("md")}) {
+    padding: 0;
+  }
 `;
 
 const BigItem = styled.li`
@@ -86,7 +92,7 @@ const branchOverview = `- master (protected)
 - documentation
 - feature
 -- feature/FEATURE-NAME
---- feature/#<Issue Number>_<little feature title> 
+--- feature/#<Issue Number>_<little feature title>
 --- feature/#<Issue Number>_<little feature title>
 --- feature/#<Issue Number>_<little feature title>
 - bugfix (fixing issues that are not urgent)
@@ -104,7 +110,10 @@ const InfoSection = () => {
     <Article>
       <BigList>
         <BigItem>
-          <ItemTitle>Choose an {issuesLink}</ItemTitle>
+          <ItemTitle>
+            {/* eslint-disable-next-line */}
+            Choose an {issuesLink}
+          </ItemTitle>
           <ItemContent>
             <p>
               To get started, please feel free to start working on any issues we
@@ -122,7 +131,10 @@ const InfoSection = () => {
           <ItemTitle>Get setup</ItemTitle>
           <ItemContent>
             <ol>
-              <li>Fork the {repoLink}</li>
+              <li>
+                {/* eslint-disable-next-line */}
+                Fork the {repoLink}
+              </li>
               <li>Clone your forked repository onto your local machine</li>
               <li>
                 inside your CLI (Command Line Interface), move into your working
@@ -163,6 +175,7 @@ const InfoSection = () => {
             <p>
               Note: It is important to add the #number for the issue the PR is
               resolving in order to close the issue accordingly once the PR gets
+              {/* eslint-disable-next-line */}
               merged. You can read more about this {linkingAPRToIssueLink}
             </p>
           </ItemContent>

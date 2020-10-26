@@ -1,12 +1,12 @@
 import React from "react";
-import Hero from "../components/contributepage/HeroSection";
+import PageHeader from "../components/shared/PageHeader";
 import Info from "../components/contributepage/InfoSection";
 import Resources from "../components/contributepage/ResourcesSection";
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <PageHeader>How To Contribute</PageHeader>
       <Info />
       <Resources />
     </>
