@@ -16,7 +16,7 @@ export default function Quizzes() {
   // ** Using dummy data until DB is ready, leave commented out until then
   // Use SWR hook to fetch quizzes (NextJS suggested way of fetching client side)
   // const fetcher = url => fetch(url).then(res => res.json());
-  // const { data, error } = useSWR(apiRoutes.getAllQuizzes, fetcher);
+  // const {data, error} = useSWR(apiRoutes.getAllQuizzes, fetcher);
 
   const [subjectsAndTopics, setSubjectsAndTopics] = useState([]);
   const [chosenSubject, setChosenSubject] = useState("All");
@@ -107,13 +107,13 @@ export default function Quizzes() {
         chosenTopics={chosenTopics}
         setChosenTopics={setChosenTopics}
       />
-      {
-        // Comment out until DB is ready
-        //  {!!error && <DisplayMessage message="Error loading quizzes" />}
-        // {!error && !data && <DisplayMessage message="... Loading Quizzes" />}
-        // change 'dummyData' to 'data' when DB is ready
+      {/* {
+        !!error && (<DisplayMessage message="Error loading quizzes" />)
       }
-      {!!dummyData && (
+      {
+        !error && !data && (<DisplayMessage message="... Loading Quizzes" />)
+      } */}
+      {!!filteredQuizzes && (
         <TileSection>
           {filteredQuizzes.map((quiz, i) => (
             <QuizTile
