@@ -22,7 +22,7 @@ export default function PageHeader({ children }) {
 
   const PageH1 = styled(Heading1)`
     color: ${props => props.theme.colors.greenPrimary};
-    padding: 0;
+    padding: 0 10px;
     margin: 20px auto;
   `;
 
