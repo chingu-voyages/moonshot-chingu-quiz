@@ -5,6 +5,142 @@ export const dummyData = [
     description: "A quiz covering general JavaScript knowledge.",
     tags: ["javascript"],
     title: "First Quiz",
+    questions: [
+      {
+        prompt:
+          "Which term in JavaScript can be used to describe a declared variable that has not yet been given a value?",
+        answers: [
+          {
+            prompt: "null",
+            id: "1",
+          },
+          {
+            prompt: "undefined",
+            id: "2",
+          },
+          {
+            prompt: "typeError",
+            id: "3",
+          },
+          {
+            prompt: "NaN",
+            id: "4",
+          },
+        ],
+      },
+      {
+        prompt:
+          "Which of the following snippets does not result in a return value of 8?",
+        answers: [
+          {
+            prompt: "8**1",
+            id: "11",
+          },
+          {
+            prompt: "Math.pow(16, .75)",
+            id: "22",
+          },
+          {
+            prompt: "2 * 2 * 'two'",
+            id: "33",
+          },
+          {
+            prompt: "2**+'3'",
+            id: "44",
+          },
+        ],
+      },
+      {
+        prompt:
+          "Which of the following is true about typeof operator in JavaScript?",
+        answers: [
+          {
+            prompt:
+              "The typeof is a unary operator that is placed before its single operand, which can be of any type.",
+            id: "111",
+          },
+          {
+            prompt:
+              "Its value is a string indicating the data type of the operand.",
+            id: "222",
+          },
+          {
+            prompt: "Both of the above.",
+            id: "333",
+          },
+          {
+            prompt: "None of the above.",
+            id: "444",
+          },
+        ],
+      },
+      {
+        prompt:
+          "Which built-in method reverses the order of the elements of an array?",
+        answers: [
+          {
+            prompt: "changeOrder(order)",
+            id: "sdasd",
+          },
+          {
+            prompt: "reverse()",
+            id: "trfagasgue",
+          },
+          {
+            prompt: "sort(order)",
+            id: "fagasgalse",
+          },
+          {
+            prompt: "none of the above",
+            id: "faasxaslse",
+          },
+        ],
+      },
+      {
+        prompt:
+          "Which of the following functions of String object returns a number indicating the Unicode value of the character at the given index?",
+        answers: [
+          {
+            prompt: "charAt()",
+            id: "fafaslse",
+          },
+          {
+            prompt: "charCodeAt()",
+            id: "tfaxsdwarue",
+          },
+          {
+            prompt: "concat()",
+            id: "faarwqraclse",
+          },
+          {
+            prompt: "indexOf()",
+            id: "falgasyse",
+          },
+        ],
+      },
+      {
+        prompt:
+          "Which of the following functions of String object returns the index within the calling String object of the last occurrence of the specified value?",
+        answers: [
+          {
+            prompt: "search()",
+            id: "adsdqwdsfalse",
+          },
+          {
+            prompt: "lastIndexOf()",
+            id: "trugsyfwe",
+          },
+          {
+            prompt: "substr()",
+            id: "falydxcacsse",
+          },
+          {
+            prompt: "indexOf()",
+            id: "falsayxawde",
+          },
+        ],
+      },
+    ],
   },
   {
     id: 1201,

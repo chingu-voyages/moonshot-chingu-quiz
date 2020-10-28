@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "^5.3.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
@@ -15,20 +14,14 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",
-    "prettier": "^2.1.1",
-    "ttab": "^0.7.0"
+    "prettier": "^2.1.1"
   },
   "scripts": {
-    "dev": "concurrently \"npm:client-dev\" \"ttab npm run server-dev\"",
-    "dev-setup": "npm run root-setup && npm run client-setup && npm run server-setup && npm run db-setup && npm run dev",
-    "client-dev": "cd client && npm run dev",
-    "server-dev": "cd server && npm run dev",
+    "dev": "docker-compose up",
+    "dev-setup": "npm run root-setup && npm run dev",
     "root-setup": "npm ci",
-    "client-setup": "cd client && npm ci",
-    "server-setup": "cd server && npm ci",
-    "db-setup": "if [ \"$(docker inspect -f '{{.State.Running}}' quiz_db 2>/dev/null)\" = \"true\" ]; then docker container stop quiz_db; fi && npm run db-build && npm run db-run",
-    "db-build": "docker build -t quiz_db .",
-    "db-run": "docker run --rm -dp 5432:5432 --name quiz_db quiz_db"
+    "reset-db": "docker container rm moonshot-chingu-quiz_db_1 && docker volume rm moonshot-chingu-quiz_quizdata",
+    "dump-db": "docker exec moonshot-chingu-quiz_db_1 pg_dump -U docker docker > quiz_db.sql"
   },
   "husky": {
     "hooks": {
