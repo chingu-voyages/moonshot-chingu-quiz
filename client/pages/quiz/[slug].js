@@ -10,7 +10,7 @@ import { dummyData } from "../dummy-quiz-data";
 // import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
   AnswersTileSection,
-  NextQuestionBtnContainer,
+  QuizQuestionBtnContainer,
   AnswerTileContainerLink,
   ContentWrapper
 } from "../../components/quizSingle/styles";
@@ -18,6 +18,7 @@ import PageHeader from "../../components/shared/PageHeader";
 import QuestionHeader from "../../components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
 import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn from "../../components/quizSingle/SubmitQuizBtn";
 
 export default function Quiz() {
   const router = useRouter();
@@ -150,7 +151,7 @@ export default function Quiz() {
           </AnswersTileSection>
           {currentQuestionIndex < allQuestionsCount - 1 && (
             <ContentWrapper>
-              <NextQuestionBtnContainer>
+              <QuizQuestionBtnContainer>
                 <a
                   tabIndex={0}
                   role="link"
@@ -159,7 +160,21 @@ export default function Quiz() {
                 >
                   <NextQuestionBtn />
                 </a>
-              </NextQuestionBtnContainer>
+              </QuizQuestionBtnContainer>
+            </ContentWrapper>
+          )}
+          {currentQuestionIndex >= allQuestionsCount - 1 && (
+            <ContentWrapper>
+              <QuizQuestionBtnContainer>
+                <a
+                  tabIndex={0}
+                  role="link"
+                  onClick={nextQuestion}
+                  onKeyDown={nextQuestion}
+                >
+                  <SubmitQuizBtn />
+                </a>
+              </QuizQuestionBtnContainer>
             </ContentWrapper>
           )}
         </span>

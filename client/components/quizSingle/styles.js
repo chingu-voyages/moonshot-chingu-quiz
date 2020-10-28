@@ -153,7 +153,7 @@ export const AnswerTileTextStyled = styled.div`
   width: 80%;
 `;
 
-export const NextQuestionBtnContainer = styled.div`
+export const QuizQuestionBtnContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -171,4 +171,10 @@ export const ContentWrapper = styled.div`
   max-width: calc(100% - 70px);
   margin: 0 auto;
   color: ${props => props.theme.colors.light};
+`;
+
+export const SubmitBtnStyled = styled(PrimaryButton)`
+  width: 255px;
+  margin: 40px auto;
+  border: ${props => props.theme.colors.darkGreen} 5px solid;
 `;
