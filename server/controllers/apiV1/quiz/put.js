@@ -55,7 +55,7 @@ module.exports = async (req, res) => {
       })
     );
 
-    if (verifySubject.includes(undefined)) {
+    if (verifySubject.length < 1 || verifySubject.includes(undefined)) {
       return res.status(400).json({
         message: `${
           subject[verifySubject.indexOf(undefined)]
@@ -70,7 +70,7 @@ module.exports = async (req, res) => {
       })
     );
 
-    if (verifyTag.includes(undefined)) {
+    if (verifyTag.length < 1 || verifyTag.includes(undefined)) {
       return res.status(400).json({
         message: `${tag[verifyTag.indexOf(undefined)]} is not a valid tag id`,
       });
