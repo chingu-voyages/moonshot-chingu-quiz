@@ -20,7 +20,9 @@ export const TileSection = styled.section`
   }
 `;
 
-export const TileContainer = styled.div`
+export const TileContainer = styled.div<{
+  animationDelay: number | string
+}>`
   opacity: 0;
   display: flex;
   flex-flow: column nowrap;

@@ -58,7 +58,10 @@ const ButtonsWrapper = styled.div`
   margin-top: 40px;
 `;
 
-const Button = styled.button`
+const Button = styled.button<{
+  light?: boolean
+  dark?: boolean
+}>`
   background: transparent;
   border: 1px solid ${props => props.theme.colors.greenPrimary};
   border-radius: 5px;

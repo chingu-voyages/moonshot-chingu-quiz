@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{
+  withShadow?: boolean;
+}>`
   height: 88px;
   width: 100%;
   background: ${props => props.theme.colors.backgroundMenu};
@@ -84,7 +86,9 @@ export const NavbarToggleSwitch = styled.label`
   margin-right: 4px;
 `;
 
-export const ToggleSwitchSlider = styled.span`
+export const ToggleSwitchSlider = styled.span<{
+  isDarkTheme?: boolean;
+}>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -116,7 +120,9 @@ export const ToggleSwitchSlider = styled.span`
 `;
 
 // MOBILE MENU //
-export const MobileMenuPageOverlay = styled.div`
+export const MobileMenuPageOverlay = styled.div<{
+  active?: boolean;
+}>`
   position: fixed;
   top: 0;
   left: 0;
@@ -162,7 +168,9 @@ export const MobileMenuButton = styled.div`
   }
 `;
 
-export const MobileMenuWrapper = styled.div`
+export const MobileMenuWrapper = styled.div<{
+  active?: boolean;
+}>`
   position: fixed;
   top: 88px;
   right: 0;

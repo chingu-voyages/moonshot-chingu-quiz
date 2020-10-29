@@ -12,7 +12,18 @@ import {
   ToggleSwitchSlider,
 } from "./styles";
 
-const MobileMenu = ({ active, toggleMobileMenu, toggleTheme, isDarkTheme }) => {
+interface MobileMenuProps {
+  active: boolean;
+  toggleMobileMenu(): void;
+  toggleTheme(): void;
+  isDarkTheme: boolean;
+}
+const MobileMenu = ({
+  active,
+  toggleMobileMenu,
+  toggleTheme,
+  isDarkTheme,
+}: MobileMenuProps) => {
   return (
     <>
       <MobileMenuPageOverlay active={active} onClick={toggleMobileMenu} />

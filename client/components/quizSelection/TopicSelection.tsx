@@ -1,15 +1,24 @@
 import React from "react";
 import TopicSelectionChoice from "./TopicSelectionChoice";
 import { TopicSelectionContainer, TopicSelectionList } from "./styles";
+import type { ChinguQuiz, UI } from '~/models'
 
+interface TopicSelectionProps {
+  subjectsAndTopics: UI.Quizzes.SubjectAndTopic[]
+  chosenSubject: string
+  setChosenSubject(subject: string): void
+  chosenTopics: string[]
+  setChosenTopics: React.Dispatch<React.SetStateAction<string[]>>
+}
 export default function TopicSelection({
   subjectsAndTopics,
   chosenSubject,
   setChosenSubject,
   chosenTopics,
   setChosenTopics,
-}) {
-  const toggleTopics = topic => {
+}: TopicSelectionProps) {
+
+  const toggleTopics = (topic: string) => {
     if (chosenTopics.includes(topic)) {
       setChosenTopics(topics => topics.filter(t => t !== topic));
     } else {
@@ -17,7 +26,7 @@ export default function TopicSelection({
     }
   };
 
-  const handlePrimaryButtonClick = newSubject => {
+  const handlePrimaryButtonClick = (newSubject: string) => {
     setChosenSubject(newSubject);
     setChosenTopics([]);
   };

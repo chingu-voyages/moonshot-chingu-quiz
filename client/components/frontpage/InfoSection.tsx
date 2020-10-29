@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { breakpoint } from "../../frontend-config";
+import { breakpoint } from "~/frontend-config";
 import { PuzzleIcon, GrowSkillsIcon, OpenSourceIcon } from "../shared/icons";
 
 const Wrapper = styled.div`

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import { breakpoint } from "../../frontend-config";
+import { breakpoint } from "~/frontend-config";
 import { Heading2, TextBody } from "../shared/styles";
 
 
@@ -75,7 +75,10 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-const Button = styled.button`
+const Button = styled.button<{
+  light?: boolean
+  dark?: boolean
+}>`
   background: transparent;
   border: 1px solid ${props => props.theme.colors.greenPrimary};
   border-radius: 5px;

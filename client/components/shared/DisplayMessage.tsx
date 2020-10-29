@@ -1,7 +1,10 @@
 import React from "react";
 import { FullWidthContainer, MessageContainer, Heading3 } from "./styles";
 
-export default function DisplayMessage({ message }) {
+interface DisplayMessageProps {
+  message: string;
+}
+export default function DisplayMessage({ message }: DisplayMessageProps) {
   return (
     <FullWidthContainer>
       <MessageContainer>

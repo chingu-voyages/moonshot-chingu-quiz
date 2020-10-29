@@ -5,12 +5,13 @@
 import React, { useState, useEffect } from "react";
 // import useSWR from "swr"; <-- uncomment when DB is ready
 // import apiRoutes from "../api-routes"; <-- uncomment when DB is ready
-import { dummyData } from "./dummy-quiz-data";
+import { dummyData } from "~/data/dummy-quiz-data";
 // import DisplayMessage from "../components/shared/DisplayMessage"; <-- uncomment when DB is ready
 import QuizTile from "../components/quizSelection/QuizTile";
 import TopicSelection from "../components/quizSelection/TopicSelection";
 import { TileSection } from "../components/quizSelection/styles";
 import PageHeader from "../components/shared/PageHeader";
+import type { ChinguQuiz, UI } from "~/models";
 
 export default function Quizzes() {
   // ** Using dummy data until DB is ready, leave commented out until then
@@ -18,13 +19,17 @@ export default function Quizzes() {
   // const fetcher = url => fetch(url).then(res => res.json());
   // const {data, error} = useSWR(apiRoutes.getAllQuizzes, fetcher);
 
-  const [subjectsAndTopics, setSubjectsAndTopics] = useState([]);
-  const [chosenSubject, setChosenSubject] = useState("All");
-  const [chosenTopics, setChosenTopics] = useState([]);
-  const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
-  const [filteredQuizzes, setFilteredQuizzes] = useState([]);
+  const [subjectsAndTopics, setSubjectsAndTopics] = useState<
+    UI.Quizzes.SubjectAndTopic[]
+  >([]);
+  const [chosenSubject, setChosenSubject] = useState<string>("All");
+  const [chosenTopics, setChosenTopics] = useState<string[]>([]);
+  const [allSubjectQuizzes, setAllSubjectQuizzes] = useState<ChinguQuiz.Quiz[]>(
+    []
+  );
+  const [filteredQuizzes, setFilteredQuizzes] = useState<ChinguQuiz.Quiz[]>([]);
 
-  const subjectFilterCallback = quizTagArray => {
+  const subjectFilterCallback = (quizTagArray: string[]) => {
     let totalMatches = 0;
     for (let i = 0; i < quizTagArray.length; i += 1) {
       if (chosenTopics.indexOf(quizTagArray[i]) >= 0) {

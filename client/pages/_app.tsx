@@ -5,9 +5,10 @@
 
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import Layout from "../components/layout/Layout";
-import "../styles/reset.css";
-import "../styles/globals.css";
+import Layout from "~/components/layout/Layout";
+import "~/styles/reset.css";
+import "~/styles/globals.css";
+import type { AppProps } from 'next/app'
 
 const darkTheme = {
   colors: {
@@ -43,7 +44,7 @@ const lightTheme = {
   },
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
 

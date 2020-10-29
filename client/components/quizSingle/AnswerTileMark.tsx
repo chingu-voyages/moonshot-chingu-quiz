@@ -1,6 +1,9 @@
 import React from "react";
 import { AnswerTileMarkStyled } from "./styles";
 
-export default function AnswerTileText({ mark }) {
+export interface AnswerTileTextProps {
+  mark: string;
+}
+export default function AnswerTileText({ mark }: AnswerTileTextProps) {
   return <AnswerTileMarkStyled>{mark}</AnswerTileMarkStyled>;
 }

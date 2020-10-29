@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 import { PrimaryButton, riseUp } from "../shared/styles";
 
-export const QuestionHeaderContainer = styled.section`
+export const QuestionHeaderContainer = styled.section<{
+  animationDelay: number;
+}>`
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -39,7 +41,9 @@ export const QuestionProgressBar = styled.div`
   }
 `;
 
-export const QuestionProgressBarFiller = styled.div`
+export const QuestionProgressBarFiller = styled.div<{
+  completion: number;
+}>`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -93,7 +97,10 @@ export const AnswerTileContainerLink = styled.a`
   width: 100%;
 `;
 
-export const AnswerTileContainerStyled = styled.div`
+export const AnswerTileContainerStyled = styled.div<{
+  animationDelay?: string;
+  selected?: boolean;
+}>`
   position: relative;
   display: flex;
   flex-flow: column nowrap;

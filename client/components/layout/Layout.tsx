@@ -6,7 +6,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "./Footer";
-import { breakpointsRaw } from "../../frontend-config";
+import { breakpointsRaw } from "~/frontend-config";
 
 import MobileMenu from "./MobileMenu";
 
@@ -27,8 +27,18 @@ const Main = styled.main`
   min-height: calc(100vh - 66px); // Push footer to bottom when needed
 `;
 
-export default class Layout extends React.Component {
-  constructor(props) {
+interface LayoutProps {
+  toggleTheme(): void;
+  isDarkTheme: boolean;
+}
+interface LayoutState {
+  mobile: boolean;
+  headerShadow: boolean;
+  mobileMenuActive: boolean;
+}
+
+export default class Layout extends React.Component<LayoutProps, LayoutState> {
+  constructor(props: LayoutProps) {
     super(props);
 
     this.state = {
