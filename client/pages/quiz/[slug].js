@@ -9,17 +9,15 @@ import { useRouter } from "next/router";
 import { dummyData } from "../dummy-quiz-data";
 // import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
-  QuizHeader,
   AnswersTileSection,
   NextQuestionBtnContainer,
   AnswerTileContainerLink,
+  ContentWrapper
 } from "../../components/quizSingle/styles";
-import { PageHeader } from "../../components/shared/styles";
-import Header from "../../components/header/Header";
+import PageHeader from "../../components/shared/PageHeader";
 import QuestionHeader from "../../components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
 import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
-import { ContentWrapper } from "../../components/footer/styles";
 
 export default function Quiz() {
   const router = useRouter();
@@ -121,9 +119,7 @@ export default function Quiz() {
 
   return (
     <>
-      <QuizHeader>
-        <PageHeader>{chosenQuiz.title}</PageHeader>
-      </QuizHeader>
+      <PageHeader>{chosenQuiz.title}</PageHeader>
       {/* {
         !!error && (<DisplayMessage message="Error loading quiz" />)
       }
@@ -171,6 +167,3 @@ export default function Quiz() {
     </>
   );
 }
-
-// Tells NextJS this page should use the Header setup in '_app'
-Quiz.Header = Header;

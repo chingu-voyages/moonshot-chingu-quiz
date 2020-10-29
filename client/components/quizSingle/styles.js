@@ -2,16 +2,6 @@ import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 import { PrimaryButton, riseUp } from "../shared/styles";
 
-export const QuizHeader = styled.section`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  background: ${props => props.theme.colors.grey};
-`;
-
 export const QuestionHeaderContainer = styled.section`
   display: flex;
   flex-flow: column;
@@ -174,4 +164,11 @@ export const NextQuestionBtnStyled = styled(PrimaryButton)`
   width: 255px;
   margin: 40px auto;
   border: ${props => props.theme.colors.darkGreen} 5px solid;
+`;
+
+export const ContentWrapper = styled.div`
+  width: ${breakpoint("maxWidth")};
+  max-width: calc(100% - 70px);
+  margin: 0 auto;
+  color: ${props => props.theme.colors.light};
 `;
