@@ -155,8 +155,8 @@ export const AnswerTileTextStyled = styled.div`
 
 export const QuizQuestionBtnContainer = styled.div`
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
