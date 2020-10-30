@@ -16,3 +16,11 @@ exports.selectById = async ({ id }) => {
   const { rows } = await db.query("SELECT * FROM quiz WHERE id = $1", [id]);
   return rows;
 };
+
+exports.selectBySubjectId = async ({ id }) => {
+  const { rows } = await db.query(
+    "SELECT * FROM quiz where $1 = ANY(subject)",
+    [id]
+  );
+  return rows;
+};
