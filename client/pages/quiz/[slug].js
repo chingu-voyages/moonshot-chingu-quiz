@@ -12,7 +12,7 @@ import {
   AnswersTileSection,
   NextQuestionBtnContainer,
   AnswerTileContainerLink,
-  ContentWrapper
+  ContentWrapper,
 } from "../../components/quizSingle/styles";
 import PageHeader from "../../components/shared/PageHeader";
 import QuestionHeader from "../../components/quizSingle/QuestionHeader";
