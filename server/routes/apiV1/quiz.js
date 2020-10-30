@@ -4,6 +4,7 @@ const {
   getById,
   post,
   getRandomQuizzes,
+  getBySubjectId: getQuizBySubjectId,
 } = require("../../controllers/apiV1/quiz");
 const {
   getByQuizId: getQuestionByQuizId,
@@ -18,6 +19,7 @@ const router = express.Router();
 
 router.get("/", get);
 router.get("/random/:num", getRandomQuizzes);
+router.get("/subject/:id", getQuizBySubjectId);
 router.get("/:id", getById);
 router.get("/:id/question", getQuestionByQuizId);
 router.get("/:id/question/:questionId/answer", getAnswerByQuestionId);
