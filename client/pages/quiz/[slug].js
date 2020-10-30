@@ -10,14 +10,16 @@ import { dummyData } from "../dummy-quiz-data";
 // import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
   AnswersTileSection,
-  NextQuestionBtnContainer,
+  QuizQuestionBtnContainer,
   AnswerTileContainerLink,
-  ContentWrapper
+  ContentWrapper,
 } from "../../components/quizSingle/styles";
 import PageHeader from "../../components/shared/PageHeader";
 import QuestionHeader from "../../components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
 import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn from "../../components/quizSingle/SubmitQuizBtn";
+import PreviousQuizBtn from "../../components/quizSingle/PreviousQuizBtn";
 
 export default function Quiz() {
   const router = useRouter();
@@ -117,6 +119,10 @@ export default function Quiz() {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
+  const previousQuestion = () => {
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+  };
+
   return (
     <>
       <PageHeader>{chosenQuiz.title}</PageHeader>
@@ -148,9 +154,9 @@ export default function Quiz() {
               </AnswerTileContainerLink>
             ))}
           </AnswersTileSection>
-          {currentQuestionIndex < allQuestionsCount - 1 && (
+          {currentQuestionIndex === 0 && (
             <ContentWrapper>
-              <NextQuestionBtnContainer>
+              <QuizQuestionBtnContainer>
                 <a
                   tabIndex={0}
                   role="link"
@@ -159,7 +165,52 @@ export default function Quiz() {
                 >
                   <NextQuestionBtn />
                 </a>
-              </NextQuestionBtnContainer>
+              </QuizQuestionBtnContainer>
+            </ContentWrapper>
+          )}
+          {currentQuestionIndex > 0 &&
+            currentQuestionIndex < allQuestionsCount - 1 && (
+              <ContentWrapper>
+                <QuizQuestionBtnContainer>
+                  <a
+                    tabIndex={0}
+                    role="link"
+                    onClick={previousQuestion}
+                    onKeyDown={previousQuestion}
+                  >
+                    <PreviousQuizBtn />
+                  </a>
+                  <a
+                    tabIndex={0}
+                    role="link"
+                    onClick={nextQuestion}
+                    onKeyDown={nextQuestion}
+                  >
+                    <NextQuestionBtn />
+                  </a>
+                </QuizQuestionBtnContainer>
+              </ContentWrapper>
+            )}
+          {currentQuestionIndex === allQuestionsCount - 1 && (
+            <ContentWrapper>
+              <QuizQuestionBtnContainer>
+                <a
+                  tabIndex={0}
+                  role="link"
+                  onClick={previousQuestion}
+                  onKeyDown={previousQuestion}
+                >
+                  <PreviousQuizBtn />
+                </a>
+                <a
+                  tabIndex={0}
+                  role="link"
+                  onClick={nextQuestion}
+                  onKeyDown={nextQuestion}
+                >
+                  <SubmitQuizBtn />
+                </a>
+              </QuizQuestionBtnContainer>
             </ContentWrapper>
           )}
         </span>

@@ -153,14 +153,14 @@ export const AnswerTileTextStyled = styled.div`
   width: 80%;
 `;
 
-export const NextQuestionBtnContainer = styled.div`
+export const QuizQuestionBtnContainer = styled.div`
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
-export const NextQuestionBtnStyled = styled(PrimaryButton)`
+export const QuizQuestionBtnStyled = styled(PrimaryButton)`
   width: 255px;
   margin: 40px auto;
   border: ${props => props.theme.colors.darkGreen} 5px solid;

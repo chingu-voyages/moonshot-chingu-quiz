@@ -2,10 +2,10 @@ import React from "react";
 import { Heading4 } from "../shared/styles";
 import { QuizQuestionBtnStyled } from "./styles";
 
-export default function NextQuestionBtn() {
+export default function SubmitQuizBtn() {
   return (
     <QuizQuestionBtnStyled>
-      <Heading4>NEXT</Heading4>
+      <Heading4>SUBMIT</Heading4>
     </QuizQuestionBtnStyled>
   );
 }
