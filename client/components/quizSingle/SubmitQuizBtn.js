@@ -1,11 +1,11 @@
 import React from "react";
 import { Heading4 } from "../shared/styles";
-import { SubmitBtnStyled } from "./styles";
+import { QuizQuestionBtnStyled } from "./styles";
 
 export default function SubmitQuizBtn() {
   return (
-    <SubmitBtnStyled>
+    <QuizQuestionBtnStyled>
       <Heading4>SUBMIT</Heading4>
-    </SubmitBtnStyled>
+    </QuizQuestionBtnStyled>
   );
 }

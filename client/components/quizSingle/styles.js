@@ -160,7 +160,7 @@ export const QuizQuestionBtnContainer = styled.div`
   align-items: center;
 `;
 
-export const NextQuestionBtnStyled = styled(PrimaryButton)`
+export const QuizQuestionBtnStyled = styled(PrimaryButton)`
   width: 255px;
   margin: 40px auto;
   border: ${props => props.theme.colors.darkGreen} 5px solid;
@@ -171,10 +171,4 @@ export const ContentWrapper = styled.div`
   max-width: calc(100% - 70px);
   margin: 0 auto;
   color: ${props => props.theme.colors.light};
-`;
-
-export const SubmitBtnStyled = styled(PrimaryButton)`
-  width: 255px;
-  margin: 40px auto;
-  border: ${props => props.theme.colors.darkGreen} 5px solid;
 `;
