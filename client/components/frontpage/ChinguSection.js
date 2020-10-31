@@ -57,8 +57,7 @@ const ImageSection = styled.div`
 `;
 
 export const Logo = styled.img`
-  position: absolute;
-  top: 60px;
+  position: relative;
   right: 80px;
 `;
 
@@ -107,7 +106,6 @@ const ChinguSection = () => {
       <ContentWrapper>
         <ImageSection>
           <Logo src="/home-chingu-image.png" />
-          <img src="./home-chingu.svg" alt="next" />
         </ImageSection>
         <ContentSection>
           <Heading2>What is Chingu?</Heading2>
