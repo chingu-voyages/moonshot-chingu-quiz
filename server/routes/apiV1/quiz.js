@@ -3,6 +3,7 @@ const {
   get,
   getById,
   post,
+  put,
   getRandomQuizzes,
 } = require("../../controllers/apiV1/quiz");
 const {
@@ -24,5 +25,6 @@ router.get("/:id/question/:questionId/answer", getAnswerByQuestionId);
 router.post("/", post);
 router.post("/:id/question", postQuestion);
 router.post("/:id/question/:questionId/answer", postAnswer);
+router.put("/:id", put);
 
 module.exports = router;
