@@ -56,10 +56,13 @@ const ImageSection = styled.div`
   }
 `;
 
-export const Logo = styled.img`
-  position: absolute;
-  top: 60px;
+export const ChinguImage = styled.img`
+  position: relative;
   right: 80px;
+
+  @media (min-width: ${breakpoint("xl")}) {
+    padding-left: 70px;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -106,8 +109,7 @@ const ChinguSection = () => {
     <Wrapper>
       <ContentWrapper>
         <ImageSection>
-          <Logo src="/home-chingu-image.png" />
-          <img src="./home-chingu.svg" alt="next" />
+          <ChinguImage src="/home-chingu-image.png" />
         </ImageSection>
         <ContentSection>
           <Heading2>What is Chingu?</Heading2>
