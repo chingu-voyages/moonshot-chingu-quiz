@@ -31,7 +31,7 @@ export default function Quiz() {
   const [allQuestionsCount, setAllQuestionsCount] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
-  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
 
   // Set current quiz from dummyData until DB is ready
   useEffect(() => {
@@ -67,43 +67,12 @@ export default function Quiz() {
     }
   }, [currentQuestion]);
 
-  const toggleSelectedAnswer = answer => {
-    // Temporarily save the clicked node
-    let node = answer.target;
-
-    // Find the main answer container
-    while (node.classList.toString().indexOf("Container") < 0) {
-      node = node.parentNode;
-    }
-
-    const clickedAnswerMark = node.firstChild.innerText;
-    let clickedAnswer = null;
-    // Find the clicked answer object by its mark
-    currentQuestionAnswers.forEach((_answer, index) => {
-      const mark = String.fromCharCode("A".charCodeAt(0) + index);
-      if (mark === clickedAnswerMark) clickedAnswer = _answer;
-    });
-
-    // Clone state object
-    const selectedAnswersTmp = { ...selectedAnswers };
-
-    // Get selected answer array
-    const selectedAnswersArray = selectedAnswersTmp[currentQuestionIndex];
-
-    // Set / remove answer
-    if (!selectedAnswersArray) {
-      selectedAnswersTmp[currentQuestionIndex] = [clickedAnswer.id];
-    } else if (selectedAnswersArray.find(id => id === clickedAnswer.id)) {
-      selectedAnswersTmp[currentQuestionIndex].splice(
-        selectedAnswersArray.indexOf(clickedAnswer.id),
-        1
-      );
+  const toggleSelectedAnswer = id => {
+    if (selectedAnswers.includes(id)) {
+      setSelectedAnswers(selected => selected.filter(s => s !== id));
     } else {
-      selectedAnswersArray.push(clickedAnswer.id);
+      setSelectedAnswers(selected => [...selected, id]);
     }
-
-    // Save state
-    setSelectedAnswers(selectedAnswersTmp);
   };
 
   const nextQuestion = () => {
@@ -133,14 +102,17 @@ export default function Quiz() {
           />
 
           <AnswersTileSection>
-            {currentQuestionAnswers.map((answer, i) => (
-              <AnswerTileContainerLink onClick={toggleSelectedAnswer}>
+            {currentQuestionAnswers.map((answer, index) => (
+              <AnswerTileContainerLink
+                key={answer.id}
+                onClick={() => {
+                  toggleSelectedAnswer(answer.id);
+                }}
+              >
                 <AnswerTileContainer
-                  mark={String.fromCharCode("A".charCodeAt(0) + i)}
+                  mark={["A", "B", "C", "D"][index]}
+                  selected={selectedAnswers.includes(answer.id)}
                   answerData={answer}
-                  selected={Object.values(selectedAnswers).some(v => {
-                    return v.find(id => id === answer.id);
-                  })}
                 />
               </AnswerTileContainerLink>
             ))}
