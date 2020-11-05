@@ -26,7 +26,6 @@ export default function Quiz() {
 
   // const fetcher = url => fetch(url).then(res => res.json());// <-- uncomment when DB is ready
   // const {data, error} = useSWR(apiRoutes.getAllQuizzes, fetcher);// <-- uncomment when DB is ready
-  const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
   const [chosenQuiz, setChosenQuiz] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [allQuestionsCount, setAllQuestionsCount] = useState(0);
@@ -34,17 +33,16 @@ export default function Quiz() {
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
 
-  // When id is selected and quizzes are loaded,
-  // find quiz by id and save it to state
+  // Set current quiz from dummyData until DB is ready
   useEffect(() => {
     if (router.query.slug) {
-      const filtered = allSubjectQuizzes.filter(quiz => {
-        return String(quiz.id) === String(router.query.slug);
-      });
-      const filteredQuiz = filtered.length ? filtered[0] : {};
-      setChosenQuiz(filteredQuiz);
+      setChosenQuiz(
+        dummyData.filter(quiz => {
+          return String(quiz.id) === String(router.query.slug);
+        })[0]
+      );
     }
-  }, [router.query.slug, allSubjectQuizzes]);
+  }, [router.query.slug]);
 
   // ** Uncomment when DB is ready
   // Set data returned from SWR in state
@@ -53,13 +51,6 @@ export default function Quiz() {
   //     setAllSubjectQuizzes(data);
   //   }
   // }, [data]);
-
-  // Set Dummy Data into state until DB is ready
-  useEffect(() => {
-    if (dummyData) {
-      setAllSubjectQuizzes(dummyData);
-    }
-  }, [dummyData]);
 
   // Set current quiz question to state
   useEffect(() => {
