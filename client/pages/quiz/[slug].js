@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 // import useSWR from 'swr';// <-- uncomment when DB is ready
 import { useRouter } from "next/router";
 // import apiRoutes from '../../api-routes';// <-- uncomment when DB is ready
-import { dummyData } from "../dummy-quiz-data";
+import { dummyData } from "~/data/dummy-quiz-data";
 // import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
   AnswersTileSection,
