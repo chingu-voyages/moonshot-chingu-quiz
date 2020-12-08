@@ -4,7 +4,7 @@ import { PrimaryButton, riseUp } from "../shared/styles";
 
 export const TileSection = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
   grid-gap: 20px;
   justify-content: space-evenly;
   justify-items: start;
@@ -21,7 +21,7 @@ export const TileSection = styled.section`
 `;
 
 export const TileContainer = styled.div<{
-  animationDelay: number | string
+  animationDelay: number | string;
 }>`
   opacity: 0;
   display: flex;
