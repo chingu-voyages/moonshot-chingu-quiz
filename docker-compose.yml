@@ -12,23 +12,6 @@ services:
       - "3000:3000"
     command: bash -c "npm ci && npm run dev"
 
-  api:
-    image: node:14
-    restart: always
-    user: node
-    working_dir: /home/node/app
-    volumes:
-      - ./server:/home/node/app
-    ports:
-      - "5000:5000"
-    command: bash -c "ci && npm run dev"
-    environment:
-      PGUSER: docker
-      PGHOST: db
-      PGDATABASE: docker
-      PGPASSWORD: docker
-      PGPORT: 5432
-
   db:
     image: postgres
     restart: always
