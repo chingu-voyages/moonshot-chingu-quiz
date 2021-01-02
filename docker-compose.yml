@@ -10,7 +10,7 @@ services:
       - ./client:/home/node/app
     ports:
       - "3000:3000"
-    command: bash -c "npm i && npm run dev"
+    command: bash -c "npm ci && npm run dev"
 
   api:
     image: node:14
@@ -21,7 +21,7 @@ services:
       - ./server:/home/node/app
     ports:
       - "5000:5000"
-    command: bash -c "npm i && npm run dev"
+    command: bash -c "ci && npm run dev"
     environment:
       PGUSER: docker
       PGHOST: db
