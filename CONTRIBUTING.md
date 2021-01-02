@@ -23,6 +23,14 @@ In addition to everything written in here, there is a [Collaborator Guide](https
 3. Inside your CLI (Command Line Interface), move into your working directory
 4. RUN `npm run dev-setup` to install project-wide development dependencies. Afterwards this command will start up the docker development containers for the client, api and database. This step may take serveral minutes.
 
+### Installing packages
+Note: Initial setup will _not_ require npm i or npm ci, as it is done in the `npm run dev-setup` script.
+
+Note: PR's containing commits that _only_ updates package-lock.json files will not be accepted.
+
+* For installing or updating packages, use "npm i" or "npm install".
+* For reinstalling node_modules, run "npm ci". This ensures that the package-lock.json remains unchanged.
+
 ### How to Contribute
 
 1. Create a branch for your feature (see [below](#feature-branch-example) for an example)
