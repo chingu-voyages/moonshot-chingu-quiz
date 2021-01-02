@@ -141,7 +141,7 @@ const InfoSection = () => {
                 directory
               </li>
               <li>
-                run `npm i` inside the root, client *and* server folder to
+                run `npm ci` inside the root, client *and* server folder to
                 install all dependencies needed for this project
               </li>
               <li>
