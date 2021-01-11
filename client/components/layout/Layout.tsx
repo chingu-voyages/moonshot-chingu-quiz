@@ -1,7 +1,7 @@
 /*
   This component is used in `/pages/_app.js` as a wrapper so it will remain mounted even when the 'page' changes
 */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
@@ -28,132 +28,103 @@ const Main = styled.main`
 `;
 
 interface LayoutProps {
+  children: any;
   toggleTheme(): void;
   isDarkTheme: boolean;
 }
-interface LayoutState {
-  mobile: boolean;
-  headerShadow: boolean;
-  mobileMenuActive: boolean;
-}
 
-export default class Layout extends React.Component<LayoutProps, LayoutState> {
-  constructor(props: LayoutProps) {
-    super(props);
+const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
+  const [mobile, setMobile] = useState(false);
+  const [headerShadow, setHeaderShadow] = useState(false);
+  const [mobileMenuActive, setMobileMenuActive] = useState(false);
 
-    this.state = {
-      mobile: false,
-      headerShadow: false,
-      mobileMenuActive: false,
+  useEffect(() => {
+    // mount
+    checkPageSize();
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", checkPageSize);
+
+    // unmount
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", checkPageSize);
     };
+  });
 
-    this.onScroll = this.onScroll.bind(this);
-    this.checkPageSize = this.checkPageSize.bind(this);
-    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-  }
-
-  componentDidMount() {
-    this.checkPageSize();
-    window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("resize", this.checkPageSize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll);
-    window.removeEventListener("resize", this.checkPageSize);
-  }
-
-  onScroll() {
-    const { mobile, headerShadow } = this.state;
-
+  const onScroll = () => {
     const distanceFromTop = window.scrollY;
 
     if (headerShadow && distanceFromTop === 0 && !mobile) {
-      this.setState({
-        headerShadow: false,
-      });
+      setHeaderShadow(false);
     } else if (!headerShadow && distanceFromTop > 0) {
-      this.setState({
-        headerShadow: true,
-      });
+      setHeaderShadow(true);
     }
-  }
+  };
 
-  checkPageSize() {
-    const { mobile } = this.state;
-
+  const checkPageSize = () => {
     if (window.innerWidth >= breakpointsRaw("md") && mobile) {
-      this.setState({
-        mobile: false,
-        headerShadow: window.scrollY > 0,
-        mobileMenuActive: false,
-      });
+      setMobile(false);
+      setHeaderShadow(window.scrollY > 0);
+      setMobileMenuActive(false);
     } else if (window.innerWidth < breakpointsRaw("md") && !mobile) {
-      this.setState({
-        mobile: true,
-        headerShadow: true,
-        mobileMenuActive: false,
-      });
+      setMobile(true);
+      setHeaderShadow(true);
+      setMobileMenuActive(false);
     }
-  }
+  };
 
-  toggleMobileMenu() {
-    this.setState(prevState => ({
-      mobileMenuActive: !prevState.mobileMenuActive,
-    }));
-  }
+  const toggleMobileMenu = () => {
+    setMobileMenuActive(!mobileMenuActive);
+  };
 
-  render() {
-    const { children, toggleTheme, isDarkTheme } = this.props;
-    const { mobile, headerShadow, mobileMenuActive } = this.state;
+  return (
+    <div>
+      <Head>
+        <title>Chingu Quiz App</title>
+      </Head>
 
-    return (
-      <div>
-        <Head>
-          <title>Chingu Quiz App</title>
-        </Head>
+      <Wrapper withShadow={headerShadow}>
+        <InnerWrapper>
+          <Link href="/">
+            <LogoWrapper>
+              <Logo src="/logo.png" />
+              <LogoText>Chingu Quiz</LogoText>
+            </LogoWrapper>
+          </Link>
 
-        <Wrapper withShadow={headerShadow}>
-          <InnerWrapper>
-            <Link href="/">
-              <LogoWrapper>
-                <Logo src="/logo.png" />
-                <LogoText>Chingu Quiz</LogoText>
-              </LogoWrapper>
-            </Link>
+          {mobile ? (
+            <MobileMenu
+              active={mobileMenuActive}
+              toggleMobileMenu={toggleMobileMenu}
+              toggleTheme={toggleTheme}
+              isDarkTheme={isDarkTheme}
+            />
+          ) : (
+            <Navbar>
+              <Link href="/quizzes">
+                <NavbarLink>Quiz</NavbarLink>
+              </Link>
 
-            {mobile ? (
-              <MobileMenu
-                active={mobileMenuActive}
-                toggleMobileMenu={this.toggleMobileMenu}
-                toggleTheme={toggleTheme}
-                isDarkTheme={isDarkTheme}
-              />
-            ) : (
-              <Navbar>
-                <Link href="/quizzes">
-                  <NavbarLink>Quiz</NavbarLink>
-                </Link>
+              <Link href="/contribute">
+                <NavbarLink>Contribute</NavbarLink>
+              </Link>
 
-                <Link href="/contribute">
-                  <NavbarLink>Contribute</NavbarLink>
-                </Link>
+              <Link href="/about">
+                <NavbarLink>About Us</NavbarLink>
+              </Link>
 
-                <Link href="/about">
-                  <NavbarLink>About Us</NavbarLink>
-                </Link>
+              <NavbarToggleSwitch onClick={toggleTheme}>
+                <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
+              </NavbarToggleSwitch>
+            </Navbar>
+          )}
+        </InnerWrapper>
+      </Wrapper>
 
-                <NavbarToggleSwitch onClick={toggleTheme}>
-                  <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
-                </NavbarToggleSwitch>
-              </Navbar>
-            )}
-          </InnerWrapper>
-        </Wrapper>
+      <Main>{children}</Main>
+      <Footer />
+    </div>
+  );
+};
 
-        <Main>{children}</Main>
-        <Footer />
-      </div>
-    );
-  }
-}
+export default Layout;
