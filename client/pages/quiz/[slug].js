@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 // import useSWR from 'swr';// <-- uncomment when DB is ready
 import { useRouter } from "next/router";
 // import apiRoutes from '../../api-routes';// <-- uncomment when DB is ready
-import { dummyData } from "../../data/dummy-quiz-data";
+// import { dummyData } from "../../data/dummy-quiz-data";
 // import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
   AnswersTileSection,
@@ -53,11 +53,11 @@ export default function Quiz() {
   // }, [data]);
 
   // Set Dummy Data into state until DB is ready
-  useEffect(() => {
-    if (dummyData) {
-      setAllSubjectQuizzes(dummyData);
-    }
-  }, [dummyData]);
+  // useEffect(() => {
+  //   if (dummyData) {
+  //     setAllSubjectQuizzes(dummyData);
+  //   }
+  // }, [dummyData]);
 
   // Set current quiz question to state
   useEffect(() => {

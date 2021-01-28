@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { Heading4, TextBodySmall, TextBodyMicro } from "../shared/styles";
 import { TileContainer, TileTagContainer, QuizTileTag } from "./styles";
-import type { ChinguQuiz } from '~/models'
+import type { ChinguQuiz } from "~/models";
 
 interface QuizTileProps {
-  quizData: ChinguQuiz.Quiz
-  animationDelay: number | string
+  quizData: ChinguQuiz.Quiz;
+  animationDelay: number | string;
 }
 export default function QuizTile({ quizData, animationDelay }: QuizTileProps) {
   return (
