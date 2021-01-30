@@ -1,14 +1,14 @@
 import React from "react";
 import TopicSelectionChoice from "./TopicSelectionChoice";
 import { TopicSelectionContainer, TopicSelectionList } from "./styles";
-import type { ChinguQuiz, UI } from '~/models'
+import type { ChinguQuiz, UI } from "~/models";
 
 interface TopicSelectionProps {
-  subjectsAndTopics: UI.Quizzes.SubjectAndTopic[]
-  chosenSubject: string
-  setChosenSubject(subject: string): void
-  chosenTopics: string[]
-  setChosenTopics: React.Dispatch<React.SetStateAction<string[]>>
+  subjectsAndTopics: UI.Quizzes.SubjectAndTopic[];
+  chosenSubject: string;
+  setChosenSubject(subject: string): void;
+  chosenTopics: string[];
+  setChosenTopics: React.Dispatch<React.SetStateAction<string[]>>;
 }
 export default function TopicSelection({
   subjectsAndTopics,
@@ -17,7 +17,6 @@ export default function TopicSelection({
   chosenTopics,
   setChosenTopics,
 }: TopicSelectionProps) {
-
   const toggleTopics = (topic: string) => {
     if (chosenTopics.includes(topic)) {
       setChosenTopics(topics => topics.filter(t => t !== topic));
@@ -34,6 +33,11 @@ export default function TopicSelection({
   return (
     <TopicSelectionContainer>
       <TopicSelectionList>
+        <TopicSelectionChoice
+          currentlySelected={chosenSubject}
+          thisSelection={"All"}
+          handleSetThisSelection={handlePrimaryButtonClick}
+        />
         {subjectsAndTopics.map(subject => (
           <TopicSelectionChoice
             key={subject.key}
@@ -48,7 +52,7 @@ export default function TopicSelection({
         {chosenSubject !== "All" &&
           subjectsAndTopics
             .filter(subj => subj.title === chosenSubject)[0]
-            .tags.map(topic => (
+            .tag.map(topic => (
               <TopicSelectionChoice
                 key={topic}
                 buttonSize="small"

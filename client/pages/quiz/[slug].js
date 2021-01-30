@@ -3,11 +3,7 @@
 */
 
 import React, { useState, useEffect } from "react";
-// import useSWR from 'swr';// <-- uncomment when DB is ready
 import { useRouter } from "next/router";
-// import apiRoutes from '../../api-routes';// <-- uncomment when DB is ready
-// import { dummyData } from "../../data/dummy-quiz-data";
-// import DisplayMessage from '../../components/shared/DisplayMessage';// <-- uncomment when DB is ready
 import {
   AnswersTileSection,
   NextQuestionBtnContainer,
@@ -21,10 +17,7 @@ import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
 
 export default function Quiz() {
   const router = useRouter();
-
-  // const fetcher = url => fetch(url).then(res => res.json());// <-- uncomment when DB is ready
-  // const {data, error} = useSWR(apiRoutes.getAllQuizzes, fetcher);// <-- uncomment when DB is ready
-  const [allSubjectQuizzes, setAllSubjectQuizzes] = useState([]);
+  const [allSubjectQuizzes] = useState([]);
   const [chosenQuiz, setChosenQuiz] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [allQuestionsCount, setAllQuestionsCount] = useState(0);
@@ -43,21 +36,6 @@ export default function Quiz() {
       setChosenQuiz(filteredQuiz);
     }
   }, [router.query.slug, allSubjectQuizzes]);
-
-  // ** Uncomment when DB is ready
-  // Set data returned from SWR in state
-  // useEffect(() => {
-  //   if (data) {
-  //     setAllSubjectQuizzes(data);
-  //   }
-  // }, [data]);
-
-  // Set Dummy Data into state until DB is ready
-  // useEffect(() => {
-  //   if (dummyData) {
-  //     setAllSubjectQuizzes(dummyData);
-  //   }
-  // }, [dummyData]);
 
   // Set current quiz question to state
   useEffect(() => {
@@ -120,12 +98,6 @@ export default function Quiz() {
   return (
     <>
       <PageHeader>{chosenQuiz.title}</PageHeader>
-      {/* {
-        !!error && (<DisplayMessage message="Error loading quiz" />)
-      }
-      {
-        !error && !data && (<DisplayMessage message="... Loading Quiz" />)
-      } */}
       {chosenQuiz && currentQuestion && currentQuestionAnswers && (
         <span>
           <QuestionHeader

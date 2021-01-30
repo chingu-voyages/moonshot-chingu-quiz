@@ -17,7 +17,7 @@ export default function QuizTile({ quizData, animationDelay }: QuizTileProps) {
           <TextBodySmall>{quizData.description}</TextBodySmall>
         </div>
         <TileTagContainer>
-          {quizData.tags.map(tag => (
+          {quizData.tag.map(tag => (
             <QuizTileTag key={tag}>
               <TextBodyMicro>{tag}</TextBodyMicro>
             </QuizTileTag>
