@@ -28,7 +28,7 @@ const InfoSection = () => {
 
       {/* looping data from Resources.js */}
       {ABOUT_DATA.map(data => {
-        const darkSection: boolean = data.id % 2 !== 0;
+        const darkSection = data.id % 2 !== 0;
         return (
           <SubInfo key={data.id} grey={darkSection}>
             {data.svg}
