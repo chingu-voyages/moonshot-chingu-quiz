@@ -3,6 +3,11 @@ import { breakpoint } from "../../frontend-config";
 
 import { Heading2, TextBody } from "../shared/styles";
 
+type styleProps = {
+  grey?: boolean;
+  light?: boolean;
+};
+
 export const Wrapper = styled.div`
   background: ${props => props.theme.colors.textPrimary};
   padding: 30px 30px 50px;
@@ -13,7 +18,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const SubInfo = styled.div`
+export const SubInfo = styled.div<styleProps>`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -77,7 +82,7 @@ export const InfoBox = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Headline = styled(Heading2)`
+export const Headline = styled(Heading2)<styleProps>`
   margin-bottom: 60px;
   text-align: left;
   width: 623px;
@@ -98,7 +103,7 @@ export const Headline = styled(Heading2)`
   }
 `;
 
-export const Text = styled(TextBody)`
+export const Text = styled(TextBody)<styleProps>`
   max-width: 620px;
   padding: 0 8px;
   text-align: left;
