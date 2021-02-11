@@ -84,7 +84,7 @@ CREATE TABLE public.quiz (
     description character varying(1000) NOT NULL,
     title character varying(240) NOT NULL,
     id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    tags uuid[] NOT NULL,
+    tag uuid[] NOT NULL,
     subject uuid NOT NULL
 );
 
@@ -275,7 +275,7 @@ f75c2e2d-2b61-47da-aa47-189cc3c37b44	759a9508-5d10-4ea6-8294-12cb4402cffa	What p
 -- Data for Name: quiz; Type: TABLE DATA; Schema: public; Owner: docker
 --
 
-COPY public.quiz (description, title, id, tags, subject) FROM stdin;
+COPY public.quiz (description, title, id, tag, subject) FROM stdin;
 A quiz covering general JavaScript knowledge.	JavaScript Quiz	c393d58f-c966-4dcb-a7fc-f1c726f4b1c8	{e4c6d87d-6add-4b3b-959b-8867ece5a928}	3a05b2d5-09f3-4a07-bf61-610dd06dcaad
 A quiz covering general CSS knowledge.	CSS Quiz	6ee607e2-8128-48ec-982d-b711e5f1ab87	{2677184a-bc46-4737-a666-383bfdd2d25f}	3a05b2d5-09f3-4a07-bf61-610dd06dcaad
 A quiz covering general HTML knowledge.	HTML Quiz	759a9508-5d10-4ea6-8294-12cb4402cffa	{235665be-b8eb-4fa5-9c5a-a5562c5f2c58}	3a05b2d5-09f3-4a07-bf61-610dd06dcaad
