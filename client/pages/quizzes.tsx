@@ -102,8 +102,6 @@ export async function getStaticProps() {
   tag.forEach((tag: Tag) => {
     tagMap[tag.id] = tag.title;
   });
-  // console.log(subjectsMap);
-  // console.log(tagMap);
   const subjectsAndTopics: UI.Quizzes.SubjectAndTopic[] = [];
   quizzes.forEach((quiz: ChinguQuiz.Quiz) => {
     const { subject, tag } = quiz;
@@ -128,7 +126,6 @@ export async function getStaticProps() {
       quizzes: quizzes.map((quiz: ChinguQuiz.Quiz) => ({
         ...quiz,
         subject: subjectsMap[quiz.subject],
-        // ** DB has the next entry as `tag` (no `s`), so the rest of the app has to refer to it as such until corrected in the DB ** //
         tag: quiz.tag.map(id => tagMap[id]),
       })),
       subjectsAndTopics,
