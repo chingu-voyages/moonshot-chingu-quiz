@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Chingu Moonshot - Quiz App",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
+    "@types/node": "^14.14.25",
+    "@types/react": "^17.0.1",
+    "@types/styled-components": "^5.1.7",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
