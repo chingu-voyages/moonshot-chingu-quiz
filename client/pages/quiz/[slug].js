@@ -3,7 +3,6 @@
 */
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import {
   AnswersTileSection,
   NextQuestionBtnContainer,
@@ -14,36 +13,22 @@ import PageHeader from "../../components/shared/PageHeader";
 import QuestionHeader from "../../components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
 import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
+import db from "../../db";
 
-export default function Quiz() {
-  const router = useRouter();
-  const [allSubjectQuizzes] = useState([]);
-  const [chosenQuiz, setChosenQuiz] = useState({});
+export default function Quiz({ title, quiz }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [allQuestionsCount, setAllQuestionsCount] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-
-  // When id is selected and quizzes are loaded,
-  // find quiz by id and save it to state
-  useEffect(() => {
-    if (router.query.slug) {
-      const filtered = allSubjectQuizzes.filter(quiz => {
-        return String(quiz.id) === String(router.query.slug);
-      });
-      const filteredQuiz = filtered.length ? filtered[0] : {};
-      setChosenQuiz(filteredQuiz);
-    }
-  }, [router.query.slug, allSubjectQuizzes]);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
 
   // Set current quiz question to state
   useEffect(() => {
-    if (chosenQuiz && chosenQuiz.questions && chosenQuiz.questions.length) {
-      setCurrentQuestion(chosenQuiz.questions[currentQuestionIndex]);
-      setAllQuestionsCount(chosenQuiz.questions.length);
+    if (quiz && quiz.length) {
+      setCurrentQuestion(quiz[currentQuestionIndex]);
+      setAllQuestionsCount(quiz.length);
     }
-  }, [chosenQuiz, currentQuestionIndex]);
+  }, [quiz, currentQuestionIndex]);
 
   // Set current question answers to state
   useEffect(() => {
@@ -52,43 +37,21 @@ export default function Quiz() {
     }
   }, [currentQuestion]);
 
-  const toggleSelectedAnswer = answer => {
-    // Temporarily save the clicked node
-    let node = answer.target;
-
-    // Find the main answer container
-    while (node.classList.toString().indexOf("Container") < 0) {
-      node = node.parentNode;
-    }
-
-    const clickedAnswerMark = node.firstChild.innerText;
-    let clickedAnswer = null;
-    // Find the clicked answer object by its mark
-    currentQuestionAnswers.forEach((_answer, index) => {
-      const mark = String.fromCharCode("A".charCodeAt(0) + index);
-      if (mark === clickedAnswerMark) clickedAnswer = _answer;
-    });
-
-    // Clone state object
-    const selectedAnswersTmp = { ...selectedAnswers };
-
-    // Get selected answer array
-    const selectedAnswersArray = selectedAnswersTmp[currentQuestionIndex];
-
-    // Set / remove answer
-    if (!selectedAnswersArray) {
-      selectedAnswersTmp[currentQuestionIndex] = [clickedAnswer.id];
-    } else if (selectedAnswersArray.find(id => id === clickedAnswer.id)) {
-      selectedAnswersTmp[currentQuestionIndex].splice(
-        selectedAnswersArray.indexOf(clickedAnswer.id),
-        1
+  const toggleSelectedAnswer = (answerId, questionIndex) => {
+    if (selectedAnswers.length && questionIndex <= selectedAnswers.length - 1) {
+      return setSelectedAnswers(
+        selectedAnswers.map((currentAnswerId, index) => {
+          if (questionIndex === index) {
+            return answerId;
+          }
+          return currentAnswerId;
+        })
       );
-    } else {
-      selectedAnswersArray.push(clickedAnswer.id);
     }
-
-    // Save state
-    setSelectedAnswers(selectedAnswersTmp);
+    if (selectedAnswers.length && questionIndex > selectedAnswers.length - 1) {
+      return setSelectedAnswers(selectedAnswers.concat([answerId]));
+    }
+    return setSelectedAnswers([answerId]);
   };
 
   const nextQuestion = () => {
@@ -97,8 +60,8 @@ export default function Quiz() {
 
   return (
     <>
-      <PageHeader>{chosenQuiz.title}</PageHeader>
-      {chosenQuiz && currentQuestion && currentQuestionAnswers && (
+      <PageHeader>{title}</PageHeader>
+      {currentQuestion && currentQuestionAnswers && (
         <span>
           <QuestionHeader
             questionData={currentQuestion}
@@ -109,13 +72,16 @@ export default function Quiz() {
 
           <AnswersTileSection>
             {currentQuestionAnswers.map((answer, i) => (
-              <AnswerTileContainerLink onClick={toggleSelectedAnswer}>
+              <AnswerTileContainerLink
+                key={answer.id}
+                onClick={() => {
+                  toggleSelectedAnswer(answer.id, currentQuestionIndex);
+                }}
+              >
                 <AnswerTileContainer
                   mark={String.fromCharCode("A".charCodeAt(0) + i)}
                   answerData={answer}
-                  selected={Object.values(selectedAnswers).some(v => {
-                    return v.find(id => id === answer.id);
-                  })}
+                  selected={selectedAnswers.includes(answer.id)}
                 />
               </AnswerTileContainerLink>
             ))}
@@ -138,4 +104,46 @@ export default function Quiz() {
       )}
     </>
   );
+}
+
+export async function getStaticPaths() {
+  const { rows: ids } = await db.query("SELECT id FROM quiz");
+  const paths = ids.map(item => ({
+    params: {
+      slug: item.id,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params: { slug } }) {
+  const {
+    rows: [{ title }],
+  } = await db.query("SELECT title FROM quiz WHERE id = $1", [slug]);
+  const {
+    rows: questions,
+  } = await db.query("SELECT * FROM question WHERE quiz = $1", [slug]);
+  const {
+    rows: answers,
+  } = await db.query(
+    "SELECT id, question, prompt, quiz FROM answer WHERE quiz = $1",
+    [slug]
+  );
+
+  const quiz = questions.map(question => ({
+    id: question.id,
+    prompt: question.prompt,
+    answers: answers.filter(answer => answer.question === question.id),
+  }));
+
+  return {
+    props: {
+      title,
+      quiz,
+    },
+  };
 }
