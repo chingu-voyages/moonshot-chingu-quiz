@@ -4,7 +4,7 @@ import config from "./config";
 const pool = new Pool(config);
 
 export default {
-  async query(text, params) {
+  async query(text: string, params?: string[]) {
     const client = await pool.connect();
     try {
       const start = Date.now();

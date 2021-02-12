@@ -6,7 +6,7 @@
 -client (the front end lives inside the client folder)
 
   -pages (each file in here is a 'page' for our app)
-      -index.js (homepage for our app, links to '/' go here)
+      -index.ts (homepage for our app, links to '/' go here)
       -//other pages
 
   -components
