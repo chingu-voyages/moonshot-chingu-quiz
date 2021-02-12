@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakpoint } from "../../frontend-config";
+import { breakpoint } from "~/frontend-config";
 import { PrimaryButton, riseUp } from "../shared/styles";
 
 export const QuestionHeaderContainer = styled.section<{
@@ -62,7 +62,6 @@ export const QuestionProgressBarText = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-end;
-  align-items: right;
   width: 100%;
   margin-top: 40px;
   font-weight: bolder;
@@ -111,7 +110,6 @@ export const AnswerTileContainerStyled = styled.div<{
   min-height: 90px;
   padding: 8px 12px;
   margin: 10px auto;
-  background: transparent;
   border-radius: 5px;
   box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
   transition-duration: 350ms;
@@ -171,6 +169,35 @@ export const NextQuestionBtnStyled = styled(PrimaryButton)`
   width: 255px;
   margin: 40px auto;
   border: ${props => props.theme.colors.darkGreen} 5px solid;
+`;
+
+export const DisabledNextQuestionBtnStyled = styled(PrimaryButton)`
+  width: 255px;
+  margin: 40px auto;
+  border: ${props => props.theme.colors.lightGrey} 5px solid;
+  color: ${props => props.theme.colors.lightGrey};
+  cursor: not-allowed;
+`;
+
+export const SubmitQuizBtnContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SubmitQuizBtnStyled = styled(PrimaryButton)`
+  width: 255px;
+  margin: 40px auto;
+  border: ${props => props.theme.colors.darkGreen} 5px solid;
+`;
+
+export const DisabledSubmitQuizBtnStyled = styled(PrimaryButton)`
+  width: 255px;
+  margin: 40px auto;
+  border: ${props => props.theme.colors.lightGrey} 5px solid;
+  color: ${props => props.theme.colors.lightGrey};
+  cursor: not-allowed;
 `;
 
 export const ContentWrapper = styled.div`
