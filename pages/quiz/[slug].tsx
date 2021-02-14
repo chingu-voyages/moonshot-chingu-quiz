@@ -2,7 +2,7 @@
   This page will load at the url "/quiz/:slug"
 */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   AnswersTileSection,
   NextQuestionBtnContainer,
@@ -15,6 +15,7 @@ import QuestionHeader      from "~/components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
 import NextQuestionBtn     from "~/components/quizSingle/NextQuestionBtn";
 import SubmitQuizBtn       from "~/components/quizSingle/SubmitQuizBtn";
+import ResultView       from "~/components/quizSingle/ResultView";
 import db                  from "~/db";
 import { Question }        from "~/models/ChinguQuiz/Question";
 import { Answer } from "~/models/ChinguQuiz/Answer";
@@ -24,10 +25,21 @@ interface QuizProps {
   quizQuestions: Question[];
 }
 
+interface QuizRecordType {
+  quizRecord: Map<number, ObjectInterface>
+};
+
+interface ObjectInterface {
+  correctAnswer : string,
+  userAnswer: string,
+  question: string,
+  correct: boolean,
+}
+
 export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
-  const [quizRecord, setQuizRecord] = useState<Map<number, object>>(new Map<number, object>());
+  const [quizRecord, setQuizRecord] = useState<QuizRecordType["quizRecord"]>(new Map<number, ObjectInterface>());
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   const submittedPageHeaderText = "You did it!";
@@ -47,8 +59,8 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   };
 
   const updateQuizRecord = () => {
-    let correctAnswer  = quizQuestions[currentQuestionIndex].answers.filter(a => a.is_correct === true)[0];
-    let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(a => a.id === selectedAnswers[0])[0];
+    let correctAnswer  = quizQuestions[currentQuestionIndex].answers.filter(a => a.is_correct === true)[0].prompt;
+    let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(a => a.id === selectedAnswers[0])[0].prompt;
     setQuizRecord(current => {
       return current.set(currentQuestionIndex, {
         question: quizQuestions[currentQuestionIndex].prompt,
@@ -66,7 +78,7 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
       <PageHeader>
         {quizSubmitted ? submittedPageHeaderText : quizTitle}
       </PageHeader>
-      {quizSubmitted && <div>Hurrrayyyyy</div>}
+      {quizSubmitted && <ResultView quizRecord={quizRecord} />}
       {!quizSubmitted &&
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (
