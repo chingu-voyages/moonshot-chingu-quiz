@@ -15,31 +15,28 @@ This repository contains a web application for practising programming and interv
 
 ## Instructions
 
-There are two ways to get up and running locally for development.  
+There are two ways to get up and running locally for development.
 
-### Docker Workflow
+#### Docker Workflow
 
 If you would like to work within the docker workflow, make sure to have Docker Desktop installed on Windows and Mac, or Docker and Docker-Compose on a linux distro. For more info on installing docker please visit the Docker [website](https://www.docker.com/products/docker-desktop).
 
-Once docker has been installed and set up, fork then clone this repository and run
+Once docker has been installed and set up:
 
-`npm run docker-dev`
+1. Fork this repository
+2. Clone your fork locally
+3. Run `npm run docker-dev` from the root directory.
 
-from the root directory.  It may to a little while to set up the docker containers the first time this command is run.
+> Note: It may take a little while to set up the docker containers the first time this command is run.
 
-### Without Docker 
+#### Without Docker
 
-If you wish to work without Docker, the project requires Node (we recommend >= 15.0.0) and Postgres (>= 13.0.0).
+If you wish to work without Docker you will need Node (we recommend >= 15.0.0) and Postgres (>= 13.0.0).
 
-After forking, then cloning this repository, make sure Postgres is running.  Create a database for local use and adjust the `.env.local` file to match your credentials.  Afterwards, run 
-
-`npm install`
-
-then
-
-`npm run dev`
-
-from the root directory.
+1. After forking and cloning this repository (steps 1 and 2 above), make sure Postgres is running
+2. Create a database for local use and adjust the `.env.local` file to match your credentials
+3. Run `npm install` from the root directory
+4. Once install command is done run `npm run dev`
 
 ## Component Folder Structure:
 
