@@ -15,18 +15,49 @@ This repository contains a web application for practising programming and interv
 
 ## Instructions
 
-In order to get this application running on your local development environment please download [Docker](https://docs.docker.com/get-docker/) and (if you're a linux user) [Docker-Compose](https://docs.docker.com/compose/install/). Afterwards, follow the steps laid out below to get up and running.
+There are two ways to get up and running locally for development.
 
-### First Setup
+#### Docker Workflow
 
-1. Fork the repository
-2. Clone your forked repository onto your local machine
-3. Inside your CLI (Command Line Interface), move into your working directory
-4. Run `npm run dev-setup` inside the root folder - this will install project-wide development dependencies and start the docker development containers.
+If you would like to work within the docker workflow, make sure to have Docker Desktop installed on Windows and Mac, or Docker and Docker-Compose on a linux distro. For more info on installing docker please visit the Docker [website](https://www.docker.com/products/docker-desktop).
 
-### For returners
+Once docker has been installed and set up:
 
-1. Run `npm run dev` inside the root folder to start docker development containers.
+1. Fork this repository
+2. Clone your fork locally
+3. Run `npm run docker-dev` from the root directory
+4. Once you see `client_1 | ready - started server on http://localhost:3000` the app is ready to be opened in the browser (you will have to manually launch your browser and navigate to `http://localhost:3000`)
+
+> Note: It may take a little while to set up the docker containers the first time `docker-dev` is run.
+
+#### Without Docker
+
+If you wish to work without Docker you will need Node (we recommend >= 15.0.0) and Postgres (>= 13.0.0).
+
+1. After forking and cloning this repository (steps 1 and 2 above), make sure Postgres is running
+2. Create a database for local use and adjust the `.env.local` file to match your credentials
+3. Run `npm install` from the root directory
+4. Once install command is done run `npm run dev`
+
+## Component Folder Structure:
+
+```
+  -pages (each file in here is a 'page' for our app)
+      -index.ts (homepage for our app, links to '/' go here)
+      -//other pages
+
+  -components
+      -quiz
+        -Question.ts
+        -Answer.ts
+        -Timer.ts
+        -//etc..
+      -shared
+        -LinkButton.ts
+        -//etc..
+      -//other folder
+        -//other related components
+```
 
 ## Designs
 
@@ -40,8 +71,7 @@ The app is built with the following code dependencies:
 
 1. [NextJS](https://github.com/vercel/next.js)
 2. [Styled Components](https://github.com/styled-components/styled-components)
-3. [Express](https://github.com/expressjs/express)
-4. [PostgreSQL](https://github.com/postgres/postgres)
+3. [PostgreSQL](https://github.com/postgres/postgres)
 
 ## Contributing
 
