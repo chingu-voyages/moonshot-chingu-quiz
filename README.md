@@ -21,7 +21,7 @@ There are two ways to get up and running locally for development.
 
 If you would like to work within the docker workflow, make sure to have Docker Desktop installed on Windows and Mac, or Docker and Docker-Compose on a linux distro. For more info on installing docker please visit the Docker [website](https://www.docker.com/products/docker-desktop).
 
-Once docker has been installed and set up, clone this repository and run
+Once docker has been installed and set up, fork then clone this repository and run
 
 `npm run docker-dev`
 
@@ -31,7 +31,7 @@ from the root directory.  It may to a little while to set up the docker containe
 
 If you wish to work without Docker, the project requires Node (we recommend >= 15.0.0) and Postgres (>= 13.0.0).
 
-After cloning this repository, make sure Postgres is running.  Create a database for local use and adjust the `.env.local` file to match your credentials.  Afterwards, run 
+After forking, then cloning this repository, make sure Postgres is running.  Create a database for local use and adjust the `.env.local` file to match your credentials.  Afterwards, run 
 
 `npm install`
 
