@@ -25,9 +25,10 @@ Once docker has been installed and set up:
 
 1. Fork this repository
 2. Clone your fork locally
-3. Run `npm run docker-dev` from the root directory.
+3. Run `npm run docker-dev` from the root directory
+4. Once you see `client_1 | ready - started server on http://localhost:3000` the app is ready to be opened in the browser (you will have to manually launch your browser and navigate to `http://localhost:3000`)
 
-> Note: It may take a little while to set up the docker containers the first time this command is run.
+> Note: It may take a little while to set up the docker containers the first time `docker-dev` is run.
 
 #### Without Docker
 
