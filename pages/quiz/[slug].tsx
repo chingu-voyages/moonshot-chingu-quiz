@@ -10,12 +10,12 @@ import {
   AnswerTileContainerLink,
   ContentWrapper,
 }                          from "~/components/quizSingle/styles";
-import PageHeader          from "../../components/shared/PageHeader";
-import QuestionHeader      from "../../components/quizSingle/QuestionHeader";
-import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
-import NextQuestionBtn     from "../../components/quizSingle/NextQuestionBtn";
-import SubmitQuizBtn       from "../../components/quizSingle/SubmitQuizBtn";
-import db                  from "../../db";
+import PageHeader          from "~/components/shared/PageHeader";
+import QuestionHeader      from "~/components/quizSingle/QuestionHeader";
+import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
+import NextQuestionBtn     from "~/components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn       from "~/components/quizSingle/SubmitQuizBtn";
+import db                  from "~/db";
 import { Question }        from "~/models/ChinguQuiz/Question";
 import { Answer } from "~/models/ChinguQuiz/Answer";
 
@@ -27,34 +27,39 @@ interface QuizProps {
 export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [quizRecord, setQuizRecord] = useState<Map<number, object>>(new Map<number, object>());
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   const submittedPageHeaderText = "You did it!";
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
-    if (selectedAnswers.length && questionIndex <= selectedAnswers.length - 1) {
-      return setSelectedAnswers(
-        selectedAnswers.map((currentAnswerId, index) => {
-          if (questionIndex === index) {
-            return answerId;
-          }
-          return currentAnswerId;
-        })
-      );
-    }
-    if (selectedAnswers.length && questionIndex > selectedAnswers.length - 1) {
-      return setSelectedAnswers(selectedAnswers.concat([answerId]));
-    }
-    return setSelectedAnswers([answerId]);
+    setSelectedAnswers([answerId]);
   };
 
   const nextQuestion = () => {
+    updateQuizRecord();
+    setSelectedAnswers([]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const submitQuiz = () => {
     setQuizSubmitted(true);
   };
+
+  const updateQuizRecord = () => {
+    let correctAnswer  = quizQuestions[currentQuestionIndex].answers.filter(a => a.is_correct === true)[0];
+    let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(a => a.id === selectedAnswers[0])[0];
+    setQuizRecord(current => {
+      return current.set(currentQuestionIndex, {
+        question: quizQuestions[currentQuestionIndex].prompt,
+        correctAnswer,
+        userAnswer,
+        correct: correctAnswer === userAnswer,
+      })
+    });
+  }
+
+  console.log(quizRecord);
 
   return (
     <>
@@ -92,7 +97,7 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
             {currentQuestionIndex !== quizQuestions.length - 1 ? (
               <ContentWrapper>
                 <NextQuestionBtnContainer>
-                  {currentQuestionIndex === selectedAnswers.length - 1 ? (
+                  {selectedAnswers.length >= 1 ? (
                     <a
                       tabIndex={0}
                       role="link"
@@ -109,7 +114,7 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
             ) : (
               <ContentWrapper>
                 <SubmitQuizBtnContainer>
-                  {currentQuestionIndex === selectedAnswers.length - 1 ? (
+                  {selectedAnswers.length >= 1 ? (
                     <a
                       tabIndex={0}
                       role="link"
