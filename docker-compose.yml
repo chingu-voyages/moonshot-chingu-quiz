@@ -7,10 +7,10 @@ services:
     user: node
     working_dir: /home/node/app
     volumes:
-      - ./client:/home/node/app
+      - ./:/home/node/app
     ports:
       - "3000:3000"
-    command: bash -c "npm ci && npm run dev"
+    command: bash -c "npm i && npm run dev"
 
   db:
     image: postgres
