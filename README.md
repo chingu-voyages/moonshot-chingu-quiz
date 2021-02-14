@@ -33,6 +33,10 @@ If you wish to work without Docker, the project requires Node (we recommend >= 1
 
 After cloning this repository, make sure Postgres is running.  Create a database for local use and adjust the `.env.local` file to match your credentials.  Afterwards, run 
 
+`npm install`
+
+then
+
 `npm run dev`
 
 from the root directory.
