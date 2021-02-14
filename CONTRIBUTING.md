@@ -21,7 +21,7 @@ In addition to everything written in here, there is a [Collaborator Guide](https
 1. Fork the repository
 2. Clone your forked repository onto your local machine
 3. Inside your CLI (Command Line Interface), move into your working directory
-4. RUN `npm run dev-setup` to install project-wide development dependencies. Afterwards this command will start up the docker development containers for the client, api and database. This step may take serveral minutes.
+4. RUN `npm run docker-dev` if using docker or `npm run dev` otherwise. 
 
 ### Installing packages
 Note: Initial setup will _not_ require npm i or npm ci, as it is done in the `npm run dev-setup` script.
