@@ -18,6 +18,7 @@ import SubmitQuizBtn       from "~/components/quizSingle/SubmitQuizBtn";
 import ResultView           from "~/components/quizSingle/ResultView";
 import db                  from "~/db";
 import { Question }        from "~/models/ChinguQuiz/Question";
+import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
 import { Answer } from "~/models/ChinguQuiz/Answer";
 
 interface QuizProps {
@@ -25,17 +26,10 @@ interface QuizProps {
   quizQuestions: Question[];
 }
 
-interface quizRecord {
-  correctAnswer : string,
-  userAnswer: string,
-  question: string,
-  correct: boolean,
-}
-
 export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
-  const [quizRecord, setQuizRecord] = useState<quizRecord[]>([]);
+  const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   const submittedPageHeaderText = "You did it!";

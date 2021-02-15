@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
+import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
 
-interface quizRecord {
-    correctAnswer : string,
-    userAnswer: string,
-    question: string,
-    correct: boolean,
-  }
 
-export default function ResultView({quizRecord}: {quizRecord:quizRecord[]}) {
+export default function ResultView({quizRecord}: {quizRecord:QuizRecord[]}) {
 
     return (
         <ul>
