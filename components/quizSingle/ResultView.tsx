@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 
-export default function ResultView(quizRecord:QuizRecordType) {
-    const [recordElements, setRecordElements] = useState([]);
+interface quizRecord {
+    correctAnswer : string,
+    userAnswer: string,
+    question: string,
+    correct: boolean,
+  }
 
-    useEffect(() => {
-        let elements = [];
-        for (let [key, value] of quizRecord) {
-            elements.push(<div>
-                {key} is {value}
-            </div>)
-        }
-        setRecordElements(elements);
-    }, [quizRecord])
+export default function ResultView({quizRecord}: {quizRecord:quizRecord[]}) {
 
     return (
-        <section>
-            {recordElements}
-        </section>
+        <ul>
+        {quizRecord.map((record, i) => (
+                <li key={record.correctAnswer.substring(0, 6)}>
+                    <p>Question: {record.question} </p>
+                    <p>Your Answer:{record.userAnswer}</p>
+                    <p>Correct Answer:{record.correctAnswer}</p>
+                </li>
+            ))};
+        </ul>
     )
 };

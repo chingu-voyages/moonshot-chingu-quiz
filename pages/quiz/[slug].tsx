@@ -15,7 +15,7 @@ import QuestionHeader      from "~/components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
 import NextQuestionBtn     from "~/components/quizSingle/NextQuestionBtn";
 import SubmitQuizBtn       from "~/components/quizSingle/SubmitQuizBtn";
-import ResultView       from "~/components/quizSingle/ResultView";
+import ResultView           from "~/components/quizSingle/ResultView";
 import db                  from "~/db";
 import { Question }        from "~/models/ChinguQuiz/Question";
 import { Answer } from "~/models/ChinguQuiz/Answer";
@@ -25,11 +25,7 @@ interface QuizProps {
   quizQuestions: Question[];
 }
 
-interface QuizRecordType {
-  quizRecord: Map<number, ObjectInterface>
-};
-
-interface ObjectInterface {
+interface quizRecord {
   correctAnswer : string,
   userAnswer: string,
   question: string,
@@ -39,7 +35,7 @@ interface ObjectInterface {
 export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
-  const [quizRecord, setQuizRecord] = useState<QuizRecordType["quizRecord"]>(new Map<number, ObjectInterface>());
+  const [quizRecord, setQuizRecord] = useState<quizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   const submittedPageHeaderText = "You did it!";
@@ -55,23 +51,23 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   };
 
   const submitQuiz = () => {
+    updateQuizRecord();
     setQuizSubmitted(true);
   };
 
   const updateQuizRecord = () => {
     let correctAnswer  = quizQuestions[currentQuestionIndex].answers.filter(a => a.is_correct === true)[0].prompt;
     let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(a => a.id === selectedAnswers[0])[0].prompt;
-    setQuizRecord(current => {
-      return current.set(currentQuestionIndex, {
+    setQuizRecord(current => [
+      ...current,
+      {
         question: quizQuestions[currentQuestionIndex].prompt,
         correctAnswer,
         userAnswer,
         correct: correctAnswer === userAnswer,
-      })
-    });
+      }
+    ]);
   }
-
-  console.log(quizRecord);
 
   return (
     <>
