@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
+import ScoreGraph from "./ScoreGraph";
 
 
 export default function ResultView({quizRecord}: {quizRecord:QuizRecord[]}) {
+    let percentage = Math.round((quizRecord.filter(r => r.correct).length * 100) / quizRecord.length);
 
     return (
+        <>
+        <ScoreGraph percentage={percentage} />
         <ul>
         {quizRecord.map((record, i) => (
                 <li key={record.correctAnswer.substring(0, 6)}>
@@ -14,5 +18,6 @@ export default function ResultView({quizRecord}: {quizRecord:QuizRecord[]}) {
                 </li>
             ))};
         </ul>
+        </>
     )
 };

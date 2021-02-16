@@ -66,7 +66,7 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   return (
     <>
       <PageHeader>
-        {quizSubmitted ? submittedPageHeaderText : quizTitle}
+        {quizSubmitted ? "Let's Review" : quizTitle}
       </PageHeader>
       {quizSubmitted && <ResultView quizRecord={quizRecord} />}
       {!quizSubmitted &&

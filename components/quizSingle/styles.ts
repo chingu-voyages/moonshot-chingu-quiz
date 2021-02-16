@@ -1,6 +1,13 @@
-import styled                    from "styled-components";
-import { breakpoint }            from "../../frontend-config";
+import styled, { keyframes } from "styled-components";
+import { breakpoint } from "../../frontend-config";
 import { PrimaryButton, riseUp } from "../shared/styles";
+
+// -- Animations -- //
+export const progress = keyframes`
+  0% {
+    stroke-dasharray: 0 100;
+  }
+`;
 
 export const QuestionHeaderContainer = styled.section<{
   animationDelay: number;
@@ -205,4 +212,32 @@ export const ContentWrapper = styled.div`
   max-width: calc(100% - 70px);
   margin: 0 auto;
   color: ${props => props.theme.colors.light};
+`;
+
+export const GraphSVG = styled.svg`
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+`;
+
+export const GraphPathBG = styled.path`
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+`;
+
+export const GraphPath = styled.path`
+  fill: none;
+  stroke: ${props => props.theme.colors.midGreen};
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: ${progress} 1s ease-out forwards;
+`;
+
+export const GraphText = styled.text`
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
 `;
