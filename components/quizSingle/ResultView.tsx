@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
+import { TextBody, TextBodySmall, TextBodyMicro } from "../shared/styles";
+import { ResultTileContainer, ResultTile, TileTagContainer, QuizTileTag } from "./styles";
 import ScoreGraph from "./ScoreGraph";
 
 
@@ -9,15 +11,17 @@ export default function ResultView({quizRecord}: {quizRecord:QuizRecord[]}) {
     return (
         <>
         <ScoreGraph percentage={percentage} />
-        <ul>
+        <ResultTileContainer>
         {quizRecord.map((record, i) => (
-                <li key={record.correctAnswer.substring(0, 6)}>
-                    <p>Question: {record.question} </p>
-                    <p>Your Answer:{record.userAnswer}</p>
-                    <p>Correct Answer:{record.correctAnswer}</p>
-                </li>
+                <ResultTile correct={record.correct} animationDelay={`${100 + i * 50}ms`}>
+                <div>
+                  <TextBody><strong>Question:</strong> <br /> <code>{record.question}</code></TextBody>
+                  <TextBodySmall><strong>Correct Answer:</strong> <br />  {record.correctAnswer}</TextBodySmall>
+                  <TextBodySmall><strong>Your Answer:</strong> <br />  {record.userAnswer}</TextBodySmall>
+                </div>
+              </ResultTile>
             ))};
-        </ul>
+        </ResultTileContainer>
         </>
     )
 };

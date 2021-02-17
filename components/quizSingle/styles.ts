@@ -214,6 +214,44 @@ export const ContentWrapper = styled.div`
   color: ${props => props.theme.colors.light};
 `;
 
+export const ResultTileContainer = styled.ul`
+ display: flex;
+ flex-flow: column nowrap;
+ max-width: 600px;
+ padding: 0;
+ margin: 25px auto;
+`
+
+export const ResultTile = styled.li<{
+  animationDelay: number | string;
+  correct: boolean;
+}>`
+  opacity: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 90%;
+  height: max-content;
+  padding: 8px 12px;
+  margin: 15px auto;
+  border-left: 10px solid ${props => props.correct ? props.theme.colors.darkGreen : props.theme.colors.lightGrey};
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
+  transition-duration: 350ms;
+  animation: ${riseUp} 400ms ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: ${props => props.animationDelay};
+`;
+
+export const TileTagContainer = styled.span`
+  display: flex;
+  fled-flow: row nowrap;
+`;
+
+export const QuizTileTag = styled(PrimaryButton)`
+  padding: 1px 5px;
+  margin: 5px 5px 0 0;
+`;
+
 export const GraphSVG = styled.svg`
   display: block;
   margin: 10px auto;
