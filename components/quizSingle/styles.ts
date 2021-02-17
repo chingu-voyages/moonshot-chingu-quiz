@@ -214,12 +214,19 @@ export const ContentWrapper = styled.div`
   color: ${props => props.theme.colors.light};
 `;
 
+export const ResultTitleContainer = styled.div`
+ display: flex;
+ justify-content: center;
+ width: 100%;
+ margin-top: 25px;
+`
+
 export const ResultTileContainer = styled.ul`
  display: flex;
  flex-flow: column nowrap;
  max-width: 600px;
  padding: 0;
- margin: 25px auto;
+ margin: 10px auto;
 `
 
 export const ResultTile = styled.li<{
@@ -269,7 +276,7 @@ export const GraphPath = styled.path`
   stroke: ${props => props.theme.colors.midGreen};
   stroke-width: 2.8;
   stroke-linecap: round;
-  animation: ${progress} 1s ease-out forwards;
+  animation: ${progress} 2s ease-out forwards;
 `;
 
 export const GraphText = styled.text`

@@ -66,9 +66,9 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   return (
     <>
       <PageHeader>
-        {quizSubmitted ? `Review of ${quizTitle}` : quizTitle}
+        {quizSubmitted ? `Your Results` : quizTitle}
       </PageHeader>
-      {quizSubmitted && <ResultView quizRecord={quizRecord} />}
+      {quizSubmitted && <ResultView quizTitle={quizTitle} quizRecord={quizRecord} />}
       {!quizSubmitted &&
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (
