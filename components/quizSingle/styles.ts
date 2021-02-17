@@ -232,7 +232,7 @@ export const ResultTile = styled.li<{
   width: 90%;
   height: max-content;
   padding: 8px 12px;
-  margin: 15px auto;
+  margin: 20px auto;
   border-left: 10px solid ${props => props.correct ? props.theme.colors.darkGreen : props.theme.colors.lightGrey};
   border-radius: 5px;
   box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
@@ -242,15 +242,14 @@ export const ResultTile = styled.li<{
   animation-delay: ${props => props.animationDelay};
 `;
 
-export const TileTagContainer = styled.span`
-  display: flex;
-  fled-flow: row nowrap;
-`;
-
-export const QuizTileTag = styled(PrimaryButton)`
-  padding: 1px 5px;
-  margin: 5px 5px 0 0;
-`;
+export const CodeBlock = styled.div`
+ width: 100%;
+ padding: 10px;
+ margin: 5px 0 10px 0;
+ background: ${props => props.theme.colors.lightGrey};
+ border-radius: 5px;
+ font-family: monospace;
+`
 
 export const GraphSVG = styled.svg`
   display: block;

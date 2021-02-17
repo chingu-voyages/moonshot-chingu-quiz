@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
-import { TextBody, TextBodySmall, TextBodyMicro } from "../shared/styles";
-import { ResultTileContainer, ResultTile, TileTagContainer, QuizTileTag } from "./styles";
+import { TextBodyBold, TextBodySmallBold } from "../shared/styles";
+import { ResultTileContainer, ResultTile, CodeBlock } from "./styles";
 import ScoreGraph from "./ScoreGraph";
 
 
@@ -15,9 +15,12 @@ export default function ResultView({quizRecord}: {quizRecord:QuizRecord[]}) {
         {quizRecord.map((record, i) => (
                 <ResultTile correct={record.correct} animationDelay={`${100 + i * 50}ms`}>
                 <div>
-                  <TextBody><strong>Question:</strong> <br /> <code>{record.question}</code></TextBody>
-                  <TextBodySmall><strong>Correct Answer:</strong> <br />  {record.correctAnswer}</TextBodySmall>
-                  <TextBodySmall><strong>Your Answer:</strong> <br />  {record.userAnswer}</TextBodySmall>
+                  <TextBodyBold>Question:</TextBodyBold>
+                  <CodeBlock>{record.question}</CodeBlock>
+                  <TextBodySmallBold>Correct Answer:</TextBodySmallBold>
+                  <CodeBlock>{record.correctAnswer}</CodeBlock>
+                  <TextBodySmallBold>Your Answer:</TextBodySmallBold>
+                  <CodeBlock>{record.userAnswer}</CodeBlock>
                 </div>
               </ResultTile>
             ))};
