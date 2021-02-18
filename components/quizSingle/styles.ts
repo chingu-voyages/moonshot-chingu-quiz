@@ -273,7 +273,6 @@ export const GraphPathBG = styled.path`
 
 export const GraphPath = styled.path`
   fill: none;
-  stroke: ${props => props.theme.colors.midGreen};
   stroke-width: 2.8;
   stroke-linecap: round;
   animation: ${progress} 2s ease-out forwards;
