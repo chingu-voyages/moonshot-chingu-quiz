@@ -1,4 +1,4 @@
-import React                                              from "react";
+import React from "react";
 import { FullWidthContainer, MessageContainer, Heading3 } from "./styles";
 
 interface DisplayMessageProps {

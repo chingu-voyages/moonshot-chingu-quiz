@@ -1,4 +1,4 @@
-import React                    from "react";
+import React from "react";
 import { AnswerTileMarkStyled } from "./styles";
 
 export interface AnswerTileTextProps {

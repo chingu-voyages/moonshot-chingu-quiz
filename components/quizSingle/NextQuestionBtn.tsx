@@ -1,5 +1,5 @@
-import React                                                    from "react";
-import { Heading4 }                                             from "../shared/styles";
+import React from "react";
+import { Heading4 } from "../shared/styles";
 import { NextQuestionBtnStyled, DisabledNextQuestionBtnStyled } from "./styles";
 
 interface NextQuestionBtnProps {

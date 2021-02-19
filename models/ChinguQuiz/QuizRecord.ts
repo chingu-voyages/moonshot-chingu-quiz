@@ -1,6 +1,6 @@
 export interface QuizRecord {
-    correctAnswer : string,
-    userAnswer: string,
-    question: string,
-    correct: boolean,
-  }
+  correctAnswer: string;
+  userAnswer: string;
+  question: string;
+  correct: boolean;
+}
