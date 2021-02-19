@@ -258,6 +258,12 @@ export const CodeBlock = styled.div`
  font-family: monospace;
 `
 
+export const TileNumber = styled.span`
+  position: absolute;
+  top: 8px;
+  right: 15px;
+`
+
 export const GraphSVG = styled.svg`
   display: block;
   margin: 10px auto;

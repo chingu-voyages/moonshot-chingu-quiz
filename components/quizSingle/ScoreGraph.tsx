@@ -18,7 +18,7 @@ export default function ScoreGraph({percentage}: {percentage:number}) {
                 />
                 <GraphPath
                     strokeDasharray={`${percentage}, 100`}
-                    stroke={percentage === 100 ? "#18e28c" : "url(#gradient)"}
+                    stroke={percentage >= 95 ? "#18e28c" : "url(#gradient)"}
                     d="M18 2.0845
                     a 15.9155 15.9155 0 0 1 0 31.831
                     a 15.9155 15.9155 0 0 1 0 -31.831"
