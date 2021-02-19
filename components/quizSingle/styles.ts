@@ -224,7 +224,9 @@ export const ResultTitleContainer = styled.div`
 export const ResultPageContainer = styled.section`
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: space-evenly;
+  max-width: 1100px;
+  margin: 0 auto;
 
   @media (min-width: ${breakpoint("lg")}) {
     flex-flow: row-reverse nowrap;
@@ -234,7 +236,7 @@ export const ResultPageContainer = styled.section`
 export const ResultTileContainer = styled.ul`
  display: flex;
  flex-flow: column nowrap;
- max-width: 600px;
+ max-width: 700px;
  padding: 0;
  margin: 10px auto;
 `
@@ -253,7 +255,7 @@ export const ResultTile = styled.li<{
   border-left: 10px solid ${props => props.correct ? props.theme.colors.darkGreen : props.theme.colors.lightGrey};
   border-radius: 5px;
   box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
-  transition-duration: 350ms;
+  transition-duration: 400ms;
   animation: ${riseUp} 400ms ease-in-out;
   animation-fill-mode: forwards;
   animation-delay: ${props => props.animationDelay};
@@ -284,7 +286,7 @@ export const GraphSVG = styled.svg`
     transform: scale(1.2);
     position: sticky;
     top: 200px;
-    margin: 80px 0 0 80px;
+    margin-top: 100px;
   }
 `;
 
