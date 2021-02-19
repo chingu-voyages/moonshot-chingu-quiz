@@ -9,15 +9,15 @@ import {
   SubmitQuizBtnContainer,
   AnswerTileContainerLink,
   ContentWrapper,
-}                          from "~/components/quizSingle/styles";
-import PageHeader          from "~/components/shared/PageHeader";
-import QuestionHeader      from "~/components/quizSingle/QuestionHeader";
+} from "~/components/quizSingle/styles";
+import PageHeader from "~/components/shared/PageHeader";
+import QuestionHeader from "~/components/quizSingle/QuestionHeader";
 import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
-import NextQuestionBtn     from "~/components/quizSingle/NextQuestionBtn";
-import SubmitQuizBtn       from "~/components/quizSingle/SubmitQuizBtn";
-import ResultView           from "~/components/quizSingle/ResultView";
-import db                  from "~/db";
-import { Question }        from "~/models/ChinguQuiz/Question";
+import NextQuestionBtn from "~/components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn from "~/components/quizSingle/SubmitQuizBtn";
+import ResultView from "~/components/quizSingle/ResultView";
+import db from "~/db";
+import { Question } from "~/models/ChinguQuiz/Question";
 import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
 import { Answer } from "~/models/ChinguQuiz/Answer";
 
@@ -50,8 +50,12 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   };
 
   const updateQuizRecord = () => {
-    let correctAnswer  = quizQuestions[currentQuestionIndex].answers.filter(a => a.is_correct === true)[0].prompt;
-    let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(a => a.id === selectedAnswers[0])[0].prompt;
+    let correctAnswer = quizQuestions[currentQuestionIndex].answers.filter(
+      a => a.is_correct === true
+    )[0].prompt;
+    let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(
+      a => a.id === selectedAnswers[0]
+    )[0].prompt;
     setQuizRecord(current => [
       ...current,
       {
@@ -59,16 +63,16 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
         correctAnswer,
         userAnswer,
         correct: correctAnswer === userAnswer,
-      }
+      },
     ]);
-  }
+  };
 
   return (
     <>
-      <PageHeader>
-        {quizSubmitted ? `Your Results` : quizTitle}
-      </PageHeader>
-      {quizSubmitted && <ResultView quizTitle={quizTitle} quizRecord={quizRecord} />}
+      <PageHeader>{quizSubmitted ? `Your Results` : quizTitle}</PageHeader>
+      {quizSubmitted && (
+        <ResultView quizTitle={quizTitle} quizRecord={quizRecord} />
+      )}
       {!quizSubmitted &&
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (

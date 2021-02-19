@@ -1,18 +1,18 @@
-import React                      from "react";
+import React from "react";
 import { Heading3, TextBodyBold } from "../shared/styles";
 import {
   QuestionHeaderContainer,
   QuestionProgressBar,
   QuestionProgressBarFiller,
   QuestionProgressBarText,
-}                                 from "./styles";
-import type { ChinguQuiz }        from '../../models'
+} from "./styles";
+import type { ChinguQuiz } from "../../models";
 
 interface QuestionHeaderProps {
-  questionData: ChinguQuiz.Question
-  questionIndex: number
-  questionCount: number
-  animationDelay: number
+  questionData: ChinguQuiz.Question;
+  questionIndex: number;
+  questionCount: number;
+  animationDelay: number;
 }
 export default function QuestionHeader({
   questionData,
