@@ -221,6 +221,16 @@ export const ResultTitleContainer = styled.div`
  margin-top: 25px;
 `
 
+export const ResultPageContainer = styled.section`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  @media (min-width: ${breakpoint("lg")}) {
+    flex-flow: row-reverse nowrap;
+  }
+`
+
 export const ResultTileContainer = styled.ul`
  display: flex;
  flex-flow: column nowrap;
@@ -269,6 +279,13 @@ export const GraphSVG = styled.svg`
   margin: 10px auto;
   max-width: 80%;
   max-height: 250px;
+
+  @media (min-width: ${breakpoint("lg")}) {
+    transform: scale(1.2);
+    position: sticky;
+    top: 200px;
+    margin: 80px 0 0 80px;
+  }
 `;
 
 export const GraphPathBG = styled.path`
