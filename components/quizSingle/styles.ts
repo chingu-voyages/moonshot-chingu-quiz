@@ -283,10 +283,11 @@ export const GraphSVG = styled.svg`
   max-height: 250px;
 
   @media (min-width: ${breakpoint("lg")}) {
-    transform: scale(1.2);
+    transform: scale(1.1);
     position: sticky;
     top: 200px;
-    margin-top: 100px;
+    width: 30%;
+    margin-top: 78px;
   }
 `;
 
