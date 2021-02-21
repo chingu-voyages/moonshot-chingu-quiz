@@ -50,10 +50,10 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   };
 
   const updateQuizRecord = () => {
-    let correctAnswer = quizQuestions[currentQuestionIndex].answers.filter(
+    const correctAnswer = quizQuestions[currentQuestionIndex].answers.filter(
       a => a.is_correct === true
     )[0].prompt;
-    let userAnswer = quizQuestions[currentQuestionIndex].answers.filter(
+    const userAnswer = quizQuestions[currentQuestionIndex].answers.filter(
       a => a.id === selectedAnswers[0]
     )[0].prompt;
     setQuizRecord(current => [

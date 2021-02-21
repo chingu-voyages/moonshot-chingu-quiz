@@ -19,10 +19,10 @@ export default function ResultView({
   quizTitle: string;
   quizRecord: QuizRecord[];
 }) {
-  let percentage = Math.round(
+  const percentage = Math.round(
     (quizRecord.filter(r => r.correct).length * 100) / quizRecord.length
   );
-  let totalQs = quizRecord.length;
+  const totalQs = quizRecord.length;
 
   return (
     <ResultPageContainer>
