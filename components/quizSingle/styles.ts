@@ -1,6 +1,13 @@
-import styled                    from "styled-components";
-import { breakpoint }            from "../../frontend-config";
+import styled, { keyframes } from "styled-components";
+import { breakpoint } from "../../frontend-config";
 import { PrimaryButton, riseUp } from "../shared/styles";
+
+// -- Animations -- //
+export const progress = keyframes`
+  0% {
+    stroke-dasharray: 0 100;
+  }
+`;
 
 export const QuestionHeaderContainer = styled.section<{
   animationDelay: number;
@@ -205,4 +212,105 @@ export const ContentWrapper = styled.div`
   max-width: calc(100% - 70px);
   margin: 0 auto;
   color: ${props => props.theme.colors.light};
+`;
+
+export const ResultTitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+`;
+
+export const ResultPageContainer = styled.section`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  @media (min-width: ${breakpoint("lg")}) {
+    flex-flow: row-reverse nowrap;
+  }
+`;
+
+export const ResultTileContainer = styled.ul`
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 700px;
+  padding: 0;
+  margin: 10px auto;
+`;
+
+export const ResultTile = styled.li<{
+  animationDelay: number | string;
+  correct: boolean;
+}>`
+  opacity: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 90%;
+  height: max-content;
+  padding: 8px 12px;
+  margin: 20px auto;
+  border-left: 10px solid
+    ${props =>
+      props.correct
+        ? props.theme.colors.darkGreen
+        : props.theme.colors.lightGrey};
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px ${props => props.theme.colors.lightGrey};
+  transition-duration: 400ms;
+  animation: ${riseUp} 400ms ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: ${props => props.animationDelay};
+`;
+
+export const CodeBlock = styled.div`
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  background: ${props => props.theme.colors.lightGrey};
+  border-radius: 5px;
+  font-family: monospace;
+`;
+
+export const TileNumber = styled.span`
+  position: absolute;
+  top: 8px;
+  right: 15px;
+`;
+
+export const GraphSVG = styled.svg`
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+
+  @media (min-width: ${breakpoint("lg")}) {
+    transform: scale(1.1);
+    position: sticky;
+    top: 200px;
+    width: 30%;
+    margin-top: 78px;
+  }
+`;
+
+export const GraphPathBG = styled.path`
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+`;
+
+export const GraphPath = styled.path`
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: ${progress} 2s ease-out forwards;
+`;
+
+export const GraphText = styled.text`
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
 `;

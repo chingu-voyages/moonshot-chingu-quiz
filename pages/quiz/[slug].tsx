@@ -2,21 +2,23 @@
   This page will load at the url "/quiz/:slug"
 */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   AnswersTileSection,
   NextQuestionBtnContainer,
   SubmitQuizBtnContainer,
   AnswerTileContainerLink,
   ContentWrapper,
-}                          from "~/components/quizSingle/styles";
-import PageHeader          from "../../components/shared/PageHeader";
-import QuestionHeader      from "../../components/quizSingle/QuestionHeader";
-import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
-import NextQuestionBtn     from "../../components/quizSingle/NextQuestionBtn";
-import SubmitQuizBtn       from "../../components/quizSingle/SubmitQuizBtn";
-import db                  from "../../db";
-import { Question }        from "~/models/ChinguQuiz/Question";
+} from "~/components/quizSingle/styles";
+import PageHeader from "~/components/shared/PageHeader";
+import QuestionHeader from "~/components/quizSingle/QuestionHeader";
+import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
+import NextQuestionBtn from "~/components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn from "~/components/quizSingle/SubmitQuizBtn";
+import ResultView from "~/components/quizSingle/ResultView";
+import db from "~/db";
+import { Question } from "~/models/ChinguQuiz/Question";
+import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
 import { Answer } from "~/models/ChinguQuiz/Answer";
 
 interface QuizProps {
@@ -27,41 +29,50 @@ interface QuizProps {
 export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   const submittedPageHeaderText = "You did it!";
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
-    if (selectedAnswers.length && questionIndex <= selectedAnswers.length - 1) {
-      return setSelectedAnswers(
-        selectedAnswers.map((currentAnswerId, index) => {
-          if (questionIndex === index) {
-            return answerId;
-          }
-          return currentAnswerId;
-        })
-      );
-    }
-    if (selectedAnswers.length && questionIndex > selectedAnswers.length - 1) {
-      return setSelectedAnswers(selectedAnswers.concat([answerId]));
-    }
-    return setSelectedAnswers([answerId]);
+    setSelectedAnswers([answerId]);
   };
 
   const nextQuestion = () => {
+    updateQuizRecord();
+    setSelectedAnswers([]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const submitQuiz = () => {
+    updateQuizRecord();
     setQuizSubmitted(true);
+  };
+
+  const updateQuizRecord = () => {
+    const correctAnswer = quizQuestions[currentQuestionIndex].answers.filter(
+      a => a.is_correct === true
+    )[0].prompt;
+    const userAnswer = quizQuestions[currentQuestionIndex].answers.filter(
+      a => a.id === selectedAnswers[0]
+    )[0].prompt;
+    setQuizRecord(current => [
+      ...current,
+      {
+        question: quizQuestions[currentQuestionIndex].prompt,
+        correctAnswer,
+        userAnswer,
+        correct: correctAnswer === userAnswer,
+      },
+    ]);
   };
 
   return (
     <>
-      <PageHeader>
-        {quizSubmitted ? submittedPageHeaderText : quizTitle}
-      </PageHeader>
-      {quizSubmitted && <div>Hurrrayyyyy</div>}
+      <PageHeader>{quizSubmitted ? `Your Results` : quizTitle}</PageHeader>
+      {quizSubmitted && (
+        <ResultView quizTitle={quizTitle} quizRecord={quizRecord} />
+      )}
       {!quizSubmitted &&
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (
@@ -92,7 +103,7 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
             {currentQuestionIndex !== quizQuestions.length - 1 ? (
               <ContentWrapper>
                 <NextQuestionBtnContainer>
-                  {currentQuestionIndex === selectedAnswers.length - 1 ? (
+                  {selectedAnswers.length >= 1 ? (
                     <a
                       tabIndex={0}
                       role="link"
@@ -109,7 +120,7 @@ export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
             ) : (
               <ContentWrapper>
                 <SubmitQuizBtnContainer>
-                  {currentQuestionIndex === selectedAnswers.length - 1 ? (
+                  {selectedAnswers.length >= 1 ? (
                     <a
                       tabIndex={0}
                       role="link"

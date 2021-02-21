@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { breakpoint }             from "../../frontend-config";
+import { breakpoint } from "../../frontend-config";
 
 // -- TEXT ELEMENTS -- //
 
@@ -89,8 +89,8 @@ export const TextBodyMicroBold = styled.p`
 // -- Buttons -- //
 
 export const PrimaryButton = styled.button<{
-  mod?: 'fillLight' | 'fillDark' | 'ghost' | false
-  size?: 'small' | 'default'
+  mod?: "fillLight" | "fillDark" | "ghost" | false;
+  size?: "small" | "default";
 }>`
   width: max-content;
   padding: 8px 15px;

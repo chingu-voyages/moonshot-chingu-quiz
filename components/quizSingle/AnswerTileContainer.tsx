@@ -1,8 +1,8 @@
-import React                         from "react";
+import React from "react";
 import { AnswerTileContainerStyled } from "./styles";
-import AnswerTileMark                from "./AnswerTileMark";
-import AnswerTileText                from "./AnswerTileText";
-import type { ChinguQuiz }           from "../../models";
+import AnswerTileMark from "./AnswerTileMark";
+import AnswerTileText from "./AnswerTileText";
+import type { ChinguQuiz } from "../../models";
 
 interface AnswerTileContainerProps {
   mark?: string;
