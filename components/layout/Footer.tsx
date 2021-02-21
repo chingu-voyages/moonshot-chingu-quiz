@@ -7,10 +7,20 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <ContentWrapper>
-        Powered By
-        <HighlightLink>
-          <Link href="https://chingu.io/">Chingu</Link>
-        </HighlightLink>
+        <div>
+          Powered By
+          <HighlightLink>
+            <Link href="https://chingu.io/">Chingu</Link>
+          </HighlightLink>
+        </div>
+
+        <div>
+          <HighlightLink>
+            <Link href="/data-privacy">
+              Data Privacy
+            </Link>
+          </HighlightLink>
+        </div>
       </ContentWrapper>
     </FooterWrapper>
   );
