@@ -19,7 +19,7 @@ const Section = styled.div`
   }
 `;
 
-export default function Home() {
+export default function DataPrivacy() {
   return (
     <>
       <Hero />
