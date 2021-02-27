@@ -1,5 +1,5 @@
 import React from "react";
-import styled         from "styled-components";
+import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 import { Heading1, TextBody } from "../shared/styles";
