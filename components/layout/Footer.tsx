@@ -10,7 +10,11 @@ const Footer = () => {
         <div>
           Powered By
           <HighlightLink>
-            <Link href="https://chingu.io/">Chingu</Link>
+            <a
+              target="_blank"
+              href="https://chingu.io/">
+              Chingu
+            </a>
           </HighlightLink>
         </div>
 
