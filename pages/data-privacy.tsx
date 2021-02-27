@@ -1,7 +1,7 @@
 import React from "react";
-import Hero  from "../components/dataPrivacy/HeroSection";
 import styled from "styled-components";
 import { breakpoint } from "../frontend-config";
+import PageHeader from "../components/shared/PageHeader";
 
 const Headline = styled.h3`
   font-size: 25px;
@@ -22,7 +22,8 @@ const Section = styled.div`
 export default function DataPrivacy() {
   return (
     <>
-      <Hero />
+      <PageHeader
+        children="Data Privacy" />
       <Section>
         <Headline>1. Privacy Notice</Headline>
         <p>This privacy notice discloses the privacy practices for our website. This privacy notice applies solely to information collected by this website. It will notify you of the following:</p>
