@@ -212,6 +212,8 @@ export const ContentWrapper = styled.div`
   max-width: calc(100% - 70px);
   margin: 0 auto;
   color: ${props => props.theme.colors.textPrimary};
+  justify-content: space-between;
+  display: flex;
 `;
 
 export const HighlightLink = styled.span`
