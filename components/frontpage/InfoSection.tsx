@@ -86,7 +86,7 @@ const InfoSection = () => {
           <Text>
             Test your knowledge in multiple languages or topics, and get a
             detailed summary upon completion, including explanations and
-            resource links
+            resource links.
           </Text>
         </InfoBox>
 
