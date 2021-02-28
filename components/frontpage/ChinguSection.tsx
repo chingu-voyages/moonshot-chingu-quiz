@@ -88,10 +88,6 @@ const Button = styled.button<{
   margin-right: 24px;
   padding: 10px 20px;
 
-  &:last-of-type {
-    margin-right: 0;
-  }
-
   ${props =>
     props.light &&
     css`
@@ -117,19 +113,15 @@ const ChinguSection = () => {
         <ContentSection>
           <Heading2>What is Chingu?</Heading2>
           <TextBody>
-            Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-            no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-            molestiae te. Ex duo eripuit mentitum.
+            We place motivated people with similar goals together in project teams which allows them level-up in ways they couldn't otherwise do. When you join Chingu, you will collaborate with others to build & launch real projects. We match learners from all skill levels, all timezones, and a variety of different tech stacks.
           </TextBody>
 
           <ButtonsWrapper>
-            <Link href="">
-              <Button light>Primary action</Button>
-            </Link>
-
-            <Link href="">
-              <Button dark>Secondary action</Button>
-            </Link>
+          <a
+             target="_blank"
+             href="https://chingu.io/">
+              <Button light>Take Me To Chingu.io</Button>
+            </a>
           </ButtonsWrapper>
         </ContentSection>
       </ContentWrapper>

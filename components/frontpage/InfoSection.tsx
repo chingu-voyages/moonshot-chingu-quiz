@@ -74,8 +74,7 @@ const InfoSection = () => {
           </IconWrapper>
           <Headline>Have Fun</Headline>
           <Text>
-            At eripuit signiferumque sea, vel ad mucius molestie, cu labitur
-            iuvaret vulputate sed.
+            We believe that studying should be fun and provide all the support needed in order to grow your skills.
           </Text>
         </InfoBox>
 
@@ -87,7 +86,7 @@ const InfoSection = () => {
           <Text>
             Test your knowledge in multiple languages or topics, and get a
             detailed summary upon completion, including explanations and
-            resource links
+            resource links.
           </Text>
         </InfoBox>
 
