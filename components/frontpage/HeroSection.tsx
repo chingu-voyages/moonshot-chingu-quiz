@@ -94,12 +94,10 @@ const HeroSection = () => {
   return (
     <Wrapper>
       <ContentWrapper>
-        <Headline>{`<Chingu meets Hacktober/>`}</Headline>
+        <Headline>{`<Chingu vs. Open Source />`}</Headline>
 
         <Subtitle>
-          Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-          no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-          molestiae te.
+          This is your place to get started studying in a fun way using Quizzes to sharpen your knowledge && || put it into practise by simply contributing to this project!
         </Subtitle>
 
         <ButtonsWrapper>
