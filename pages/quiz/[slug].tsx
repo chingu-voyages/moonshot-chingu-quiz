@@ -38,13 +38,12 @@ const shuffleArray = (array: any) => {
 };
 
 export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
+  const [timeRemaining, setTimeRemaining] = useState<number>(600);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([])
-
-  const submittedPageHeaderText = "You did it!";
 
   useEffect(() => {
     const randomizedQuestions = [...originalQuizQuestions]
@@ -56,6 +55,26 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
     shuffleArray(randomizedQuestions);
     setQuizQuestions(randomizedQuestions);
   }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timeRemaining) {
+        setTimeRemaining(curr => curr - 1);
+      }
+    }, 1000);
+    setQuizRecord(
+      quizQuestions.map(question => ({
+        correctAnswer: question.answers.find(a => a.is_correct)!.prompt,
+        userAnswer: "",
+        question: question.prompt,
+        correct: false,
+      }))
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
     setSelectedAnswers([answerId]);
@@ -72,6 +91,12 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
     setQuizSubmitted(true);
   };
 
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      setQuizSubmitted(true);
+    }
+  }, [timeRemaining]);
+
   const updateQuizRecord = () => {
     const correctAnswer = quizQuestions[currentQuestionIndex].answers.filter(
       a => a.is_correct === true
@@ -79,15 +104,15 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
     const userAnswer = quizQuestions[currentQuestionIndex].answers.filter(
       a => a.id === selectedAnswers[0]
     )[0].prompt;
-    setQuizRecord(current => [
-      ...current,
-      {
-        question: quizQuestions[currentQuestionIndex].prompt,
-        correctAnswer,
-        userAnswer,
-        correct: correctAnswer === userAnswer,
-      },
-    ]);
+
+    const updatedQuizRecord = [...quizRecord]
+    updatedQuizRecord[currentQuestionIndex] = {
+      question: quizQuestions[currentQuestionIndex].prompt,
+      correctAnswer,
+      userAnswer,
+      correct: correctAnswer === userAnswer,
+    }
+    setQuizRecord(updatedQuizRecord);
   };
 
   return (
@@ -100,6 +125,10 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (
           <span>
+            <div style={{ textAlign: "center" }}>
+              Time Remaining (seconds): {timeRemaining}
+            </div>
+
             <QuestionHeader
               questionData={quizQuestions[currentQuestionIndex]}
               questionIndex={currentQuestionIndex + 1}
