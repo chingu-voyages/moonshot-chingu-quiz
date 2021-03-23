@@ -48,6 +48,11 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
 
   useEffect(() => {
     const randomizedQuestions = [...originalQuizQuestions]
+    randomizedQuestions.forEach(question => {
+      const randomizedAnswers = [...question.answers];
+      shuffleArray(randomizedAnswers)
+      question.answers = randomizedAnswers;
+    })
     shuffleArray(randomizedQuestions);
     setQuizQuestions(randomizedQuestions);
   }, [])
