@@ -2,7 +2,7 @@
   This page will load at the url "/quiz/:slug"
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AnswersTileSection,
   NextQuestionBtnContainer,
@@ -26,13 +26,36 @@ interface QuizProps {
   quizQuestions: Question[];
 }
 
-export default function Quiz({ quizTitle, quizQuestions }: QuizProps) {
+// Shuffles an array using Fisher-Yates algorithm
+// See: https://www.juniordevelopercentral.com/how-to-shuffle-an-array-in-javascript/
+const shuffleArray = (array: any) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+};
+
+export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [quizQuestions, setQuizQuestions] = useState<Question[]>([])
 
   const submittedPageHeaderText = "You did it!";
+
+  useEffect(() => {
+    const randomizedQuestions = [...originalQuizQuestions]
+    randomizedQuestions.forEach(question => {
+      const randomizedAnswers = [...question.answers];
+      shuffleArray(randomizedAnswers)
+      question.answers = randomizedAnswers;
+    })
+    shuffleArray(randomizedQuestions);
+    setQuizQuestions(randomizedQuestions);
+  }, [])
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
     setSelectedAnswers([answerId]);
