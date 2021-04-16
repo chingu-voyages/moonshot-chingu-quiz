@@ -9,7 +9,7 @@ import {
 } from "./styles";
 
 const Wrapper = styled(SubInfo)`
-	display: block;
+  display: block;
   max-width: 990px;
 	margin: 0 auto;
 `;
