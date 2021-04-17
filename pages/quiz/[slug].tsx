@@ -2,7 +2,7 @@
   This page will load at the url "/quiz/:slug"
 */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   AnswersTileSection,
   NextQuestionBtnContainer,
@@ -20,6 +20,7 @@ import db from "~/db";
 import { Question } from "~/models/ChinguQuiz/Question";
 import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
 import { Answer } from "~/models/ChinguQuiz/Answer";
+import { QuizContext, QuizContextProvider } from "~/contexts/quiz-context";
 
 interface QuizProps {
   quizTitle: string;
@@ -37,25 +38,26 @@ const shuffleArray = (array: any) => {
   }
 };
 
-export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
+function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
-  const [quizQuestions, setQuizQuestions] = useState<Question[]>([])
+  const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
+  const { timer, setPaused } = useContext(QuizContext);
 
   const submittedPageHeaderText = "You did it!";
 
   useEffect(() => {
-    const randomizedQuestions = [...originalQuizQuestions]
+    const randomizedQuestions = [...originalQuizQuestions];
     randomizedQuestions.forEach(question => {
       const randomizedAnswers = [...question.answers];
-      shuffleArray(randomizedAnswers)
+      shuffleArray(randomizedAnswers);
       question.answers = randomizedAnswers;
-    })
+    });
     shuffleArray(randomizedQuestions);
     setQuizQuestions(randomizedQuestions);
-  }, [])
+  }, []);
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
     setSelectedAnswers([answerId]);
@@ -70,6 +72,7 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
   const submitQuiz = () => {
     updateQuizRecord();
     setQuizSubmitted(true);
+    setPaused(true);
   };
 
   const updateQuizRecord = () => {
@@ -99,7 +102,8 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
       {!quizSubmitted &&
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (
-          <span>
+          <div>
+            <p style={{textAlign: 'center'}}>Elapsed Time: {timer}</p>
             <QuestionHeader
               questionData={quizQuestions[currentQuestionIndex]}
               questionIndex={currentQuestionIndex + 1}
@@ -158,9 +162,20 @@ export default function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }
                 </SubmitQuizBtnContainer>
               </ContentWrapper>
             )}
-          </span>
+          </div>
         )}
     </>
+  );
+}
+
+export default function QuizWithContext({
+  quizTitle,
+  quizQuestions,
+}: QuizProps) {
+  return (
+    <QuizContextProvider>
+      <Quiz quizQuestions={quizQuestions} quizTitle={quizTitle} />
+    </QuizContextProvider>
   );
 }
 
