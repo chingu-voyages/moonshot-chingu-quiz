@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styled         from "styled-components";
+import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 // Styles
@@ -313,7 +313,10 @@ export const ABOUT_DATA = [
         most of our styling.
         <br />
         <br />
-        - The Back-End is a Postgres DB hosted on an Express server.
+        - The Back-End will also expected to be implemented with NextJS in
+        'pages/api' but at this time there isn't one. The build process does
+        depend on data from a PostGres DB. See 'db/config.ts' and specify the
+        environment variables in '.env.local' or where appropriate.
         <br />
         <br />- Full details can be found in our {repoGitLink}
       </>
