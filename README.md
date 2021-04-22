@@ -1,3 +1,16 @@
+[contributors-shield]: https://img.shields.io/github/contributors/chingu-voyages/moonshot-chingu-quiz.svg?style=for-the-badge
+[contributors-url]: https://github.com/chingu-voyages/moonshot-chingu-quiz/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/chingu-voyages/moonshot-chingu-quiz.svg?style=for-the-badge
+[forks-url]: https://github.com/chingu-voyages/moonshot-chingu-quiz/network/members
+[stars-shield]: https://img.shields.io/github/stars/chingu-voyages/moonshot-chingu-quiz.svg?style=for-the-badge
+[stars-url]: https://github.com/chingu-voyages/moonshot-chingu-quiz/stargazers
+[issues-shield]: https://img.shields.io/github/issues/chingu-voyages/moonshot-chingu-quiz.svg?style=for-the-badge
+[issues-url]: https://github.com/chingu-voyages/moonshot-chingu-quiz/issues
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 # moonshot-chingu-quiz
 
 Chingu Moonshot - Quiz App
