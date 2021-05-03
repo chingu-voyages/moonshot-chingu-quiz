@@ -11,6 +11,8 @@ import {
   SubmitQuizBtnStyled,
 } from "./styles";
 import ScoreGraph from "./ScoreGraph";
+import { useContext } from "react";
+import { QuizContext } from "~/contexts/quiz-context";
 
 export default function ResultView({
   quizTitle,
@@ -19,6 +21,7 @@ export default function ResultView({
   quizTitle: string;
   quizRecord: QuizRecord[];
 }) {
+  const { timer } = useContext(QuizContext);
   const percentage = Math.round(
     (quizRecord.filter(r => r.correct).length * 100) / quizRecord.length
   );
@@ -26,7 +29,12 @@ export default function ResultView({
 
   return (
     <ResultPageContainer>
-      <ScoreGraph percentage={percentage} />
+      <div>
+        <ScoreGraph percentage={percentage} />
+        <p style={{ textAlign: "center", padding: "32px 4px" }}>
+          Total Time: {timer} seconds
+        </p>
+      </div>
 
       <div>
         <ResultTitleContainer>

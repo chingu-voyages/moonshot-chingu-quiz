@@ -290,7 +290,7 @@ export const GraphSVG = styled.svg`
     transform: scale(1.1);
     position: sticky;
     top: 200px;
-    width: 30%;
+    width: 100%;
     margin-top: 78px;
   }
 `;
