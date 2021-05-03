@@ -305,21 +305,10 @@ export const ABOUT_DATA = [
     svg: <CodeSVG />,
     title: `What are you using to build this app?`,
     text: (
-      <>
-        Our app is split into a Front-End (client) and Back-End (server).
-        <br />
-        <br />
-        - The Front-End is a NextJS app and we are using Styled Components for
-        most of our styling.
-        <br />
-        <br />
-        - The Back-End will also expected to be implemented with NextJS in
-        'pages/api' but at this time there isn't one. The build process does
-        depend on data from a PostGres DB. See 'db/config.ts' and specify the
-        environment variables in '.env.local' or where appropriate.
-        <br />
-        <br />- Full details can be found in our {repoGitLink}
-      </>
+      <p>
+        It's a <a href="https://nextjs.org/docs">Next.js</a> app powered by a{" "}
+        <a href="https://www.postgresql.org/">PostgreSQL</a> database.
+      </p>
     ),
   },
 ];
