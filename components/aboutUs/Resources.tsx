@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styled         from "styled-components";
+import styled from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
 // Styles
@@ -305,18 +305,10 @@ export const ABOUT_DATA = [
     svg: <CodeSVG />,
     title: `What are you using to build this app?`,
     text: (
-      <>
-        Our app is split into a Front-End (client) and Back-End (server).
-        <br />
-        <br />
-        - The Front-End is a NextJS app and we are using Styled Components for
-        most of our styling.
-        <br />
-        <br />
-        - The Back-End is a Postgres DB hosted on an Express server.
-        <br />
-        <br />- Full details can be found in our {repoGitLink}
-      </>
+      <p>
+        It's a <a href="https://nextjs.org/docs">Next.js</a> app powered by a{" "}
+        <a href="https://www.postgresql.org/">PostgreSQL</a> database.
+      </p>
     ),
   },
 ];
