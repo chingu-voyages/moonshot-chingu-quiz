@@ -7,6 +7,7 @@
 - Example Code: https://next-auth.js.org/getting-started/example
 - Auth0 Provider: https://next-auth.js.org/providers/auth0
 - REST API: https://next-auth.js.org/getting-started/rest-api
+- User Data Storage: https://auth0.com/docs/security/data-security/user-data-storage
 
 ### auth0
 
