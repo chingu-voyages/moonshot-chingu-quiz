@@ -25,8 +25,8 @@ Obtain these from: https://manage.auth0.com/dashboard and place in `.env.local`
 
 ### Callback URL
 
-Determine the callback url for local development by visiting http://localhost:3000/api/auth/providers and configure Allowed Callback URS with auth0.
+Determine the callback url for local development by visiting http://localhost:3000/api/auth/providers and configure Allowed Callback URLs with auth0.
 
 ### Additional Notes
 
-- Note that there are cookies that are kept with `AUTH0_DOMAIN`. Wipe these
+- Note that there are cookies that are kept with `AUTH0_DOMAIN`. Wipe these if you'd like to test re-authenticating with Auth0.
