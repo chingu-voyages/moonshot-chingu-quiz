@@ -28,7 +28,7 @@ export const InnerWrapper = styled.div`
 `;
 
 export const TopBarInnerWrapper = styled(InnerWrapper)`
-  color: white;
+  color: ${props => props.theme.colors.textMenu};
   justify-content: flex-start;
   padding: 4px;
   flex-direction: row-reverse;
