@@ -4,8 +4,9 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import styled             from "styled-components";
-import Footer             from "./Footer";
+import styled from "styled-components";
+import Footer from "./Footer";
+import { useSession } from "next-auth/client";
 import { breakpointsRaw } from "../../frontend-config";
 
 import MobileMenu from "./MobileMenu";
@@ -13,6 +14,7 @@ import MobileMenu from "./MobileMenu";
 import {
   Wrapper,
   InnerWrapper,
+  TopBarInnerWrapper,
   LogoWrapper,
   Logo,
   LogoText,
@@ -34,6 +36,8 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
+  const [session, loading] = useSession();
+
   const [mobile, setMobile] = useState(false);
   const [headerShadow, setHeaderShadow] = useState(false);
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
@@ -84,41 +88,61 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
       </Head>
 
       <Wrapper withShadow={headerShadow}>
-        <InnerWrapper>
-          <Link href="/">
-            <LogoWrapper>
-              <Logo src="/logo.png" />
-              <LogoText>Chingu Quiz</LogoText>
-            </LogoWrapper>
-          </Link>
-
-          {mobile ? (
-            <MobileMenu
-              active={mobileMenuActive}
-              toggleMobileMenu={toggleMobileMenu}
-              toggleTheme={toggleTheme}
-              isDarkTheme={isDarkTheme}
-            />
-          ) : (
-            <Navbar>
-              <Link href="/quizzes">
-                <NavbarLink>Quiz</NavbarLink>
-              </Link>
-
-              <Link href="/contribute">
-                <NavbarLink>Contribute</NavbarLink>
-              </Link>
-
-              <Link href="/about">
-                <NavbarLink>About Us</NavbarLink>
-              </Link>
-
-              <NavbarToggleSwitch onClick={toggleTheme}>
-                <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
-              </NavbarToggleSwitch>
-            </Navbar>
-          )}
-        </InnerWrapper>
+        <div style={{ height: "100%" }}>
+          <TopBarInnerWrapper>
+            <div>
+              {session?.user?.email ? (
+                <button
+                  onClick={() => (window.location.href = "/api/auth/signout")}
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={() => (window.location.href = "/api/auth/signin")}
+                >
+                  Login
+                </button>
+              )}
+            </div>
+            {session?.user?.email && (
+              <div>
+                Signed in as: <i>{session.user.email}</i>
+              </div>
+            )}
+          </TopBarInnerWrapper>
+          <InnerWrapper>
+            <Link href="/">
+              <LogoWrapper>
+                <Logo src="/logo.png" />
+                <LogoText>Chingu Quiz</LogoText>
+              </LogoWrapper>
+            </Link>
+            {mobile ? (
+              <MobileMenu
+                active={mobileMenuActive}
+                toggleMobileMenu={toggleMobileMenu}
+                toggleTheme={toggleTheme}
+                isDarkTheme={isDarkTheme}
+              />
+            ) : (
+              <Navbar>
+                <Link href="/quizzes">
+                  <NavbarLink>Quiz</NavbarLink>
+                </Link>
+                <Link href="/contribute">
+                  <NavbarLink>Contribute</NavbarLink>
+                </Link>
+                <Link href="/about">
+                  <NavbarLink>About Us</NavbarLink>
+                </Link>
+                <NavbarToggleSwitch onClick={toggleTheme}>
+                  <ToggleSwitchSlider isDarkTheme={isDarkTheme} />
+                </NavbarToggleSwitch>
+              </Navbar>
+            )}
+          </InnerWrapper>
+        </div>
       </Wrapper>
 
       <Main>{children}</Main>
