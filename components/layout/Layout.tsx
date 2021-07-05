@@ -6,7 +6,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import Footer from "./Footer";
-import { useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 import { breakpointsRaw } from "../../frontend-config";
 
 import MobileMenu from "./MobileMenu";
@@ -93,13 +93,13 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
             <div>
               {session?.user?.email ? (
                 <button
-                  onClick={() => (window.location.href = "/api/auth/signout")}
+                  onClick={() => signOut()}
                 >
                   Logout
                 </button>
               ) : (
                 <button
-                  onClick={() => (window.location.href = "/api/auth/signin")}
+                  onClick={() => signIn('auth0')}
                 >
                   Login
                 </button>
