@@ -81,6 +81,19 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
     setMobileMenuActive(!mobileMenuActive);
   };
 
+  const signOutCompletely = async () => {
+    await signOut();
+    const searchParams = new URLSearchParams();
+    searchParams.set("returnTo", `${window.location.origin}`);
+    searchParams.set(
+      "client_id",
+      process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID as string
+    );
+    window.location.href = `https://${
+      process.env.NEXT_PUBLIC_AUTH0_DOMAIN
+    }/v2/logout?${searchParams.toString()}`;
+  };
+
   return (
     <div>
       <Head>
@@ -92,17 +105,9 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
           <TopBarInnerWrapper>
             <div>
               {session?.user?.email ? (
-                <button
-                  onClick={() => signOut()}
-                >
-                  Logout
-                </button>
+                <button onClick={() => signOutCompletely()}>Logout</button>
               ) : (
-                <button
-                  onClick={() => signIn('auth0')}
-                >
-                  Login
-                </button>
+                <button onClick={() => signIn("auth0")}>Login</button>
               )}
             </div>
             {session?.user?.email && (

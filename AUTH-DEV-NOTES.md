@@ -19,14 +19,12 @@
 
 Obtain these from: https://manage.auth0.com/dashboard and place in `.env.local`
 
-- `AUTH0_CLIENT_ID`
+- `NEXT_PUBLIC_AUTH0_CLIENT_ID`
 - `AUTH0_CLIENT_SECRET`
-- `AUTH0_DOMAIN`
+- `NEXT_PUBLIC_AUTH0_DOMAIN`
 
-### Callback URL
+### Auth0 Application Settings
 
-Determine the callback url for local development by visiting http://localhost:3000/api/auth/providers and configure Allowed Callback URLs with auth0.
-
-### Additional Notes
-
+- Determine the callback url for local development by visiting http://localhost:3000/api/auth/providers and configure Allowed Callback URLs with auth0. (e.g. `http://localhost:3000/api/auth/callback/auth0`)
+- *Allowed Logout URLs* set to `http://localhost:3000` for testing so `returnTo` on signing out works
 - Note that there are cookies that are kept with `AUTH0_DOMAIN`. Wipe these if you'd like to test re-authenticating with Auth0.
