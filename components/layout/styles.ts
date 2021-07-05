@@ -30,7 +30,7 @@ export const InnerWrapper = styled.div`
 export const TopBarInnerWrapper = styled(InnerWrapper)`
   color: white;
   justify-content: flex-start;
-  padding: 4px 8px;
+  padding: 4px;
   flex-direction: row-reverse;
 
   & > div {
