@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  client:
-    image: node:14
-    restart: always
-    user: node
-    working_dir: /home/node/app
-    volumes:
-      - ./:/home/node/app
-    ports:
-      - "3000:3000"
-    command: bash -c "npm i && npm run dev"
+  # client:
+  #   image: node:14
+  #   restart: always
+  #   user: node
+  #   working_dir: /home/node/app
+  #   volumes:
+  #     - ./:/home/node/app
+  #   ports:
+  #     - "3000:3000"
+  #   command: bash -c "npm i && npm run dev"
 
   db:
     image: postgres
