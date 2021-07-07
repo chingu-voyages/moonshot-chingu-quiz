@@ -7,6 +7,9 @@
     "npm": ">= 7.0.0"
   },
   "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "dotenv": "^10.0.0",
     "next": "^11.0.1",
     "next-auth": "^3.27.2",
     "pg": "^8.6.0",
