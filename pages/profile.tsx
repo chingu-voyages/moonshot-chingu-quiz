@@ -1,13 +1,16 @@
 import { Headline, Wrapper } from "~/components/aboutUs/styles";
+import { ContentWrapper } from "~/components/quizSingle/styles";
 
 const ProfilePage = () => {
   return (
     <Wrapper>
-      <Headline>User Profile Page</Headline>
+      <ContentWrapper style={{color: 'black'}}>
+        <Headline>User Profile Page</Headline>
 
-      <section>
-        <p>TODO</p>
-      </section>
+        <section>
+          <p>TODO</p>
+        </section>
+      </ContentWrapper>
     </Wrapper>
   );
 };
