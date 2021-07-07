@@ -1,7 +1,7 @@
 /*
   This component is used in `/pages/_app.js` as a wrapper so it will remain mounted even when the 'page' changes
 */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
@@ -105,13 +105,21 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
           <TopBarInnerWrapper>
             <div>
               {session?.user?.email ? (
-                <button onClick={() => signOutCompletely()}>Logout</button>
+                <Fragment>
+                  <Link href="/profile">
+                    <a style={{ margin: "0px 8px", display: "inline-block" }}>
+                      Profile
+                    </a>
+                  </Link>
+
+                  <button onClick={() => signOutCompletely()}>Logout</button>
+                </Fragment>
               ) : (
                 <button onClick={() => signIn("auth0")}>Login</button>
               )}
             </div>
             {session?.user?.email && (
-              <div>
+              <div style={{color: '#ccc', userSelect: 'none'}}>
                 Signed in as: <i>{session.user.email}</i>
               </div>
             )}
