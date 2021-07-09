@@ -1,6 +1,7 @@
 export interface QuizResult {
   date: string;
-  score: number;
+  numberCorrect: number;
+  totalQuestions: number;
   name: string;
   secondsToComplete: number;
 }
