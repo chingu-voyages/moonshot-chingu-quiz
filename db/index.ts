@@ -1,4 +1,4 @@
-import { Pool } from "pg";
+import { Pool, PoolClient } from "pg";
 import config   from "./config";
 
 export const pool = new Pool(config);
@@ -18,3 +18,12 @@ export default {
     }
   },
 };
+
+let poolClient: PoolClient | null = null;
+
+export const getConnection = async () => {
+  if(!poolClient) {
+    poolClient = await pool.connect()
+  }
+  return poolClient;
+}

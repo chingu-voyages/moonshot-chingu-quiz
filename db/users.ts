@@ -1,7 +1,8 @@
-import { pool } from "./index";
+import { PoolClient } from "pg";
+import { getConnection, pool } from "./index";
 
 export const insertUser = async (nickname: string, email: string) => {
-  const client = await pool.connect();
+  const client = await getConnection();
 
   const {
     rows: userRows,
@@ -14,9 +15,6 @@ export const insertUser = async (nickname: string, email: string) => {
       [nickname, email]
     );
   }
-
-  await client.release();
-  await pool.end();
-
   return result;
 };
+
