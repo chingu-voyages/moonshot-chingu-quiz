@@ -9,6 +9,7 @@ const Article = styled.article`
 
   a {
     color: ${props => props.theme.colors.link};
+    text-decoration: underline;
   }
 `;
 
