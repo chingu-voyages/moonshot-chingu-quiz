@@ -29,6 +29,7 @@ export const SubInfo = styled.div<styleProps>`
 
   a {
     color: ${props => props.theme.colors.link};
+    text-decoration: underline;
   }
 
   svg {
