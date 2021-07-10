@@ -25,5 +25,19 @@ services:
     ports:
       - "5432:5432"
 
+  test_db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: docker
+    volumes:
+      - "moonshot_test_db:/var/lib/postgresql/data"
+      - "./quiz_db.sql:/docker-entrypoint-initdb.d/quiz_db.sql"
+    ports:
+      - "15432:5432"
+
 volumes:
   quizdata:
+  moonshot_test_db:
