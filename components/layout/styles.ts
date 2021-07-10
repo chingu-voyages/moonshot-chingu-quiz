@@ -32,6 +32,7 @@ export const InnerWrapper = styled.div`
 export const LogoWrapper = styled.a`
   display: flex;
   align-items: center;
+  text-decoration: none;
 `;
 
 export const Logo = styled.img`
@@ -71,6 +72,7 @@ export const NavbarLink = styled.a`
   line-height: 24px;
   color: ${props => props.theme.colors.textMenu};
   margin-right: 32px;
+  text-decoration: none;
 
   &:last-of-type {
     margin-right: 0;
@@ -205,6 +207,10 @@ export const FooterWrapper = styled.div`
   height: 66px;
   display: flex;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const ContentWrapper = styled.div`
