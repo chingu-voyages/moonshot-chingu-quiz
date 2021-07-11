@@ -1,3 +1,4 @@
+import React from 'react';
 import { Headline, Wrapper } from "../components/aboutUs/styles";
 import { ContentWrapper } from "../components/quizSingle/styles";
 
