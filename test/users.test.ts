@@ -1,7 +1,7 @@
 import Dotenv from "dotenv";
 import { getConnection, pool } from "../db";
 
-Dotenv.config({ path: ".env.local" });
+Dotenv.config({ path: ".env.test.local" });
 
 import { insertUser } from "../db/users";
 

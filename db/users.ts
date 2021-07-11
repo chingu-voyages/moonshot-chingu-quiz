@@ -1,4 +1,3 @@
-import { PoolClient } from "pg";
 import { getConnection, pool } from "./index";
 
 export const insertUser = async (nickname: string, email: string) => {
@@ -18,3 +17,28 @@ export const insertUser = async (nickname: string, email: string) => {
   return result;
 };
 
+export async function createUsersTable() {
+  const client = await getConnection();
+
+  const {
+    rows: [{ exists: usersExists }],
+  } = await client.query(`
+    SELECT EXISTS( SELECT 1 FROM pg_tables WHERE schemaname='public' and tablename='users');
+  `);
+
+  if (!usersExists) {
+    await client.query(
+    `
+      CREATE TABLE users (
+        uid serial PRIMARY KEY,
+        nickname varchar (64) UNIQUE NOT NULL,
+        email varchar (320) UNIQUE NOT NULL,
+        data json
+      )
+    `
+    );
+    console.log("'users' table created.");
+  } else {
+    console.log("'users' table already exists.");
+  }
+}
