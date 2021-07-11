@@ -1,14 +1,22 @@
 import { getConnection, pool } from "./index";
 
-export const insertUser = async (nickname: string, email: string) => {
+export const checkEmailExists = async (email: string) => {
   const client = await getConnection();
-
+  
   const {
     rows: userRows,
   } = await client.query("SELECT email FROM users WHERE email=$1", [email]);
 
+  if(userRows.length > 1) throw new Error(`More than one matching email for ${email}`)
+  return userRows.length === 1
+}
+
+export const insertUser = async (nickname: string, email: string) => {
+  const client = await getConnection();
+
+  const emailExists = await checkEmailExists(email);
   let result: any = null;
-  if (userRows.length === 0) {
+  if (!emailExists) {
     result = await client.query(
       "INSERT INTO users(nickname, email) VALUES ($1, $2)",
       [nickname, email]
