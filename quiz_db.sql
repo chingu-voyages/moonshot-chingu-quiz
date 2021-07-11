@@ -61,7 +61,7 @@ CREATE TABLE public.answer (
 );
 
 
-ALTER TABLE public.answer OWNER TO docker;
+-- ALTER TABLE public.answer OWNER TO docker;
 
 --
 -- Name: question; Type: TABLE; Schema: public; Owner: docker
@@ -74,7 +74,7 @@ CREATE TABLE public.question (
 );
 
 
-ALTER TABLE public.question OWNER TO docker;
+-- ALTER TABLE public.question OWNER TO docker;
 
 --
 -- Name: quiz; Type: TABLE; Schema: public; Owner: docker
@@ -89,7 +89,7 @@ CREATE TABLE public.quiz (
 );
 
 
-ALTER TABLE public.quiz OWNER TO docker;
+-- ALTER TABLE public.quiz OWNER TO docker;
 
 --
 -- Name: subject; Type: TABLE; Schema: public; Owner: docker
@@ -101,7 +101,7 @@ CREATE TABLE public.subject (
 );
 
 
-ALTER TABLE public.subject OWNER TO docker;
+-- ALTER TABLE public.subject OWNER TO docker;
 
 --
 -- Name: tag; Type: TABLE; Schema: public; Owner: docker
@@ -113,7 +113,7 @@ CREATE TABLE public.tag (
 );
 
 
-ALTER TABLE public.tag OWNER TO docker;
+-- ALTER TABLE public.tag OWNER TO docker;
 
 --
 -- Data for Name: answer; Type: TABLE DATA; Schema: public; Owner: docker
