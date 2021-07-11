@@ -37,8 +37,7 @@ export async function createUsersTable() {
       )
     `
     );
-    console.log("'users' table created.");
-  } else {
-    console.log("'users' table already exists.");
+    return true;
   }
+  return false;
 }

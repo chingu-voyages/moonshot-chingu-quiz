@@ -3,7 +3,13 @@ import { getConnection, pool } from "../db";
 
 Dotenv.config({ path: ".env.test.local" });
 
-import { insertUser } from "../db/users";
+import { createUsersTable, insertUser } from "../db/users";
+
+beforeAll(async () => {
+  await createUsersTable();
+  const client = await getConnection();
+  await client.query('TRUNCATE TABLE users');
+})
 
 test("Test addUser works", async () => {
   expect(process.env.PGUSER).toBe("docker");
