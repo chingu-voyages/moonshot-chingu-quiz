@@ -179,11 +179,11 @@ export default function QuizWithContext({
   );
 }
 
-export async function getStaticPaths() {
-  interface Ids {
-    id: string;
-  }
+interface Ids {
+  id: string;
+}
 
+export async function getStaticPaths() {
   const { rows: ids } = await db.query("SELECT id FROM quiz");
   const paths = ids.map(({ id }: Ids) => ({
     params: {
