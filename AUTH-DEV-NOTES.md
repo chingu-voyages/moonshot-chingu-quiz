@@ -70,6 +70,10 @@ npm run dev
 
 Visit http://localhost:3000
 
+## Production notes
+
+- Don't forget to do a one-time import of `quiz_db.sql` into your Postgresql instance
+
 ## Resource Links
 
 ### next-auth
