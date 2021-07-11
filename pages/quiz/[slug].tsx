@@ -9,18 +9,18 @@ import {
   SubmitQuizBtnContainer,
   AnswerTileContainerLink,
   ContentWrapper,
-} from "~/components/quizSingle/styles";
-import PageHeader from "~/components/shared/PageHeader";
-import QuestionHeader from "~/components/quizSingle/QuestionHeader";
-import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
-import NextQuestionBtn from "~/components/quizSingle/NextQuestionBtn";
-import SubmitQuizBtn from "~/components/quizSingle/SubmitQuizBtn";
-import ResultView from "~/components/quizSingle/ResultView";
-import db from "~/db";
-import { Question } from "~/models/ChinguQuiz/Question";
-import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
-import { Answer } from "~/models/ChinguQuiz/Answer";
-import { QuizContext, QuizContextProvider } from "~/contexts/quiz-context";
+} from "../../components/quizSingle/styles";
+import PageHeader from "../../components/shared/PageHeader";
+import QuestionHeader from "../../components/quizSingle/QuestionHeader";
+import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
+import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn from "../../components/quizSingle/SubmitQuizBtn";
+import ResultView from "../../components/quizSingle/ResultView";
+import db from "../../db";
+import { Question } from "../../models/ChinguQuiz/Question";
+import { QuizRecord } from "../../models/ChinguQuiz/QuizRecord";
+import { Answer } from "../../models/ChinguQuiz/Answer";
+import { QuizContext, QuizContextProvider } from "../../contexts/quiz-context";
 
 interface QuizProps {
   quizTitle: string;

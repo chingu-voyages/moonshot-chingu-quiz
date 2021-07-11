@@ -1,5 +1,5 @@
-import { Headline, Wrapper } from "~/components/aboutUs/styles";
-import { ContentWrapper } from "~/components/quizSingle/styles";
+import { Headline, Wrapper } from "../components/aboutUs/styles";
+import { ContentWrapper } from "../components/quizSingle/styles";
 
 const ProfilePage = () => {
   return (
