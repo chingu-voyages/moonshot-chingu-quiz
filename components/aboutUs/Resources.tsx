@@ -63,7 +63,7 @@ const repoLink = (
   </a>
 );
 
-const repoGitLink = (
+export const repoGitLink = (
   <a
     href="https://github.com/chingu-voyages/moonshot-chingu-quiz"
     rel="noreferrer noopener"
