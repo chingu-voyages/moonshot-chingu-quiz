@@ -77,6 +77,11 @@ Visit http://localhost:3000
 
 - Don't forget to do a one-time import of `quiz_db.sql` into your Postgresql instance
 
+```shell
+# For example
+psql -U postgres -h host.somewhere -p 5432 moonshot < quiz_db.sql
+```
+
 ## Resource Links
 
 ### next-auth
