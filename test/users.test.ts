@@ -3,7 +3,7 @@ import { getConnection, pool } from "../db";
 
 Dotenv.config({ path: ".env.test.local" });
 
-import { createUsersTable, insertUser } from "../db/users";
+import { addQuizResult, createUsersTable, insertUser } from "../db/users";
 
 beforeAll(async () => {
   await createUsersTable();
@@ -16,6 +16,17 @@ test("Test addUser works", async () => {
   const result = await insertUser("mickey", "mickey@mouseland.example");
   expect(result?.rowCount).toBe(1)
 });
+
+test("addQuizResult works", async () => {
+  await insertUser("minnie", "minnie@mouseland.example");
+  const result = await addQuizResult('minnie@mouseland.example', {
+    date: new Date().toISOString(),
+    numberCorrect: 7,
+    totalQuestions: 10,
+    name: "Basics",
+    secondsToComplete: 123
+  })
+})
 
 afterAll(async () => {
   const client = await getConnection()

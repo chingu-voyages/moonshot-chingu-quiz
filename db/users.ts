@@ -1,3 +1,4 @@
+import { QuizResult } from "~/models/user";
 import { getConnection, pool } from "./index";
 
 export const checkEmailExists = async (email: string) => {
@@ -24,6 +25,10 @@ export const insertUser = async (nickname: string, email: string) => {
   }
   return result;
 };
+
+export const addQuizResult = async (email: string, quizResult: QuizResult) => {
+  const client = await getConnection();
+}
 
 export async function createUsersTable() {
   const client = await getConnection();
