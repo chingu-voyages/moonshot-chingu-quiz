@@ -55,10 +55,16 @@ Run tests with `npm run test`. This will run Jest.
 ### 3. Running the app
 
 ```shell
+# 0. Ensure all dependencies are installed
+npm install
+
 # 1. Start your Postgres databases
 docker-compose up -d
 
-# 2. Start your Next.js app
+# 2. Create Users table
+npm run db-setup 
+
+# 3. Start your Next.js app
 npm run dev
 ```
 
