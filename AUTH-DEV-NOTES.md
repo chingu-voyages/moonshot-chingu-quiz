@@ -61,10 +61,13 @@ npm install
 # 1. Start your Postgres databases
 docker-compose up -d
 
-# 2. Create Users table
+# 2. Create symlink .env.db-setup pointing to .env.local
+ln -s .env.local .env.db-setup
+
+# 3. Create Users table
 npm run db-setup 
 
-# 3. Start your Next.js app
+# 4. Start your Next.js app
 npm run dev
 ```
 
