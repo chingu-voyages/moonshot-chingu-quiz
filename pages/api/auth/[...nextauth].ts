@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import { checkEmailExists, insertUser } from "~/db/users";
 
 export default NextAuth({
   providers: [
@@ -9,4 +10,18 @@ export default NextAuth({
       domain: process.env.NEXT_PUBLIC_AUTH0_DOMAIN,
     }),
   ],
+  callbacks: {
+    async signIn(user, account, profile) {
+      const isAllowedToSignIn = true
+      if (isAllowedToSignIn) {
+        const email = user.email as string;
+        const emailExists = await checkEmailExists(email);
+        if(!emailExists) {
+          await insertUser(email, email);
+        }
+        return true
+      } 
+      return false;
+    }
+  }
 });
