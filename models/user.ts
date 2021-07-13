@@ -6,11 +6,13 @@ export interface QuizResult {
   secondsToComplete: number;
 }
 
+export interface UserData {
+  quizResults?: QuizResult[]
+}
+
 export interface User {
   uid: number;
   nickname: string;
   email: string;
-  data?: {
-    quizResults?: QuizResult[]
-  };
+  data?: UserData;
 }

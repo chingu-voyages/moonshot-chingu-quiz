@@ -26,6 +26,8 @@ test("addQuizResult works", async () => {
     name: "Basics",
     secondsToComplete: 123
   })
+
+  expect(result.rowCount).toBe(1);
 })
 
 afterAll(async () => {

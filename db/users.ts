@@ -1,5 +1,5 @@
-import { QuizResult } from "../models/user";
-import { getConnection, pool } from "./index";
+import { QuizResult, UserData } from "../models/user";
+import { getConnection } from "./index";
 
 export const checkEmailExists = async (email: string) => {
   const client = await getConnection();
@@ -27,7 +27,19 @@ export const insertUser = async (nickname: string, email: string) => {
 };
 
 export const addQuizResult = async (email: string, quizResult: QuizResult) => {
+  const emailExists = await checkEmailExists(email);
+  if(!emailExists) throw new Error('User does not exist');
+
   const client = await getConnection();
+  const {rows: [{data}]} = await client.query('SELECT data FROM users WHERE email=$1', [email]);
+  
+  const updatedData: UserData = data ? data : {};
+  if(!updatedData.quizResults) updatedData.quizResults = [];
+  const updatedQuizResults = [...updatedData.quizResults, quizResult];
+
+  updatedData.quizResults = updatedQuizResults;
+
+  return await client.query('UPDATE users SET data=$2 WHERE email=$1', [email, updatedData]);
 }
 
 export async function createUsersTable() {
