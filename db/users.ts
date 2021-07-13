@@ -26,6 +26,14 @@ export const insertUser = async (nickname: string, email: string) => {
   return result;
 };
 
+export const getUserData = async (email: string) => {
+  const client = await getConnection();
+
+  const {rows: [{data}]} = await client.query('SELECT data FROM users WHERE email=$1', [email]);
+
+  return data as UserData;
+}
+
 export const addQuizResult = async (email: string, quizResult: QuizResult) => {
   const emailExists = await checkEmailExists(email);
   if(!emailExists) throw new Error('User does not exist');
