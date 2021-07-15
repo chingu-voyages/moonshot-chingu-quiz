@@ -5,10 +5,10 @@
 
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import Layout from "~/components/layout/Layout";
-import "~/styles/reset.css";
-import "~/styles/globals.css";
-import type { AppProps } from "next/app";
+import Layout from "../components/layout/Layout";
+import "../styles/reset.css";
+import "../styles/globals.css";
+import { AppProps } from "next/app";
 
 const darkTheme = {
   colors: {

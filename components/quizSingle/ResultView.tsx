@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
+import { QuizRecord } from "../../models/ChinguQuiz/QuizRecord";
 import { Heading4, TextBodyBold, TextBodySmallBold } from "../shared/styles";
 import {
   ResultPageContainer,
@@ -12,7 +12,7 @@ import {
 } from "./styles";
 import ScoreGraph from "./ScoreGraph";
 import { useContext } from "react";
-import { QuizContext } from "~/contexts/quiz-context";
+import { QuizContext } from "../../contexts/quiz-context";
 
 export default function ResultView({
   quizTitle,

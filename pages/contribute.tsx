@@ -1,7 +1,7 @@
 import React from "react";
-import PageHeader from "~/components/shared/PageHeader";
-import Info from "~/components/contributepage/InfoSection";
-import Resources from "~/components/contributepage/ResourcesSection";
+import PageHeader from "../components/shared/PageHeader";
+import Info from "../components/contributepage/InfoSection";
+import Resources from "../components/contributepage/ResourcesSection";
 
 export default function Home() {
   return (

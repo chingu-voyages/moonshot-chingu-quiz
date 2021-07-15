@@ -22,8 +22,7 @@ const Section = styled.div`
 export default function DataPrivacy() {
   return (
     <>
-      <PageHeader
-        children="Data Privacy" />
+      <PageHeader>Data Privacy</PageHeader>
       <Section>
         <Headline>1. Privacy Notice</Headline>
         <p>This privacy notice discloses the privacy practices for our website. This privacy notice applies solely to information collected by this website. It will notify you of the following:</p>

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { breakpoint } from "~/frontend-config";
+import { breakpoint } from "../../frontend-config";
 
 import { Heading2, TextBody } from "../shared/styles";
 

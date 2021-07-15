@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from "react";
 import QuizTile from "../components/quizSelection/QuizTile";
 import TopicSelection from "../components/quizSelection/TopicSelection";
-import { TileSection } from "~/components/quizSelection/styles";
+import { TileSection } from "../components/quizSelection/styles";
 import PageHeader from "../components/shared/PageHeader";
 import type { ChinguQuiz, UI } from "../models";
 import db from "../db";

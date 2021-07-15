@@ -24,9 +24,20 @@ export const InnerWrapper = styled.div`
   justify-content: space-between;
   width: 1440px;
   max-width: calc(100% - 70px);
-  height: 100%;
   margin: 0 auto;
 `;
+
+export const TopBarInnerWrapper = styled(InnerWrapper)`
+  color: ${props => props.theme.colors.textMenu};
+  justify-content: flex-start;
+  padding: 4px;
+  flex-direction: row-reverse;
+
+  & > div {
+    font-size: 0.8rem;
+    margin-left: 8px;
+  }
+`
 
 // LOGO //
 export const LogoWrapper = styled.a`

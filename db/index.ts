@@ -1,7 +1,7 @@
-import { Pool } from "pg";
+import { Pool, PoolClient } from "pg";
 import config   from "./config";
 
-const pool = new Pool(config);
+export const pool = new Pool(config);
 
 export default {
   async query(text: string, params?: string[]) {
@@ -18,3 +18,12 @@ export default {
     }
   },
 };
+
+let poolClient: PoolClient | null = null;
+
+export const getConnection = async () => {
+  if(!poolClient) {
+    poolClient = await pool.connect()
+  }
+  return poolClient;
+}

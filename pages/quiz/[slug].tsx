@@ -9,18 +9,19 @@ import {
   SubmitQuizBtnContainer,
   AnswerTileContainerLink,
   ContentWrapper,
-} from "~/components/quizSingle/styles";
-import PageHeader from "~/components/shared/PageHeader";
-import QuestionHeader from "~/components/quizSingle/QuestionHeader";
-import AnswerTileContainer from "~/components/quizSingle/AnswerTileContainer";
-import NextQuestionBtn from "~/components/quizSingle/NextQuestionBtn";
-import SubmitQuizBtn from "~/components/quizSingle/SubmitQuizBtn";
-import ResultView from "~/components/quizSingle/ResultView";
-import db from "~/db";
-import { Question } from "~/models/ChinguQuiz/Question";
-import { QuizRecord } from "~/models/ChinguQuiz/QuizRecord";
-import { Answer } from "~/models/ChinguQuiz/Answer";
-import { QuizContext, QuizContextProvider } from "~/contexts/quiz-context";
+} from "../../components/quizSingle/styles";
+import PageHeader from "../../components/shared/PageHeader";
+import QuestionHeader from "../../components/quizSingle/QuestionHeader";
+import AnswerTileContainer from "../../components/quizSingle/AnswerTileContainer";
+import NextQuestionBtn from "../../components/quizSingle/NextQuestionBtn";
+import SubmitQuizBtn from "../../components/quizSingle/SubmitQuizBtn";
+import ResultView from "../../components/quizSingle/ResultView";
+import db from "../../db";
+import { Question } from "../../models/ChinguQuiz/Question";
+import { QuizRecord } from "../../models/ChinguQuiz/QuizRecord";
+import { Answer } from "../../models/ChinguQuiz/Answer";
+import { QuizContext, QuizContextProvider } from "../../contexts/quiz-context";
+import { QuizResult } from "~/models/user";
 
 interface QuizProps {
   quizTitle: string;
@@ -38,13 +39,23 @@ const shuffleArray = (array: any) => {
   }
 };
 
+const saveQuizResult = async (quizResult: QuizResult) => {
+  const response = await fetch("/api/quiz-result", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(quizResult),
+  });
+  const data = await response.json();
+  return data;
+};
+
 function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
-  const { timer, setPaused } = useContext(QuizContext);
+  const { timer, setPaused,  } = useContext(QuizContext);
 
   const submittedPageHeaderText = "You did it!";
 
@@ -58,6 +69,18 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
     shuffleArray(randomizedQuestions);
     setQuizQuestions(randomizedQuestions);
   }, []);
+
+  useEffect(() => {
+    if(quizSubmitted && quizQuestions.length === quizRecord.length) {
+      saveQuizResult({
+        date: new Date().toISOString(),
+        name: quizTitle,
+        numberCorrect: quizRecord.reduce((acc, curr) => acc + +curr.correct, 0),
+        totalQuestions: quizRecord.length,
+        secondsToComplete: timer,
+      });
+    }
+  }, [quizQuestions.length, quizRecord.length])
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
     setSelectedAnswers([answerId]);
@@ -103,7 +126,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
         quizQuestions[currentQuestionIndex] &&
         quizQuestions[currentQuestionIndex].answers && (
           <div>
-            <p style={{textAlign: 'center'}}>Elapsed Time: {timer}</p>
+            <p style={{ textAlign: "center" }}>Elapsed Time: {timer}</p>
             <QuestionHeader
               questionData={quizQuestions[currentQuestionIndex]}
               questionIndex={currentQuestionIndex + 1}
@@ -179,11 +202,11 @@ export default function QuizWithContext({
   );
 }
 
-export async function getStaticPaths() {
-  interface Ids {
-    id: string;
-  }
+interface Ids {
+  id: string;
+}
 
+export async function getStaticPaths() {
   const { rows: ids } = await db.query("SELECT id FROM quiz");
   const paths = ids.map(({ id }: Ids) => ({
     params: {
@@ -205,12 +228,11 @@ export async function getStaticProps({
   const {
     rows: [{ title }],
   } = await db.query("SELECT title FROM quiz WHERE id = $1", [slug]);
-  const {
-    rows: questions,
-  } = await db.query("SELECT * FROM question WHERE quiz = $1", [slug]);
-  const {
-    rows: answers,
-  } = await db.query(
+  const { rows: questions } = await db.query(
+    "SELECT * FROM question WHERE quiz = $1",
+    [slug]
+  );
+  const { rows: answers } = await db.query(
     "SELECT id, question, prompt, quiz, is_correct FROM answer WHERE quiz = $1",
     [slug]
   );
