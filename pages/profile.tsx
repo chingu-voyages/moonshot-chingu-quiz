@@ -6,6 +6,7 @@ import { getUserData } from "~/db/users";
 import { UserData } from "~/models/user";
 import { Headline, Wrapper } from "../components/aboutUs/styles";
 import { ContentWrapper } from "../components/quizSingle/styles";
+import {ScoreGraphCore} from '../components/quizSingle/ScoreGraph';
 
 const QuizResultListItem = styled.li`
   display: grid;
@@ -32,16 +33,21 @@ const ProfilePage = ({ userData }: { userData: UserData | null }) => {
             <div>Seconds</div>
             <div>Percent</div>
           </QuizResultHeaderItem>
-          {userData?.quizResults?.map(result => (
-            <QuizResultListItem key={result.date}>
-              <div>{result.date}</div>
-              <div>{result.name}</div>
-              <div>{result.numberCorrect}</div>
-              <div>{result.totalQuestions}</div>
-              <div>{result.secondsToComplete}</div>
-              <div>{(100* result.numberCorrect / result.totalQuestions).toFixed(2)}%</div>
-            </QuizResultListItem>
-          ))}
+          {userData?.quizResults?.map(result => {
+            const percentCorrect = (100 * result.numberCorrect) / result.totalQuestions;
+    
+            return (
+              <QuizResultListItem key={result.date}>
+                <div>{result.date}</div>
+                <div>{result.name}</div>
+                <div>{result.numberCorrect}</div>
+                <div>{result.totalQuestions}</div>
+                <div>{result.secondsToComplete}</div>
+                <ScoreGraphCore percentage={Math.round(percentCorrect)} />
+                  
+              </QuizResultListItem>
+            );
+          })}
         </ul>
       </ContentWrapper>
     </Wrapper>
