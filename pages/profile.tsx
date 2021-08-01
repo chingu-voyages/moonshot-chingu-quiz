@@ -6,49 +6,74 @@ import { getUserData } from "~/db/users";
 import { UserData } from "~/models/user";
 import { Headline, Wrapper } from "../components/aboutUs/styles";
 import { ContentWrapper } from "../components/quizSingle/styles";
-import {ScoreGraphCore} from '../components/quizSingle/ScoreGraph';
+import { ScoreGraphCore } from "../components/quizSingle/ScoreGraph";
 
 const QuizResultListItem = styled.li`
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr;
-  margin: 12px 0;
+  border: 1px dotted #ccc;
+  & > div {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+  }
+  h3 {
+    font-weight: bold;
+    margin: 12px 0;
+  }
+  p {
+    margin: 12px 0;
+    line-height: 1.4rem;
+  }
+
+  align-items: center;
+
+  padding: 12px;
+
+  footer {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 8px 0;
+  }
 `;
 
-const QuizResultHeaderItem = styled(QuizResultListItem)`
-  font-weight: bold;
+const QuizResultList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 360px);
+  column-gap: 12px;
+  row-gap: 12px;
 `;
 
 const ProfilePage = ({ userData }: { userData: UserData | null }) => {
   return (
     <Wrapper>
       <ContentWrapper style={{ color: "black" }}>
-        <Headline>User Page</Headline>
-
-        <ul>
-          <QuizResultHeaderItem>
-            <div>Date</div>
-            <div>Name</div>
-            <div>Correct</div>
-            <div>Total</div>
-            <div>Seconds</div>
-            <div>Percent</div>
-          </QuizResultHeaderItem>
+        <Headline>Your Quiz Results</Headline>
+        
+        <QuizResultList>
           {userData?.quizResults?.map(result => {
-            const percentCorrect = (100 * result.numberCorrect) / result.totalQuestions;
-    
+            const percentCorrect =
+              (100 * result.numberCorrect) / result.totalQuestions;
+
             return (
               <QuizResultListItem key={result.date}>
-                <div>{result.date}</div>
-                <div>{result.name}</div>
-                <div>{result.numberCorrect}</div>
-                <div>{result.totalQuestions}</div>
-                <div>{result.secondsToComplete}</div>
-                <ScoreGraphCore percentage={Math.round(percentCorrect)} />
-                  
+                <div>
+                  <div>
+                    <h3>{result.name}</h3>
+                    <p>
+                      You got {result.numberCorrect} out of{" "}
+                      {result.totalQuestions} correct in{" "}
+                      {result.secondsToComplete} seconds!
+                    </p>
+                  </div>
+
+                  <ScoreGraphCore percentage={Math.round(percentCorrect)} />
+                </div>
+
+                <footer>Taken {result.date}</footer>
               </QuizResultListItem>
             );
           })}
-        </ul>
+        </QuizResultList>
       </ContentWrapper>
     </Wrapper>
   );
