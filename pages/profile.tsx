@@ -11,6 +11,7 @@ import { ScoreGraphCore } from "../components/quizSingle/ScoreGraph";
 const QuizResultListItem = styled.li`
   border: 1px dotted #ccc;
   margin: 8px 0px;
+  border-radius: 8px;
 
   @media (min-width: 768px) {
     margin: 0px;
