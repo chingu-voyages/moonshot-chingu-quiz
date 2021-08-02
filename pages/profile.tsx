@@ -10,10 +10,16 @@ import { ScoreGraphCore } from "../components/quizSingle/ScoreGraph";
 
 const QuizResultListItem = styled.li`
   border: 1px dotted #ccc;
+  margin: 8px 0px;
+
+  @media (min-width: 768px) {
+    margin: 0px;
+  }
+
   & > div {
     margin: 0;
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 1fr 100px;
   }
   h3 {
     font-weight: bold;
@@ -37,10 +43,17 @@ const QuizResultListItem = styled.li`
 `;
 
 const QuizResultList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 360px);
-  column-gap: 12px;
-  row-gap: 12px;
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 12px;
+  }
+
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 `;
 
 const ProfilePage = ({ userData }: { userData: UserData | null }) => {
@@ -48,7 +61,7 @@ const ProfilePage = ({ userData }: { userData: UserData | null }) => {
     <Wrapper>
       <ContentWrapper style={{ color: "black" }}>
         <Headline>Your Quiz Results</Headline>
-        
+
         <QuizResultList>
           {userData?.quizResults?.map(result => {
             const percentCorrect =
