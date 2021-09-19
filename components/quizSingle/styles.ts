@@ -280,21 +280,6 @@ export const TileNumber = styled.span`
   right: 15px;
 `;
 
-export const GraphSVG = styled.svg`
-  display: block;
-  margin: 10px auto;
-  max-width: 80%;
-  max-height: 250px;
-
-  @media (min-width: ${breakpoint("lg")}) {
-    transform: scale(1.1);
-    position: sticky;
-    top: 200px;
-    width: 100%;
-    margin-top: 78px;
-  }
-`;
-
 export const GraphPathBG = styled.path`
   fill: none;
   stroke: #eee;

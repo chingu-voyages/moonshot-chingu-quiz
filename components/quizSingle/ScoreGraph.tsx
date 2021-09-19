@@ -1,8 +1,11 @@
-import { GraphSVG, GraphPathBG, GraphPath, GraphText } from "./styles";
+import styled from "styled-components";
+import {breakpoint} from '../../frontend-config'
 
-export default function ScoreGraph({ percentage }: { percentage: number }) {
+import { GraphPathBG, GraphPath, GraphText } from "./styles";
+
+export const ScoreGraphCore = ({ className, percentage }: { className?: string, percentage: number }) => {
   return (
-    <GraphSVG viewBox="0 0 36 36">
+    <svg className={className} viewBox="0 0 36 36">
       <defs>
         <linearGradient id="gradient" x1="80%" y1="20%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#18e28c33" />
@@ -24,6 +27,23 @@ export default function ScoreGraph({ percentage }: { percentage: number }) {
       <GraphText x="18" y="20.35">
         {percentage}%
       </GraphText>
-    </GraphSVG>
+    </svg>
   );
 }
+
+const ScoreGraph = styled(ScoreGraphCore)`
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+
+  @media (min-width: ${breakpoint("lg")}) {
+    transform: scale(1.1);
+    position: sticky;
+    top: 200px;
+    width: 100%;
+    margin-top: 78px;
+  }
+`;
+
+export default ScoreGraph;
