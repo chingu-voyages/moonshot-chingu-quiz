@@ -21,19 +21,19 @@ export default function Quizzes({
   const [chosenTopics, setChosenTopics] = useState<string[]>([]);
   const [filteredQuizzes, setFilteredQuizzes] = useState<ChinguQuiz.Quiz[]>([]);
 
-  const subjectFilterCallback = (quizTagArray: string[]) => {
-    let totalMatches = 0;
-    for (let i = 0; i < quizTagArray.length; i += 1) {
-      if (chosenTopics.indexOf(quizTagArray[i]) >= 0) {
-        totalMatches += 1;
-      }
-    }
-    // Only includes quiz if all quiz tag are matched to topic selection in the UI
-    return totalMatches === quizTagArray.length;
-  };
-
   // Handle filtering of quizzes
   useEffect(() => {
+    const subjectFilterCallback = (quizTagArray: string[]) => {
+      let totalMatches = 0;
+      for (let i = 0; i < quizTagArray.length; i += 1) {
+        if (chosenTopics.indexOf(quizTagArray[i]) >= 0) {
+          totalMatches += 1;
+        }
+      }
+      // Only includes quiz if all quiz tag are matched to topic selection in the UI
+      return totalMatches === quizTagArray.length;
+    };
+
     if (chosenSubject === "All") {
       setFilteredQuizzes(quizzes);
     } else if (chosenSubject !== "All" && chosenTopics.length === 0) {
