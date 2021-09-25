@@ -68,7 +68,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
     });
     shuffleArray(randomizedQuestions);
     setQuizQuestions(randomizedQuestions);
-  }, [originalQuizQuestions]);
+  }, []);
 
   useEffect(() => {
     if(quizSubmitted && quizQuestions.length === quizRecord.length) {
