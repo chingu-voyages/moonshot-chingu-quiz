@@ -68,7 +68,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
     });
     shuffleArray(randomizedQuestions);
     setQuizQuestions(randomizedQuestions);
-  }, []);
+  }, [originalQuizQuestions]);
 
   useEffect(() => {
     if(quizSubmitted && quizQuestions.length === quizRecord.length) {
@@ -80,7 +80,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
         secondsToComplete: timer,
       });
     }
-  }, [quizQuestions.length, quizRecord.length])
+  }, [quizRecord, quizSubmitted, quizTitle, timer, quizQuestions.length])
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
     setSelectedAnswers([answerId]);

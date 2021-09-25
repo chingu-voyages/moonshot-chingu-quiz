@@ -113,12 +113,13 @@ const ChinguSection = () => {
         <ContentSection>
           <Heading2>What is Chingu?</Heading2>
           <TextBody>
-            We place motivated people with similar goals together in project teams which allows them level-up in ways they couldn't otherwise do. When you join Chingu, you will collaborate with others to build & launch real projects. We match learners from all skill levels, all timezones, and a variety of different tech stacks.
+            We place motivated people with similar goals together in project teams which allows them level-up in ways they couldn&apos;t otherwise do. When you join Chingu, you will collaborate with others to build & launch real projects. We match learners from all skill levels, all timezones, and a variety of different tech stacks.
           </TextBody>
 
           <ButtonsWrapper>
           <a
              target="_blank"
+             rel="noreferrer"
              href="https://chingu.io/">
               <Button light>Take Me To Chingu.io</Button>
             </a>

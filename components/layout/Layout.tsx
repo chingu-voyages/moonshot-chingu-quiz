@@ -125,7 +125,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
             )}
           </TopBarInnerWrapper>
           <InnerWrapper>
-            <Link href="/">
+            <Link href="/" passHref>
               <LogoWrapper>
                 <Logo src="/logo.png" />
                 <LogoText>Chingu Quiz</LogoText>
@@ -140,13 +140,13 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
               />
             ) : (
               <Navbar>
-                <Link href="/quizzes">
+                <Link href="/quizzes" passHref>
                   <NavbarLink>Quiz</NavbarLink>
                 </Link>
-                <Link href="/contribute">
+                <Link href="/contribute" passHref>
                   <NavbarLink>Contribute</NavbarLink>
                 </Link>
-                <Link href="/about">
+                <Link href="/about" passHref>
                   <NavbarLink>About Us</NavbarLink>
                 </Link>
                 <NavbarToggleSwitch onClick={toggleTheme}>

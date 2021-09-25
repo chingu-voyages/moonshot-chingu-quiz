@@ -101,11 +101,11 @@ const HeroSection = () => {
         </Subtitle>
 
         <ButtonsWrapper>
-          <Link href="/contribute">
+          <Link href="/contribute" passHref>
             <Button light>Contribute</Button>
           </Link>
 
-          <Link href="/about">
+          <Link href="/about" passHref>
             <Button dark>About Us</Button>
           </Link>
         </ButtonsWrapper>
