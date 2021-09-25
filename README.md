@@ -11,6 +11,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+
 # moonshot-chingu-quiz
 
 Chingu Moonshot - Quiz App
@@ -52,9 +53,9 @@ If you wish to work without Docker you will need Node (we recommend >= 15.0.0) a
 3. Run `npm install` from the root directory
 4. Once install command is done run `npm run dev`
 
-## Component Folder Structure:
+## Component Folder Structure
 
-```
+```text
   -pages (each file in here is a 'page' for our app)
       -index.ts (homepage for our app, links to '/' go here)
       -//other pages
@@ -74,7 +75,7 @@ If you wish to work without Docker you will need Node (we recommend >= 15.0.0) a
 
 ## Designs
 
-You can find the designs to this project here: https://www.figma.com/file/2mKq8rdawiJO6EEVwugWYp/Chingu_Mockups?node-id=84%3A198
+You can find the designs to this project here: [Figma](https://www.figma.com/file/2mKq8rdawiJO6EEVwugWYp/Chingu_Mockups?node-id=84%3A198)
 
 If you're a designer and would like to contribute, feel free to reach out to us!
 
