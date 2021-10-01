@@ -95,7 +95,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
   };
 
   return (
-    <div>
+    <header>
       <Head>
         <title>Chingu Quiz App</title>
       </Head>
@@ -159,8 +159,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
       </Wrapper>
 
       <Main>{children}</Main>
-      <Footer />
-    </div>
+    </header>
   );
 };
 
