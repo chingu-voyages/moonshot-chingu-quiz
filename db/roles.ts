@@ -14,7 +14,7 @@ export async function createRolesTable() {
       `
         CREATE TABLE roles (
           roleId uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-          roleName varchar (64) UNIQUE NOT NULL,
+          roleName varchar (64) UNIQUE NOT NULL
         )
       `
     );
