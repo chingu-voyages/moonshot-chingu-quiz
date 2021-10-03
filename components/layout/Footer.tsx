@@ -16,9 +16,6 @@ const Footer = () => {
               Chingu
             </a>
           </HighlightLink>
-        </footer>
-
-        <footer>
           <HighlightLink>
             <Link href="/data-privacy">
               Data Privacy
