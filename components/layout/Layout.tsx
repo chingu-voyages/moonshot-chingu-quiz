@@ -5,7 +5,6 @@ import React, { useState, useEffect, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
-import Footer from "./Footer";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { breakpointsRaw } from "../../frontend-config";
 
