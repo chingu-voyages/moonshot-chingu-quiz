@@ -6,9 +6,9 @@ Dotenv.config({ path: ".env.test.local" });
 import { createRolesTable } from "../db/roles";
 
 beforeAll(async () => {
-  await createRolesTable();
   const client = await getConnection();
-  await client.query("TRUNCATE TABLE roles");
+  await client.query("DROP TABLE IF EXISTS roles");
+  await createRolesTable();
 });
 
 test("Verify Table Created", async () => {
