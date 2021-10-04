@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <ContentWrapper>
-        <footer>
+        <div>
           Powered By
           <HighlightLink>
             <a
@@ -16,12 +16,16 @@ const Footer = () => {
               Chingu
             </a>
           </HighlightLink>
+        </div>
+
+        <div>
           <HighlightLink>
             <Link href="/data-privacy">
               Data Privacy
             </Link>
           </HighlightLink>
-        </footer>
+        </div>
+        
       </ContentWrapper>
     </FooterWrapper>
   );
