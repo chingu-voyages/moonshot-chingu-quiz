@@ -1,7 +1,7 @@
 import styled         from "styled-components";
 import { breakpoint } from "../../frontend-config";
 
-export const Wrapper = styled.div<{
+export const Wrapper = styled.header<{
   withShadow?: boolean;
 }>`
   height: 88px;
@@ -212,7 +212,7 @@ export const MobileToggleSwitch = styled(NavbarToggleSwitch)`
 `;
 
 // Footer //
-export const FooterWrapper = styled.div`
+export const FooterWrapper = styled.footer`
   width: 100%;
   background-color: ${props => props.theme.colors.backgroundPrimary};
   height: 66px;
