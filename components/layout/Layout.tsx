@@ -159,7 +159,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
       </Wrapper>
 
       <Main>{children}</Main>
-      <Footer />
+    <Footer />
     </div>
   );
 };

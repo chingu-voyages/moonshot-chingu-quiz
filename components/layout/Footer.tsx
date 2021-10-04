@@ -25,6 +25,7 @@ const Footer = () => {
             </Link>
           </HighlightLink>
         </div>
+        
       </ContentWrapper>
     </FooterWrapper>
   );
