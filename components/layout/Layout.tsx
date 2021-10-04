@@ -5,6 +5,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
+import Footer from "./Footer";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { breakpointsRaw } from "../../frontend-config";
 
@@ -94,7 +95,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
   };
 
   return (
-    <header>
+    <div>
       <Head>
         <title>Chingu Quiz App</title>
       </Head>
@@ -158,7 +159,8 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
       </Wrapper>
 
       <Main>{children}</Main>
-    </header>
+    <Footer />
+    </div>
   );
 };
 
