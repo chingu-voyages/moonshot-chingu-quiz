@@ -22,3 +22,27 @@ export async function createRolesTable() {
   }
   return false;
 }
+
+export async function createUsersRolesTable() {
+  const client = await getConnection();
+
+  const {
+    rows: [{ exists: usersRolesExists }],
+  } = await client.query(`
+      SELECT EXISTS( SELECT 1 FROM pg_tables WHERE schemaname='public' and tablename='users_roles');
+    `);
+
+  if (!usersRolesExists) {
+    await client.query(
+      `
+        CREATE TABLE users_roles (
+          userId int NOT NULL,
+          roleId uuid NOT NULL,
+          PRIMARY KEY (userId, roleId)
+        )
+      `
+    );
+    return true;
+  }
+  return false;
+}
