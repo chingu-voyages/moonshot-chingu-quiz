@@ -19,7 +19,6 @@ const Section = styled.div`
   }
 `;
 
-
 export default function DataPrivacy() {
   return (
     <>
