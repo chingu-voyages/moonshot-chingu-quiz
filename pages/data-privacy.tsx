@@ -39,7 +39,7 @@ export default function DataPrivacy() {
 
         <br />
 
-        <p>If you you have questions about this privacy policy contact us at support@chingu.io</p>
+        <p>If you you have questions about this privacy policy contact us at <a href="mailto:support@chingu.io">support@chingu.io</a></p>
       </Section>
     </>
   );
