@@ -46,3 +46,23 @@ export async function createUsersRolesTable() {
   }
   return false;
 }
+
+export async function insertNewRole(name: string) {
+  const client = await getConnection();
+
+  const { rows: roleRows } = await client.query(
+    `SELECT FROM ONLY roles WHERE roleName = $1`,
+    [name]
+  );
+
+  if (roleRows.length === 0) {
+    await client.query(
+      `
+        INSERT INTO roles (roleId, roleName)
+        VALUES (DEFAULT, name)
+      `
+    );
+    return `Role ${name} successfully added`;
+  }
+  throw `Role ${roleRows[0].roleName} with ID ${roleRows[0].roleId} already exists in table`;
+}
