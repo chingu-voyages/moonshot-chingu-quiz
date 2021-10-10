@@ -3,7 +3,11 @@ import { getConnection, pool } from "../db";
 
 Dotenv.config({ path: ".env.test.local" });
 
-import { createRolesTable, createUsersRolesTable } from "../db/roles";
+import {
+  createRolesTable,
+  createUsersRolesTable,
+  insertNewRole,
+} from "../db/roles";
 
 beforeAll(async () => {
   const client = await getConnection();
@@ -29,6 +33,18 @@ test("Verify users_roles table created", async () => {
           SELECT EXISTS( SELECT 1 FROM pg_tables WHERE schemaname='public' and tablename='users_roles');
         `);
   expect(result).toBeTruthy();
+});
+
+test("insertNewRole adds role to table", async () => {
+  expect(process.env.PGUSER).toBe("docker");
+  const result = await insertNewRole("testName");
+  expect(result.rowCount).toBe(1);
+});
+
+test("insertNewRole returns null if duplicate", async () => {
+  expect(process.env.PGUSER).toBe("docker");
+  await insertNewRole("duplicateName");
+  expect(await insertNewRole("duplicateName")).toBeNull();
 });
 
 afterAll(async () => {
