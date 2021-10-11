@@ -94,7 +94,7 @@ const HeroSection = () => {
   return (
     <Wrapper>
       <ContentWrapper>
-        <Headline>{`<Chingu vs. Open Source />`}</Headline>
+        <Headline>{`<Chingu meets Hacktober />`}</Headline>
 
         <Subtitle>
           This is your place to get started studying in a fun way using Quizzes to sharpen your knowledge && || put it into practise by simply contributing to this project!
