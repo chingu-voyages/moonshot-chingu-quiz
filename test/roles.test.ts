@@ -38,7 +38,7 @@ test("Verify users_roles table created", async () => {
 test("insertNewRole adds role to table", async () => {
   expect(process.env.PGUSER).toBe("docker");
   const result = await insertNewRole("testName");
-  expect(result.rowCount).toBe(1);
+  expect(result?.rowCount).toBe(1);
 });
 
 test("insertNewRole returns null if duplicate", async () => {
