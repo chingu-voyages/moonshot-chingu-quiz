@@ -56,7 +56,7 @@ export async function insertNewRole(name: string) {
 
   if (matchRows.rowCount !== 0) return null;
 
-  return await client.query(
+  return client.query(
     `
       INSERT INTO roles (roleId, roleName)
       VALUES (DEFAULT, $1)

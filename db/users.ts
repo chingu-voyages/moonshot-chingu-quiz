@@ -21,10 +21,10 @@ export const insertUser = async (nickname: string, email: string) => {
 
   if (emailExists) return null;
 
-  return await client.query(
-    "INSERT INTO users(nickname, email) VALUES ($1, $2)",
-    [nickname, email]
-  );
+  return client.query("INSERT INTO users(nickname, email) VALUES ($1, $2)", [
+    nickname,
+    email,
+  ]);
 };
 
 export const getUserData = async (email: string) => {
@@ -52,7 +52,7 @@ export const addQuizResult = async (email: string, quizResult: QuizResult) => {
 
   updatedData.quizResults = updatedQuizResults;
 
-  return await client.query("UPDATE users SET data=$2 WHERE email=$1", [
+  return client.query("UPDATE users SET data=$2 WHERE email=$1", [
     email,
     updatedData,
   ]);
@@ -69,7 +69,7 @@ export async function createUsersTable() {
 
   if (usersExists) return false;
 
-  return await client.query(
+  return client.query(
     `
     CREATE TABLE users (
       uid serial PRIMARY KEY,
