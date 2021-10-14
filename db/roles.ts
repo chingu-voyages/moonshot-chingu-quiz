@@ -32,17 +32,35 @@ export async function createUsersRolesTable() {
       SELECT EXISTS( SELECT 1 FROM pg_tables WHERE schemaname='public' and tablename='users_roles');
     `);
 
-  if (!usersRolesExists) {
-    await client.query(
-      `
-        CREATE TABLE users_roles (
-          userId int NOT NULL,
-          roleId uuid NOT NULL,
-          PRIMARY KEY (userId, roleId)
-        )
-      `
-    );
-    return true;
-  }
-  return false;
+  if (usersRolesExists) return false;
+
+  await client.query(
+    `
+      CREATE TABLE users_roles (
+        userId int NOT NULL,
+        roleId uuid NOT NULL,
+        PRIMARY KEY (userId, roleId)
+      )
+    `
+  );
+  return true;
+}
+
+export async function insertNewRole(name: string) {
+  const client = await getConnection();
+
+  const matchRows = await client.query(
+    `SELECT FROM ONLY roles WHERE roleName = $1`,
+    [name]
+  );
+
+  if (matchRows.rowCount !== 0) return null;
+
+  return client.query(
+    `
+      INSERT INTO roles (roleId, roleName)
+      VALUES (DEFAULT, $1)
+    `,
+    [name]
+  );
 }
