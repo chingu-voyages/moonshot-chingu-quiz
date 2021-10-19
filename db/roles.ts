@@ -1,4 +1,5 @@
 import { getConnection } from "./index";
+import { IRole } from "../models/User/role";
 
 export async function createRolesTable() {
   const client = await getConnection();
@@ -63,4 +64,17 @@ export async function insertNewRole(name: string) {
     `,
     [name]
   );
+}
+
+export async function getRoles() {
+  const client = await getConnection();
+
+  const { rows } = await client.query(
+    `SELECT * 
+    FROM roles`
+  );
+
+  if (rows.length === 0) return null;
+
+  return rows as [IRole];
 }
