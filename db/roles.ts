@@ -14,8 +14,8 @@ export async function createRolesTable() {
     await client.query(
       `
         CREATE TABLE roles (
-          id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-          name varchar (64) UNIQUE NOT NULL
+          "roleId" uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+          "roleName" varchar (64) UNIQUE NOT NULL
         )
       `
     );
@@ -38,9 +38,9 @@ export async function createUsersRolesTable() {
   await client.query(
     `
       CREATE TABLE users_roles (
-        uid int NOT NULL,
-        rid uuid NOT NULL,
-        PRIMARY KEY (uid, rid)
+        "userId" int NOT NULL,
+        "roleId" uuid NOT NULL,
+        PRIMARY KEY ("userId", "roleId")
       )
     `
   );
@@ -51,7 +51,7 @@ export async function insertNewRole(name: string) {
   const client = await getConnection();
 
   const matchRows = await client.query(
-    `SELECT FROM ONLY roles WHERE name = $1`,
+    `SELECT FROM ONLY roles WHERE "roleName" = $1`,
     [name]
   );
 
@@ -59,7 +59,7 @@ export async function insertNewRole(name: string) {
 
   return client.query(
     `
-      INSERT INTO roles (id, name)
+      INSERT INTO roles ("roleId", "roleName")
       VALUES (DEFAULT, $1)
     `,
     [name]

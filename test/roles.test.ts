@@ -58,8 +58,8 @@ test("getRoles returns array of roles", async () => {
 test("getRoles return is array of IRole", async () => {
   expect(process.env.PGUSER).toBe("docker");
   const result = await getRoles();
-  expect(result?.[0].id).toBeTruthy();
-  expect(result?.[0].name).toBeTruthy();
+  expect(result?.[0].roleId).toBeTruthy();
+  expect(result?.[0].roleName).toBeTruthy();
 });
 
 afterAll(async () => {
