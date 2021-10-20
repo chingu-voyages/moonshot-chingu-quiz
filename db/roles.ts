@@ -38,9 +38,9 @@ export async function createUsersRolesTable() {
   await client.query(
     `
       CREATE TABLE users_roles (
-        userId int NOT NULL,
-        roleId uuid NOT NULL,
-        PRIMARY KEY (userId, roleId)
+        uid int NOT NULL,
+        rid uuid NOT NULL,
+        PRIMARY KEY (uid, rid)
       )
     `
   );
