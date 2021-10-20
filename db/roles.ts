@@ -69,12 +69,10 @@ export async function insertNewRole(name: string) {
 export async function getRoles() {
   const client = await getConnection();
 
-  const { rows } = await client.query(
+  const { rows } = await client.query<IRole>(
     `SELECT * 
     FROM roles`
   );
 
-  if (rows.length === 0) return null;
-
-  return rows as [IRole];
+  return rows;
 }

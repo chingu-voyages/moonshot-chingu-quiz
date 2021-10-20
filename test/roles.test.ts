@@ -36,6 +36,12 @@ test("Verify users_roles table created", async () => {
   expect(result).toBeTruthy();
 });
 
+test("getRoles return is empty array if no roles are found", async () => {
+  expect(process.env.PGUSER).toBe("docker");
+  const result = await getRoles();
+  expect(result).toStrictEqual([]);
+});
+
 test("insertNewRole adds role to table", async () => {
   expect(process.env.PGUSER).toBe("docker");
   const result = await insertNewRole("testName");
@@ -46,13 +52,6 @@ test("insertNewRole returns null if duplicate", async () => {
   expect(process.env.PGUSER).toBe("docker");
   await insertNewRole("duplicateName");
   expect(await insertNewRole("duplicateName")).toBeNull();
-});
-
-test("getRoles returns array of roles", async () => {
-  expect(process.env.PGUSER).toBe("docker");
-  await insertNewRole("example");
-  const result = await getRoles();
-  expect(result?.length).toBeGreaterThanOrEqual(1);
 });
 
 test("getRoles return is array of IRole", async () => {
