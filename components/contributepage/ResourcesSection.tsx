@@ -66,6 +66,11 @@ const Button = styled.button<{
     css`
       background: ${props.theme.colors.greenPrimary};
       color: ${props.theme.colors.backgroundPrimary};
+
+      &:hover {
+        background: ${props.theme.colors.backgroundPrimary};
+        color: ${props.theme.colors.greenPrimary};
+      }
     `}
 
   ${props =>
@@ -73,6 +78,11 @@ const Button = styled.button<{
     css`
       background: ${props.theme.colors.backgroundPrimary};
       color: ${props.theme.colors.greenPrimary};
+
+      &:hover {
+        background: ${props.theme.colors.greenPrimary};
+        color: ${props.theme.colors.backgroundPrimary};
+      }
     `}
 `;
 
