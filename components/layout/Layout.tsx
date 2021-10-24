@@ -58,7 +58,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
   const onScroll = () => {
     const distanceFromTop = window.scrollY;
 
-    if (headerShadow && distanceFromTop === 0 && !mobile) {
+    if (headerShadow && distanceFromTop === 0) {
       setHeaderShadow(false);
     } else if (!headerShadow && distanceFromTop > 0) {
       setHeaderShadow(true);
@@ -72,7 +72,7 @@ const Layout = ({ children, toggleTheme, isDarkTheme }: LayoutProps) => {
       setMobileMenuActive(false);
     } else if (window.innerWidth < breakpointsRaw("md") && !mobile) {
       setMobile(true);
-      setHeaderShadow(true);
+      setHeaderShadow(window.scrollY > 0);
       setMobileMenuActive(false);
     }
   };
