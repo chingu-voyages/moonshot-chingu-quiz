@@ -75,11 +75,21 @@ const Button = styled.button<{
     margin-right: 0;
   }
 
+  &:hover {
+    background: ${props => props.theme.colors.greenPrimary};
+    color: ${props => props.theme.colors.backgroundPrimary};
+  }
+
   ${props =>
     props.light &&
     css`
       background: ${props.theme.colors.greenPrimary};
       color: ${props.theme.colors.backgroundPrimary};
+
+      &:hover {
+        background: ${props.theme.colors.backgroundPrimary};
+        color: ${props.theme.colors.greenPrimary};
+      }
     `}
 
   ${props =>
@@ -87,6 +97,11 @@ const Button = styled.button<{
     css`
       background: ${props.theme.colors.backgroundPrimary};
       color: ${props.theme.colors.greenPrimary};
+
+      &:hover {
+        background: ${props.theme.colors.greenPrimary};
+        color: ${props.theme.colors.backgroundPrimary};
+      }
     `}
 `;
 
