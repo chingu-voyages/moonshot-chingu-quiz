@@ -21,7 +21,7 @@ import { Question } from "../../models/ChinguQuiz/Question";
 import { QuizRecord } from "../../models/ChinguQuiz/QuizRecord";
 import { Answer } from "../../models/ChinguQuiz/Answer";
 import { QuizContext, QuizContextProvider } from "../../contexts/quiz-context";
-import { QuizResult } from "~/models/user";
+import { QuizResult } from "~/models/User/user";
 
 interface QuizProps {
   quizTitle: string;
@@ -55,7 +55,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
   const [quizRecord, setQuizRecord] = useState<QuizRecord[]>([]);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
-  const { timer, setPaused,  } = useContext(QuizContext);
+  const { timer, setPaused } = useContext(QuizContext);
 
   const submittedPageHeaderText = "You did it!";
 
@@ -71,7 +71,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
   }, []);
 
   useEffect(() => {
-    if(quizSubmitted && quizQuestions.length === quizRecord.length) {
+    if (quizSubmitted && quizQuestions.length === quizRecord.length) {
       saveQuizResult({
         date: new Date().toISOString(),
         name: quizTitle,
@@ -80,7 +80,7 @@ function Quiz({ quizTitle, quizQuestions: originalQuizQuestions }: QuizProps) {
         secondsToComplete: timer,
       });
     }
-  }, [quizQuestions.length, quizRecord.length])
+  }, [quizQuestions.length, quizRecord.length]);
 
   const toggleSelectedAnswer = (answerId: string, questionIndex: number) => {
     setSelectedAnswers([answerId]);

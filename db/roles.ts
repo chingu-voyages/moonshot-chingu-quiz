@@ -1,4 +1,5 @@
 import { getConnection } from "./index";
+import { IRole } from "../models/User/role";
 
 export async function createRolesTable() {
   const client = await getConnection();
@@ -13,8 +14,8 @@ export async function createRolesTable() {
     await client.query(
       `
         CREATE TABLE roles (
-          roleId uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-          roleName varchar (64) UNIQUE NOT NULL
+          "roleId" uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+          "roleName" varchar (64) UNIQUE NOT NULL
         )
       `
     );
@@ -37,9 +38,9 @@ export async function createUsersRolesTable() {
   await client.query(
     `
       CREATE TABLE users_roles (
-        userId int NOT NULL,
-        roleId uuid NOT NULL,
-        PRIMARY KEY (userId, roleId)
+        "userId" int NOT NULL,
+        "roleId" uuid NOT NULL,
+        PRIMARY KEY ("userId", "roleId")
       )
     `
   );
@@ -50,7 +51,7 @@ export async function insertNewRole(name: string) {
   const client = await getConnection();
 
   const matchRows = await client.query(
-    `SELECT FROM ONLY roles WHERE roleName = $1`,
+    `SELECT FROM ONLY roles WHERE "roleName" = $1`,
     [name]
   );
 
@@ -58,9 +59,20 @@ export async function insertNewRole(name: string) {
 
   return client.query(
     `
-      INSERT INTO roles (roleId, roleName)
+      INSERT INTO roles ("roleId", "roleName")
       VALUES (DEFAULT, $1)
     `,
     [name]
   );
+}
+
+export async function getRoles() {
+  const client = await getConnection();
+
+  const { rows } = await client.query<IRole>(
+    `SELECT * 
+    FROM roles`
+  );
+
+  return rows;
 }

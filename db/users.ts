@@ -1,4 +1,4 @@
-import { QuizResult, UserData } from "../models/user";
+import { QuizResult, UserData } from "../models/User/user";
 import { getConnection } from "./index";
 
 export const checkEmailExists = async (email: string) => {

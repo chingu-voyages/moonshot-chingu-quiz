@@ -6,6 +6,7 @@ Dotenv.config({ path: ".env.test.local" });
 import {
   createRolesTable,
   createUsersRolesTable,
+  getRoles,
   insertNewRole,
 } from "../db/roles";
 
@@ -35,6 +36,12 @@ test("Verify users_roles table created", async () => {
   expect(result).toBeTruthy();
 });
 
+test("getRoles return is empty array if no roles are found", async () => {
+  expect(process.env.PGUSER).toBe("docker");
+  const result = await getRoles();
+  expect(result).toStrictEqual([]);
+});
+
 test("insertNewRole adds role to table", async () => {
   expect(process.env.PGUSER).toBe("docker");
   const result = await insertNewRole("testName");
@@ -45,6 +52,13 @@ test("insertNewRole returns null if duplicate", async () => {
   expect(process.env.PGUSER).toBe("docker");
   await insertNewRole("duplicateName");
   expect(await insertNewRole("duplicateName")).toBeNull();
+});
+
+test("getRoles return is array of IRole", async () => {
+  expect(process.env.PGUSER).toBe("docker");
+  const result = await getRoles();
+  expect(result?.[0].roleId).toBeTruthy();
+  expect(result?.[0].roleName).toBeTruthy();
 });
 
 afterAll(async () => {

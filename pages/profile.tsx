@@ -3,7 +3,7 @@ import { getSession } from "next-auth/client";
 import React from "react";
 import styled from "styled-components";
 import { getUserData } from "~/db/users";
-import { UserData } from "~/models/user";
+import { UserData } from "~/models/User/user";
 import { Headline, Wrapper } from "../components/aboutUs/styles";
 import { ContentWrapper } from "../components/quizSingle/styles";
 import { ScoreGraphCore } from "../components/quizSingle/ScoreGraph";
