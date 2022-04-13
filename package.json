@@ -43,8 +43,8 @@
   },
   "scripts": {
     "docker-dev": "docker-compose up",
-    "docker-reset-db": "docker container rm moonshot-chingu-quiz_db_1 && docker volume rm moonshot-chingu-quiz_quizdata",
-    "docker-dump-db": "docker exec moonshot-chingu-quiz_db_1 pg_dump -U docker docker > quiz_db.sql",
+    "docker-reset-db": "docker container rm moonshot-chingu-quiz_db && docker volume rm moonshot-chingu-quiz_quizdata",
+    "docker-dump-db": "docker exec moonshot-chingu-quiz_db pg_dump -U docker docker > quiz_db.sql",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
