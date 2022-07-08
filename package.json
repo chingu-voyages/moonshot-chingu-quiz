@@ -9,6 +9,7 @@
   "dependencies": {
     "@babel/node": "^7.14.7",
     "@types/jest": "^26.0.24",
+    "concurrently": "^7.2.2",
     "dotenv": "^10.0.0",
     "next": "^10.0.7",
     "next-auth": "^3.27.2",
@@ -42,6 +43,7 @@
     "typescript": "^4.3.5"
   },
   "scripts": {
+    "local": "concurrently \"npm:docker-dev\" \"npm:dev\"",
     "docker-dev": "docker-compose up",
     "docker-reset-db": "docker container rm moonshot-chingu-quiz_db && docker volume rm moonshot-chingu-quiz_quizdata",
     "docker-dump-db": "docker exec moonshot-chingu-quiz_db pg_dump -U docker docker > quiz_db.sql",

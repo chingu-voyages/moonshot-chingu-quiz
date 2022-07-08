@@ -58,8 +58,10 @@ Run tests with `npm run test`. This will run Jest.
 # 0. Ensure all dependencies are installed
 npm install
 
-# 1. Start your Postgres databases
-docker-compose up -d
+# 1. Start everything
+npm run local
+
+# The above command takes over the terminal. Start a new terminal and continue.
 
 # 2. Create symlink .env.db-setup pointing to .env.local
 ln -s .env.local .env.db-setup
