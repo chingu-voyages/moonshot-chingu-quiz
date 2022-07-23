@@ -32,19 +32,19 @@ const MobileMenu = ({
       </MobileMenuButtonWrapper>
 
       <MobileMenuWrapper active={active}>
-        <Link href="/">
+        <Link href="/" passHref>
           <MobileMenuLink onClick={toggleMobileMenu}>Home</MobileMenuLink>
         </Link>
 
-        <Link href="/quizzes">
+        <Link href="/quizzes" passHref>
           <MobileMenuLink onClick={toggleMobileMenu}>Quiz</MobileMenuLink>
         </Link>
 
-        <Link href="/contribute">
+        <Link href="/contribute" passHref>
           <MobileMenuLink onClick={toggleMobileMenu}>Contribute</MobileMenuLink>
         </Link>
 
-        <Link href="/about">
+        <Link href="/about" passHref>
           <MobileMenuLink onClick={toggleMobileMenu}>About Us</MobileMenuLink>
         </Link>
 
