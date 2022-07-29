@@ -10,7 +10,7 @@ interface QuizTileProps {
 }
 export default function QuizTile({ quizData, animationDelay }: QuizTileProps) {
   return (
-    <Link href={`/quiz/${quizData.id}`}>
+    <Link href={`/quiz/${quizData.id}`} passHref>
       <TileContainer animationDelay={animationDelay}>
         <header>
           <Heading4>{quizData.title}</Heading4>

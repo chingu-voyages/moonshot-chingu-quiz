@@ -66,7 +66,7 @@ export default function ResultView({
         </ResultTileContainer>
 
         <ResultTitleContainer>
-          <Link href="/quizzes">
+          <Link href="/quizzes" passHref>
             <SubmitQuizBtnStyled>
               <Heading4>{"Try Another >"}</Heading4>
             </SubmitQuizBtnStyled>
