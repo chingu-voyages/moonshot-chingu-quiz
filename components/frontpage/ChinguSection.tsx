@@ -129,6 +129,7 @@ const ChinguSection = () => {
           <ButtonsWrapper>
           <a
              target="_blank"
+             rel="noreferrer"
              href="https://chingu.io/">
               <Button light>Take Me To Chingu.io</Button>
             </a>

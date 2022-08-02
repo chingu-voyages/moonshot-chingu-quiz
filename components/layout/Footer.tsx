@@ -12,6 +12,7 @@ const Footer = () => {
           <HighlightLink>
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://chingu.io/">
               Chingu
             </a>
