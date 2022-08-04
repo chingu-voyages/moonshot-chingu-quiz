@@ -2,7 +2,7 @@
   This page will load at the url "/quizzes"
 */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import QuizTile from "../components/quizSelection/QuizTile";
 import TopicSelection from "../components/quizSelection/TopicSelection";
 import { TileSection } from "../components/quizSelection/styles";
@@ -21,16 +21,19 @@ export default function Quizzes({
   const [chosenTopics, setChosenTopics] = useState<string[]>([]);
   const [filteredQuizzes, setFilteredQuizzes] = useState<ChinguQuiz.Quiz[]>([]);
 
-  const subjectFilterCallback = (quizTagArray: string[]) => {
-    let totalMatches = 0;
-    for (let i = 0; i < quizTagArray.length; i += 1) {
-      if (chosenTopics.indexOf(quizTagArray[i]) >= 0) {
-        totalMatches += 1;
+  const subjectFilterCallback = useCallback(
+    (quizTagArray: string[]) => {
+      let totalMatches = 0;
+      for (let i = 0; i < quizTagArray.length; i += 1) {
+        if (chosenTopics.indexOf(quizTagArray[i]) >= 0) {
+          totalMatches += 1;
+        }
       }
-    }
-    // Only includes quiz if all quiz tag are matched to topic selection in the UI
-    return totalMatches === quizTagArray.length;
-  };
+      // Only includes quiz if all quiz tag are matched to topic selection in the UI
+      return totalMatches === quizTagArray.length;
+    },
+    [chosenTopics]
+  );
 
   // Handle filtering of quizzes
   useEffect(() => {
@@ -49,7 +52,7 @@ export default function Quizzes({
           .filter(quiz => subjectFilterCallback(quiz.tag))
       );
     }
-  }, [chosenTopics, quizzes, chosenSubject]);
+  }, [chosenTopics, quizzes, chosenSubject, subjectFilterCallback]);
 
   return (
     <>
