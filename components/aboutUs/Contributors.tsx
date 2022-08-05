@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from 'next/image'
 import styled from 'styled-components';
 
 import {
@@ -49,7 +50,7 @@ const Contributors = () => {
         {
           contributors.map(contributor => (
             <ContributorBubble key={contributor.id} href={contributor.html_url} target="_blank" title={`${contributor.login} \nContributions: ${contributor.contributions}`}>
-              <img src={contributor.avatar_url} alt={contributor.login} />
+              <Image width={60} height={60} src={contributor.avatar_url} alt={contributor.login} />
             </ContributorBubble>
           ))
         }
