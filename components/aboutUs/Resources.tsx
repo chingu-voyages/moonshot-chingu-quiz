@@ -306,7 +306,7 @@ export const ABOUT_DATA = [
     title: `What are you using to build this app?`,
     text: (
       <>
-        It's a <a href="https://nextjs.org/docs">Next.js</a> app powered by
+        It&39;s a <a href="https://nextjs.org/docs">Next.js</a> app powered by
         a <a href="https://www.postgresql.org/">PostgreSQL</a> database.
       </>
     ),
